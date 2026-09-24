@@ -464,6 +464,7 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
 /* ==========================================================================
    11 · PRIVACY / LEGAL
    ========================================================================== */
+body{overflow-x:visible}
 .legal-hero{padding:clamp(22px,3vw,42px) 0 clamp(4px,1vw,10px);text-align:center}
 .legal-eyebrow{display:block;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;
   color:var(--blue);font-variation-settings:'wdth' 100,'wght' 750;margin-bottom:14px}
@@ -604,7 +605,7 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
       <span class="legal-eyebrow">Functnl Legal</span>
       <h1 class="legal-h1">Terms of Service<em>.</em></h1>
       <span class="legal-pill"><i></i>Last updated: 24 September 2026</span>
-      <p class="legal-lede">The agreement between you and Actihealth Ltd when you use functnl.co.uk — written to be clear, fair and readable.</p>
+      <p class="legal-lede">The agreement between you and Actihealth Ltd when you use functnl.co.uk: written to be clear, fair and readable.</p>
     </div>
   </section>
 
@@ -927,7 +928,7 @@ Website: <a href="https://functnl.co.uk">www.functnl.co.uk</a></p>
           });
         }
       });
-    }, {rootMargin: '-15% 0px -75% 0px'});
+    }, {rootMargin: '-10% 0px -60% 0px'});
     secs.forEach(function(x){ spy.observe(x); });
   }
 })();
