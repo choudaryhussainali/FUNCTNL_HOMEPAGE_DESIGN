@@ -17,7 +17,6 @@
   --black:#000000;
   --white:#FFFFFF;
   --blue:#7EB8D4;
-  --blue-soft:rgba(126,184,212,.14);
   --blue-line:rgba(126,184,212,.45);
   --ink:#17171A;
   --g6:#262626;
@@ -25,14 +24,12 @@
   --g5:#555555;
   --soft:#F4F4F2;
   --tile:#F1F1EF;
-  --on-dark:#F2F2F0;
 
   --font-display:'PP Monument Extended','Archivo',system-ui,sans-serif;
   --font-body:'Outfit','Archivo',system-ui,-apple-system,sans-serif;
 
   --r:3px;
   --hair-l:1px solid rgba(0,0,0,.10);
-  --hair-d:1px solid rgba(255,255,255,.14);
 
   --pad:clamp(16px,4.4vw,72px);
   --max:1400px;
@@ -211,8 +208,8 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
 @media(max-width:1100px){.products-g{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.products-g{grid-template-columns:1fr}}
 
-.pcard{display:flex;flex-direction:column;background:var(--soft);border:1px solid rgba(0,0,0,.08);border-radius:8px;overflow:hidden;transition:transform .35s var(--ee),box-shadow .35s var(--ee)}
-.pcard:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(0,0,0,.09)}
+.pcard{display:flex;flex-direction:column;background:var(--soft);border:1px solid rgba(0,0,0,.08);border-radius:8px;overflow:hidden;transition:box-shadow .35s var(--ee)}
+.pcard:hover{box-shadow:0 20px 44px rgba(0,0,0,.09)}
 .pcard-media{position:relative;display:block;aspect-ratio:4/4.6;overflow:hidden;background:var(--tile)}
 .pcard-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ee)}
 .pcard-media img.alt{position:absolute;inset:0;opacity:0;transition:opacity .6s var(--eq),transform .8s var(--ee)}
@@ -373,8 +370,8 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
   .jcard{flex:0 0 min(78vw,340px);scroll-snap-align:start}
 }
 .jcard{display:flex;flex-direction:column;min-width:0;background:#0C0C0E;border:1px solid rgba(255,255,255,.08);
-  border-radius:14px;overflow:hidden;transition:transform .35s var(--ee),border-color .3s var(--eq),box-shadow .35s var(--ee)}
-.jcard:hover{transform:translateY(-5px);border-color:var(--blue-line);box-shadow:0 24px 50px rgba(0,0,0,.5)}
+  border-radius:14px;overflow:hidden;transition:border-color .3s var(--eq),box-shadow .35s var(--ee)}
+.jcard:hover{border-color:var(--blue-line);box-shadow:0 24px 50px rgba(0,0,0,.5)}
 .jcard-media{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:#111}
 .jtag{position:absolute;top:14px;left:14px;z-index:2;background:var(--blue);color:#000;font-size:9.5px;
   letter-spacing:.16em;text-transform:uppercase;font-variation-settings:'wdth' 100,'wght' 750;
@@ -475,7 +472,6 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
 <!-- ══════════ ANNOUNCEMENT ══════════ -->
 <div class="ann" aria-label="Subscribe and save. 30-day money-back. Athlete recommended. #NoBloating.">
   <span class="ann-item" id="annItem">Subscribe &amp; Save</span>
-  </div>
 </div>
 
 <!-- ══════════ HEADER ══════════ -->
@@ -948,7 +944,7 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
     a.addEventListener('click', function(){ body.classList.remove('drawer-open'); });
   });
 
-  /* ── Cart + toast ────────────────────────── */
+  /* ── Cart + toast ───────────────────── */
   var count = 0, tTimer = null;
   var cartCount = document.getElementById('cartCount');
   var toast = document.getElementById('toast');
@@ -963,79 +959,6 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
       tTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2400);
     });
   });
-
-  /* ── Strip carousels ─────────────────────── */
-  function scroller(stripId, prevId, nextId){
-    var strip = document.getElementById(stripId);
-    if (!strip) return;
-    var step = function(){
-      var card = strip.querySelector('.ptile, .jcard');
-      return card ? card.getBoundingClientRect().width + 18 : 300;
-    };
-    document.getElementById(prevId).addEventListener('click', function(){ strip.scrollBy({left: -step(), behavior:'smooth'}); });
-    document.getElementById(nextId).addEventListener('click', function(){ strip.scrollBy({left: step(), behavior:'smooth'}); });
-  }
-  /* -- Video reviews slider -- */
-  (function(){
-    var track = document.getElementById('vslTrack');
-    if (!track) return;
-    var tiles = Array.prototype.slice.call(track.children);
-    var N = tiles.length;
-    function setClone(){
-      var f = document.createDocumentFragment();
-      tiles.forEach(function(t){ var c = t.cloneNode(true); c.setAttribute('aria-hidden','true'); f.appendChild(c); });
-      return f;
-    }
-    track.insertBefore(setClone(), track.firstChild);
-    track.appendChild(setClone());
-    var all = Array.prototype.slice.call(track.children);
-    var idx = N;
-    function metrics(){
-      var ref = all[0];
-      for (var i = 0; i < all.length; i++){
-        if (!all[i].classList.contains('is-active')) { ref = all[i]; break; }
-      }
-      var r = { w: ref.offsetWidth };
-      var gap = parseFloat(getComputedStyle(track).gap) || 20;
-      return { w: r.w, gap: gap };
-    }
-    function apply(anim){
-      var m = metrics();
-      var cw = track.parentElement.getBoundingClientRect().width;
-      var offset = cw / 2 - (m.w + 44) / 2 - idx * (m.w + m.gap);
-      track.style.transition = anim ? '' : 'none';
-      track.style.transform = 'translateX(' + offset + 'px)';
-      all.forEach(function(t, i){ t.classList.toggle('is-active', i === idx); });
-      if (!anim) { void track.offsetWidth; track.style.transition = ''; }
-    }
-    function normalize(){
-      if (idx >= 2 * N) { idx -= N; apply(false); }
-      else if (idx < N) { idx += N; apply(false); }
-    }
-    function go(d){ idx += d; apply(true); scheduleNormalize(); }
-    var normT = null;
-    function scheduleNormalize(){ clearTimeout(normT); normT = setTimeout(normalize, 650); }
-    document.getElementById('vPrev').addEventListener('click', function(){ go(-1); start(); });
-    document.getElementById('vNext').addEventListener('click', function(){ go(1); start(); });
-    var sx = null;
-    track.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
-    track.addEventListener('touchend', function(e){
-      if (sx === null) return;
-      var dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) { go(dx < 0 ? 1 : -1); start(); }
-      sx = null;
-    }, {passive:true});
-    var timer = null;
-    function start(){ stop(); timer = setInterval(function(){ go(1); }, 3800); }
-    function stop(){ if (timer) { clearInterval(timer); timer = null; } }
-    var vsl = document.getElementById('vsl');
-    vsl.addEventListener('mouseenter', stop);
-    vsl.addEventListener('mouseleave', start);
-    window.addEventListener('resize', function(){ apply(false); });
-    apply(false);
-    start();
-  })();
-  scroller('jTrack', 'jPrev', 'jNext');
 
   /* ── Newsletter ──────────────────────────── */
   var nlForm = document.getElementById('nlForm');
