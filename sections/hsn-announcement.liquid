@@ -71,7 +71,22 @@
   }
 {% endstyle %}
 
-<script src="data:text/javascript,(function(){var r=document.currentScript.previousElementSibling;if(!r)return;var items=r.querySelectorAll('.hsn-ann__item');var speed=parseInt(r.getAttribute('data-hsn-speed'),10)||6000;var i=0;var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduce||items.length<2)return;setInterval(function(){items[i].classList.remove('is-active');i=(i+1)%items.length;items[i].classList.add('is-active');},speed);})();"></script>
+<script>
+  (function () {
+    var root = document.getElementById('{{ section.id }}');
+    if (!root || root.dataset.hsnInit === 'true') return;
+    root.dataset.hsnInit = 'true';
+    var items = root.querySelectorAll('.hsn-ann__item');
+    var speed = {{ section.settings.speed | times: 1000 }};
+    var i = 0;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || items.length < 2) return;
+    setInterval(function () {
+      items[i].classList.remove('is-active');
+      i = (i + 1) % items.length;
+      items[i].classList.add('is-active');
+    }, speed);
+  })();
+</script>
 
 {% schema %}
 {
