@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FUNCTNL. | Own Your Core: Gut Led Performance Nutrition</title>
-<meta name="description" content="Functional Supplements designed to work with your body. No stimulants. No sugar crashes. Just what works.">
+<title>All Products | FUNCTNL.</title>
+<meta name="description" content="Shop all FUNCTNL functional supplements: The Performer, Protein Gold, Female Balance, Joint and Gut Synergy.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
@@ -213,7 +213,7 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
 
 .pcard{display:flex;flex-direction:column;background:var(--soft);border:1px solid rgba(0,0,0,.08);border-radius:8px;overflow:hidden;transition:transform .35s var(--ee),box-shadow .35s var(--ee)}
 .pcard:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(0,0,0,.09)}
-.pcard-media{position:relative;display:block;aspect-ratio:4/4.6;overflow:hidden;background:var(--tile)}
+.pcard-media{position:relative;display:block;margin:12px 12px 0;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--tile)}
 .pcard-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ee)}
 .pcard-media img.alt{position:absolute;inset:0;opacity:0;transition:opacity .6s var(--eq),transform .8s var(--ee)}
 .pcard:hover .pcard-media img.alt{opacity:1}
@@ -461,6 +461,67 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
 .ftr-legal a{text-decoration:none}
 .ftr-legal a:hover{color:var(--blue)}
 
+/* ==========================================================================
+   11 · COLLECTION PAGE
+   ========================================================================== */
+.coll-top{padding-top:clamp(16px,2.2vw,30px)}
+.coll-circles{display:flex;justify-content:center;gap:8px;overflow-x:auto;
+  scrollbar-width:none;padding:14px 0 6px}
+.coll-circles::-webkit-scrollbar{display:none}
+.circle{flex:none;display:flex;flex-direction:column;align-items:center;gap:14px;width:clamp(92px,8.6vw,118px);cursor:pointer}
+.circle .cimg{display:block;width:clamp(84px,7.9vw,108px);height:clamp(84px,7.9vw,108px);border-radius:50%;
+  overflow:hidden;background:var(--tile);border:1px solid rgba(0,0,0,.08);
+  transition:transform .35s var(--ee),box-shadow .35s var(--ee)}
+.circle .cimg img{width:100%;height:100%;object-fit:cover}
+.circle:hover .cimg{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.14)}
+.circle .clabel{font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  font-variation-settings:'wdth' 100,'wght' 650;color:var(--black);text-align:center;white-space:nowrap}
+.circle.is-active .clabel{color:var(--blue)}
+.circle.is-active .cimg{border-color:var(--black);box-shadow:0 12px 26px rgba(0,0,0,.14)}
+.coll-title{font-family:var(--font-display);font-weight:400;font-size:clamp(20px,2.2vw,30px);line-height:1.15;
+  text-transform:uppercase;color:var(--black);text-align:center;margin:clamp(24px,3vw,44px) auto 8px}
+.coll-count{font-size:14px;color:var(--g5);margin:0;text-align:center}
+.coll-bar{display:flex;align-items:center;justify-content:flex-end;gap:16px;
+  border-top:var(--hair-l);border-bottom:var(--hair-l);padding:13px 0;margin:clamp(18px,2.5vw,30px) 0 clamp(34px,4vw,54px)}
+.sortby{display:inline-flex;align-items:center;gap:12px;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;font-variation-settings:'wdth' 100,'wght' 650;color:var(--black)}
+.sortby select{font-family:var(--font-body);font-size:13px;letter-spacing:.02em;color:var(--ink);
+  background:#fff;border:1px solid rgba(0,0,0,.18);border-radius:var(--r);padding:9px 12px;cursor:pointer}
+.cat{padding-bottom:clamp(30px,4vw,56px);scroll-margin-top:16px}
+.cat-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  border-bottom:1px solid rgba(0,0,0,.08);padding-bottom:13px;margin-bottom:clamp(18px,2.4vw,28px)}
+.cat-h{font-family:var(--font-display);font-weight:700;font-size:clamp(19px,2.2vw,28px);
+  text-transform:uppercase;color:var(--black);margin:0}
+.cat-n{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#8a8a8a}
+.products-g--3{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-width:1100px){.products-g--3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:800px){.products-g--3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.products-g--3{grid-template-columns:1fr}}
+
+/* ==========================================================================
+   12 · MEGA MENU
+   ========================================================================== */
+.nav-item.has-mega{display:block}
+.has-mega > a{display:inline-flex;align-items:center;gap:8px}
+.has-mega > a::after{content:'';width:6px;height:6px;border-right:1.6px solid currentColor;
+  border-bottom:1.6px solid currentColor;transform:rotate(45deg);margin-top:-3px;transition:transform .25s var(--eq)}
+.has-mega:hover > a::after,.has-mega:focus-within > a::after{transform:rotate(225deg);margin-top:2px}
+.mega{position:absolute;left:0;right:0;top:100%;z-index:60;background:#fff;color:var(--ink);
+  border-top:1px solid rgba(0,0,0,.06);box-shadow:0 34px 64px rgba(0,0,0,.30);
+  opacity:0;visibility:hidden;transform:translateY(12px);
+  transition:opacity .32s var(--eq),transform .32s var(--ee),visibility 0s linear .32s}
+.mega::before{content:'';position:absolute;top:-18px;left:0;right:0;height:18px}
+.has-mega:hover .mega,.has-mega:focus-within .mega{opacity:1;visibility:visible;transform:none;
+  transition:opacity .32s var(--eq),transform .32s var(--ee)}
+.mega-g{display:grid;grid-template-columns:.85fr .85fr 1.55fr;gap:clamp(26px,4vw,60px);padding-block:30px 36px}
+.mega-h{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);
+  font-variation-settings:'wdth' 100,'wght' 750;margin-bottom:16px}
+.mega-col a{display:block;font-size:14.5px;color:var(--ink);padding:6px 0;
+  transition:color .15s var(--eq),transform .2s var(--ee)}
+.mega-col a:hover{color:var(--blue);transform:translateX(3px)}
+.mega-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:1150px){.mega-g{grid-template-columns:1fr 1fr}.mega-feat{display:none}}
+
 /* Toast */
 .toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);z-index:120;
   background:#000;color:#fff;border:1px solid rgba(126,184,212,.5);border-radius:999px;
@@ -486,7 +547,7 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
     </button>
 
-    <a href="#home" class="logo" aria-label="FUNCTNL home">
+    <a href="#top" class="logo" aria-label="FUNCTNL home">
       <svg viewBox="0 0 180 23" role="img" aria-label="FUNCTNL.">
         <path fill="currentColor" d="M5.75284 0.0944554H18.2066V4.18681H7.6451C6.13715 4.18681 4.91596 5.2802 4.91596 6.63034C4.91596 8.01541 6.17031 9.13849 7.71728 9.13849H15.9769V13.1278L6.7653 13.1156C5.74504 13.1156 4.91596 13.8544 4.91596 14.7696V22.584H0V5.24352C0 2.39826 2.57503 0.0927124 5.75284 0.0927124V0.0944554Z"/>
         <path fill="currentColor" d="M20.9883 13.3515V0.0683899H25.8087V13.3515C25.8087 16.6212 27.6912 18.5774 31.4191 18.5774C35.147 18.5774 37.0666 16.6229 37.0666 13.3515V0.0683899H41.7738V13.3515C41.7738 18.9809 38.0829 22.5545 31.4562 22.5545C24.8294 22.5545 20.9883 19.0141 20.9883 13.3515Z"/>
@@ -500,8 +561,65 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
     </a>
 
     <nav class="mainnav">
-      <a href="#products">Shop All</a>
-      <a href="#story">About Us</a>
+      <div class="nav-item has-mega">
+        <a href="#all-products" data-filter="gut-health" aria-haspopup="true">Shop All</a>
+        <div class="mega">
+          <div class="wrap mega-g">
+            <div class="mega-col">
+              <span class="mega-h">Shop</span>
+              <a href="#top">All Products</a>
+              <a href="#all-products" data-filter="performance">Best Sellers</a>
+              <a href="#all-products" data-filter="clean">Accessories</a>
+              <a href="index.html">Home</a>
+            </div>
+            <div class="mega-col">
+              <span class="mega-h">Collections</span>
+              <a href="#all-products" data-filter="gut-health">Gut Health</a>
+              <a href="#all-products" data-filter="performance">Performance</a>
+              <a href="#all-products" data-filter="sleep">Sleep</a>
+              <a href="#all-products" data-filter="recovery">Recovery</a>
+              <a href="#all-products" data-filter="energy">Energy</a>
+              <a href="#all-products" data-filter="clean">Clean</a>
+            </div>
+            <div class="mega-feat">
+              <span class="mega-h">Best Sellers</span>
+              <div class="mega-cards">
+<article class="pcard" data-price="19.99" data-name="The Performer" data-pos="3">
+        <a href="https://functnl.co.uk/products/the-performer-1" class="pcard-media" aria-label="The Performer">
+          <span class="flag">BEST SELLER</span>
+          <img src="https://functnl.co.uk/cdn/shop/files/The_Performer.png?width=700" alt="The Performer" loading="lazy">
+          <img class="alt" src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/fn-email-e02_performer.jpg?v=1787869573&width=800" alt="" loading="lazy">
+        </a>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">The Performer</h3>
+          <p class="pcard-sub">Creatine + Beetroot + Electrolytes</p>
+          <p class="pcard-meta">30 Sachets &bull; Beets &amp; Lemon</p>
+          <div class="pcard-price"><span class="now num">&pound;19.99</span><span class="was num">&pound;24.99</span></div>
+          <button class="pcard-add" data-name="The Performer">Add to Cart</button>
+        </div>
+      </article>
+<article class="pcard" data-price="29.99" data-name="Protein Gold" data-pos="6">
+        <a href="https://functnl.co.uk/products/brothein" class="pcard-media" aria-label="Protein Gold">
+          <span class="flag">BEST SELLER</span>
+          <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Bone_broth_product_photo_01_38f8555f-61aa-48cf-ae0e-2ea970d301b6.png?v=1775049345&width=700" alt="Protein Gold" loading="lazy">
+          <img class="alt" src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Bone_broth_product_photo_02_6f7fa292-8173-4251-be4c-37ce32cf4e4e.png?v=1775049345&width=800" alt="" loading="lazy">
+        </a>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">Protein Gold</h3>
+          <p class="pcard-sub">Beef Bone Broth Protein</p>
+          <p class="pcard-meta">20 Servings &bull; 3 Flavours</p>
+          <div class="pcard-price"><span class="now num">&pound;29.99</span><span class="was num">&pound;34.99</span></div>
+          <button class="pcard-add" data-name="Protein Gold">Add to Cart</button>
+        </div>
+      </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="index.html#story">About Us</a>
       <a href="#footer">Contact Us</a>
     </nav>
 
@@ -528,112 +646,55 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
     </button>
   </div>
   <nav>
-    <a href="#products">Shop All</a>
-    <a href="#story">About Us</a>
-    <a href="#journal">The Journal</a>
+    <a href="#top">All Products</a>
+    <a href="#all-products" data-filter="performance">Best Sellers</a>
+    <a href="index.html#story">About Us</a>
     <a href="#footer">Contact Us</a>
   </nav>
   <div class="drawer-foot">#SAYNOTOBLOATING</div>
 </aside>
 
-<!-- ══════════ HERO SLIDER ══════════ -->
-<section class="hero" id="home">
+<main>
+  <h1 class="coll-title">All Products</h1>
+  <p class="coll-count num">10 products</p>
 
-  <div class="hero-slide is-active">
-    <div class="hero-bg" style="background-image:url('2.webp')"></div>
-    <div class="wrap hero-wrap">
-      <div class="hero-content">
-        <div class="hero-eyebrow">GUT LED PERFORMANCE NUTRITION</div>
-        <h1 class="hero-title">OWN<br>YOUR<br>CORE</h1>
-        <p class="hero-desc">Functional Supplements designed to work with<br>your body. We look at how the body works as a<br>system. #SAYNOTOBLOATING.</p>
-        <a href="#products" class="hero-cta">START THE SYSTEM <span class="arrow">&#8594;</span></a>
-        <p class="hero-note">No stimulants. No sugar crashes. Just what works.</p>
-      </div>
+<!-- ══════════ COLLECTION CIRCLES ══════════ -->
+<!-- ══════════ COLLECTION CIRCLES ══════════ -->
+<section class="coll-top">
+  <div class="wrap">
+    <div class="coll-circles">
+    <a href="#all-products" data-filter="gut-health" class="circle"><span class="cimg"><img src="https://picsum.photos/seed/functnl-gut-health/400/400" alt="" loading="lazy"></span><span class="clabel">Gut Health</span></a>
+    <a href="#all-products" data-filter="performance" class="circle"><span class="cimg"><img src="https://picsum.photos/seed/functnl-performance/400/400" alt="" loading="lazy"></span><span class="clabel">Performance</span></a>
+    <a href="#all-products" data-filter="sleep" class="circle"><span class="cimg"><img src="https://picsum.photos/seed/functnl-sleep/400/400" alt="" loading="lazy"></span><span class="clabel">Sleep</span></a>
+    <a href="#all-products" data-filter="recovery" class="circle"><span class="cimg"><img src="https://picsum.photos/seed/functnl-recovery/400/400" alt="" loading="lazy"></span><span class="clabel">Recovery</span></a>
+    <a href="#all-products" data-filter="energy" class="circle"><span class="cimg"><img src="https://picsum.photos/seed/functnl-energy/400/400" alt="" loading="lazy"></span><span class="clabel">Energy</span></a>
+    <a href="#all-products" data-filter="clean" class="circle"><span class="cimg"><img src="https://picsum.photos/seed/functnl-clean/400/400" alt="" loading="lazy"></span><span class="clabel">Clean</span></a>
     </div>
-  </div>
-
-  <div class="hero-slide">
-    <div class="hero-bg hero-bg--female" style="background-image:url('5.webp')"></div>
-    <div class="wrap hero-wrap">
-      <div class="hero-content">
-        <div class="hero-eyebrow">WOMEN'S GUT LED PERFORMANCE</div>
-        <h1 class="hero-title" style="font-size:clamp(2.2rem,5.1vw,5rem)">OWN<br>YOUR<br>BALANCE</h1>
-        <p class="hero-desc">Female Balance supports hormones, energy and<br>recovery through every phase. Built for her<br>system. #OWNYOURCYCLE.</p>
-        <a href="#products" class="hero-cta">SHOP FEMALE BALANCE <span class="arrow">&#8594;</span></a>
-        <p class="hero-note">Hormone smart. Zero stimulants. Clinically dosed.</p>
-      </div>
-    </div>
-  </div>
-  <div class="hero-dots" id="heroDots">
-    <button class="dot is-active" aria-label="Slide 1"></button>
-    <button class="dot" aria-label="Slide 2"></button>
   </div>
 </section>
 
-<!-- ══════════ NO-LIST MARQUEE ══════════ -->
-<div class="marquee" aria-label="What FUNCTNL leaves out">
-  <div class="marquee-track">
-    <div class="m-set"><span>Gut Health</span><span>Performance</span><span>Sleep</span><span>Recovery</span><span>Energy</span><span>Clean</span><span>Gut Health</span><span>Performance</span><span>Sleep</span><span>Recovery</span><span>Energy</span><span>Clean</span></div>
-    <div class="m-set" aria-hidden="true"><span>Gut Health</span><span>Performance</span><span>Sleep</span><span>Recovery</span><span>Energy</span><span>Clean</span><span>Gut Health</span><span>Performance</span><span>Sleep</span><span>Recovery</span><span>Energy</span><span>Clean</span></div>
+
+<!-- ══════════ TOOLBAR ══════════ -->
+<div class="wrap">
+  <div class="coll-bar">
+    <label class="sortby">Sort by
+      <select id="sortSel">
+        <option value="featured">Featured</option>
+        <option value="price-asc">Price, low to high</option>
+        <option value="price-desc">Price, high to low</option>
+        <option value="alpha">Alphabetical, A-Z</option>
+      </select>
+    </label>
   </div>
 </div>
 
-<!-- ══════════ BEST SELLERS ══════════ -->
-<section class="bestsellers" id="products">
-  <div class="wrap">
-    <div class="products-g">
-
-      <article class="pcard reveal">
-        <a href="#" class="pcard-media" aria-label="The Performer">
+  <section class="cat" id="all-products">
+    <div class="wrap">
+      <div class="products-g products-g--3" id="allGrid">
+      <article class="pcard" data-cat="gut-health" data-price="29.99" data-name="Joint &amp; Gut Synergy" data-pos="0">
+        <a href="https://functnl.co.uk/products/acti-joints" class="pcard-media" aria-label="Joint & Gut Synergy">
           <span class="flag">BEST SELLER</span>
-          <img src="Performer.webp" alt="The Performer: creatine and functional beets" loading="lazy">
-          <img class="alt" src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/fn-email-e02_performer.jpg?v=1787869573&width=800" alt="" loading="lazy">
-        </a>
-        <div class="pcard-info">
-          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-          <h3 class="pcard-name">The Performer</h3>
-          <p class="pcard-sub">Creatine + Beetroot + Electrolytes</p>
-          <p class="pcard-meta">30 Sachets &bull; Beets &amp; Lemon</p>
-          <div class="pcard-price"><span class="now num">£19.99</span><span class="was num">£24.99</span></div>
-          <button class="pcard-add" data-name="The Performer">Add to Cart</button>
-        </div>
-      </article>
-
-      <article class="pcard reveal">
-        <a href="#" class="pcard-media" aria-label="Protein Gold">
-          <span class="flag">BEST SELLER</span>
-          <img src="bone.webp" alt="Protein Gold beef bone broth protein powder" loading="lazy">
-          <img class="alt" src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Bone_broth_product_photo_02_6f7fa292-8173-4251-be4c-37ce32cf4e4e.png?v=1775049345&width=800" alt="" loading="lazy">
-        </a>
-        <div class="pcard-info">
-          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-          <h3 class="pcard-name">Protein Gold</h3>
-          <p class="pcard-sub">Beef Bone Broth Protein</p>
-          <p class="pcard-meta">20 Servings &bull; 3 Flavours</p>
-          <div class="pcard-price"><span class="now num">£29.99</span><span class="was num">£34.99</span></div>
-          <button class="pcard-add" data-name="Protein Gold">Add to Cart</button>
-        </div>
-      </article>
-
-      <article class="pcard reveal">
-        <a href="#" class="pcard-media" aria-label="Female Balance">
-          <span class="flag">BEST SELLER</span>
-          <img src="magnesium.webp" alt="Female Balance and Performance hormone support" loading="lazy">
-          <img class="alt" src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Femalebalanceproductphoto02.jpg?v=1772532266&width=800" alt="" loading="lazy">
-        </a>
-        <div class="pcard-info">
-          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-          <h3 class="pcard-name">Female Balance</h3>
-          <p class="pcard-sub">Hormone &amp; Performance Support</p>
-          <p class="pcard-meta">60 Capsules &bull; 30 Days</p>
-          <div class="pcard-price"><span class="now num">£29.99</span><span class="was num">£34.99</span></div>
-          <button class="pcard-add" data-name="Female Balance">Add to Cart</button>
-        </div>
-      </article>
-
-      <article class="pcard reveal">
-        <a href="#" class="pcard-media" aria-label="Joint and Gut Synergy">
-          <img src="Performer.webp" alt="Joint and Gut Synergy collagen complex" loading="lazy">
+          <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Joint_Gut_product_photo_01.png?v=1775039577&width=700" alt="Joint &amp; Gut Synergy" loading="lazy">
           <img class="alt" src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Joint_Gut_product_photo_02.png?v=1775039577&width=800" alt="" loading="lazy">
         </a>
         <div class="pcard-info">
@@ -641,199 +702,146 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
           <h3 class="pcard-name">Joint &amp; Gut Synergy</h3>
           <p class="pcard-sub">Collagen + Gut Complex</p>
           <p class="pcard-meta">30 Servings &bull; Unflavoured</p>
-          <div class="pcard-price"><span class="now num">£29.99</span><span class="was num">£34.99</span></div>
+          <div class="pcard-price"><span class="now num">&pound;29.99</span><span class="was num">&pound;34.99</span></div>
           <button class="pcard-add" data-name="Joint &amp; Gut Synergy">Add to Cart</button>
         </div>
       </article>
 
-    </div>
-    <div class="shopall-row reveal">
-      <a href="#" class="btn">Shop All
-        <svg class="ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ STATS ══════════ -->
-<section class="stats">
-  <div class="wrap">
-    <span class="stats-eyebrow reveal">Built Through Experience</span>
-    <div class="stats-g">
-      <div class="stat reveal"><b class="num">7X</b><p>Gut-first performance supplements, clean and functional</p></div>
-      <div class="stat reveal"><b class="num">4X</b><p>Up to 4x higher bioavailability with liposomal delivery</p></div>
-      <div class="stat reveal"><b class="num">380%</b><p>Up to 380% greater cellular uptake and absorption</p></div>
-      <div class="stat reveal"><b class="num">510K+</b><p>Units sold across 8 countries worldwide</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ SOCIAL PROOF ══════════ -->
-<section class="proof">
-  <div class="wrap">
-    <h2 class="proof-h reveal"><span style="color:var(--black)">Fueling athletes</span><br><span style="color:var(--blue)">from the core</span></h2>
-    <div class="proof-rate reveal">
-      <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-      <span><b>4.9</b> out of 5</span>
-      <span class="sep">|</span>
-      <span>Sold world-wide</span>
-    </div>
-  </div>
-  <div class="vsl reveal" id="vsl">
-    <div class="vsl-track" id="vslTrack">
-      <div class="vtile"><img src="https://functnl.co.uk/cdn/shop/files/The_Performer.png?width=560" alt="The Performer video review" ><span class="play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span></div>
-      <div class="vtile"><img src="https://functnl.co.uk/cdn/shop/files/homepage-mobile-model.jpg?v=1775645651&width=560" alt="Athlete video review" ><span class="play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span></div>
-      <div class="vtile"><img src="https://functnl.co.uk/cdn/shop/files/freepik_minimal-composition-similar-to-img1-replace-pouch-design-with-img2-white-pouch.-make-the-floor-very-darkblackish._0007_d637a942-0bf8-4e58-9fe7-7b93bfcf5dbf.png?width=560" alt="The Performer in a gym bag" ><span class="play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span></div>
-      <div class="vtile"><img src="https://functnl.co.uk/cdn/shop/files/freepik__black-and-white-medium-super-lowangle-shot-of-mode__74434.jpg?v=1774433804&width=560" alt="Athlete holding a sachet" ><span class="play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span></div>
-      <div class="vtile"><img src="https://functnl.co.uk/cdn/shop/files/freepik__female-athlete-face-from-img1-wearing-a-premium-ov__57239.png?width=560" alt="Female athlete video review" ><span class="play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span></div>
-      <div class="vtile"><img src="https://functnl.co.uk/cdn/shop/files/Bone_broth_product_photo_01_38f8555f-61aa-48cf-ae0e-2ea970d301b6.png?width=560" alt="Protein Gold video review" ><span class="play"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span></div>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="strip-nav">
-      <button class="circ" id="vPrev" aria-label="Previous video"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-      <button class="circ" id="vNext" aria-label="Next video"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ BUNDLE & SAVE ══════════ -->
-<section class="bundle">
-  <div class="bundle-media reveal">
-    <img src="https://functnl.co.uk/cdn/shop/files/freepik_minimal-composition-similar-to-img1-replace-pouch-design-with-img2-white-pouch.-make-the-floor-very-darkblackish._0007_d637a942-0bf8-4e58-9fe7-7b93bfcf5dbf.png?width=1400" alt="The Performer pouch in a gym bag" loading="lazy">
-  </div>
-  <div class="bundle-body">
-    <span class="eyebrow eyebrow--blue">Limited Time</span>
-    <h2 class="bundle-h reveal">Bundle &amp; Save<br>up to <em>25% off.</em></h2>
-    <p class="bundle-p reveal">Mix and match across the range: the more of the system you build, the more you save. Free UK shipping on every bundle.</p>
-    <div class="reveal">
-      <a href="#products" class="btn">Build Your Bundle
-        <svg class="ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ FEATURED PRODUCT ══════════ -->
-<section class="featured">
-  <div class="wrap featured-g">
-    <div>
-      <span class="eyebrow eyebrow--blue" style="color: #d52308; font-family: sans-serif; font-weight: 700;">Featured Product</span>
-      <h2 class="featured-h reveal">The Performer</h2>
-      <p class="featured-sub reveal" style="color: #d52308; font-size: larger;">Creatine + Beetroot + Electrolytes</p>
-      <p class="featured-p reveal">Creatine, electrolytes and liposomal beetroot in one sachet, powered by MetaZone&trade; patented technology. 5g creatine monohydrate, 5 key electrolytes and liposomal beetroot to boost nitric oxide and blood flow. Zero sugar. Zero caffeine. One daily ritual for performance, recovery and gut health.</p>
-      <div class="fstats reveal">
-        <div class="fstat"><b>5<span style="color: #d52308; font-size: 18px; text-transform: none; padding-left: 3px;">g</span></b><span>Creatine Mono</span></div>
-        <div class="fstat"><b>654<span style="color: #d52308; font-size: 18px; text-transform: none; padding-left: 3px;">mg</span></b><span>Electrolytes</span></div>
-        <div class="fstat"><b>0<span style="color: #d52308; font-size: 18px; text-transform: none; padding-left: 3px;">g</span></b><span>Sugar</span></div>
-      </div>
-      <div class="reveal">
-        <a href="#products" class="btn">Shop The Performer
-          <svg class="ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg>
+      <article class="pcard" data-cat="clean" data-price="12.99" data-name="The FUNCTNL Resistance Bands" data-pos="1">
+        <a href="https://functnl.co.uk/products/functional-resistance-bands-x-5-strengths" class="pcard-media" aria-label="The FUNCTNL Resistance Bands">
+          <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/resistance-band-productphoto-01.jpg?v=1775384734&width=700" alt="The FUNCTNL Resistance Bands" loading="lazy">
         </a>
-      </div>
-    </div>
-    <div class="featured-media reveal">
-      <div class="chip chip-a"><span style="color: #ffffff;">Delivery</span><b>Liposomal</b></div>
-      <div class="ph"><img src="https://functnl.co.uk/cdn/shop/files/The_Performer.png?width=1000" alt="The Performer pouch with beetroot and lemon" loading="lazy"></div>
-      <div class="chip chip--blue chip-b" style="background-color: #000;"><span style="color: #ffffff;">Electrolytes</span><b style="color: white;">654mg</b></div>
-      <div class="chip chip-c"><span style="color: #ffffff;">Caffeine</span><b>Zero</b></div>
-    </div>
-  </div>
-</section>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">The FUNCTNL Resistance Bands</h3>
+          <p class="pcard-sub">Fabric Resistance Set</p>
+          <p class="pcard-meta">3 Bands &bull; Carry Pouch</p>
+          <div class="pcard-price"><span class="now num">&pound;12.99</span></div>
+          <button class="pcard-add" data-name="The FUNCTNL Resistance Bands">Add to Cart</button>
+        </div>
+      </article>
 
-<!-- ══════════ STORY ══════════ -->
-<section class="story" id="story">
-  <div class="wrap story-g">
-    <div class="story-media reveal">
-      <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/freepik_black-and-white-medium-super-lowangle-shot-of-model-in-img1-with-different-angles-in-img2-img3-img4-wearing-a-black-premium-oversized-hoodie-with-the-logo-from-img3-centered-i.png?v=1774569059&width=1000" alt="Athlete holding a FUNCTNL sachet" loading="lazy">
-    </div>
-    <div>
-      <span class="eyebrow eyebrow--blue">Why I Built FUNCTNL</span>
-      <h2 class="story-h reveal">I was tired of buying ten products to do the job of <em>one system.</em></h2>
-      <p class="story-p reveal">Every product in the FUNCTNL range exists because it solves a real problem in a connected system. From gut health to recovery to daily output. No filler. No hype. Just what works.</p>
-      <div class="reveal">
-        <a href="#products" class="btn">Start The System
-          <svg class="ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg>
+      <article class="pcard" data-cat="clean" data-price="9.99" data-name="The FUNCTNL Frother" data-pos="2">
+        <a href="https://functnl.co.uk/products/functional-frother" class="pcard-media" aria-label="The FUNCTNL Frother">
+          <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Frotherproductphoto01.png?v=1775377355&width=700" alt="The FUNCTNL Frother" loading="lazy">
         </a>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">The FUNCTNL Frother</h3>
+          <p class="pcard-sub">Portable Electric Mixer</p>
+          <p class="pcard-meta">USB-C &bull; Rechargeable</p>
+          <div class="pcard-price"><span class="now num">&pound;9.99</span></div>
+          <button class="pcard-add" data-name="The FUNCTNL Frother">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="pcard" data-cat="performance" data-price="19.99" data-name="The Performer" data-pos="3">
+        <a href="https://functnl.co.uk/products/the-performer-1" class="pcard-media" aria-label="The Performer">
+          <span class="flag">BEST SELLER</span>
+          <img src="https://functnl.co.uk/cdn/shop/files/The_Performer.png?width=700" alt="The Performer" loading="lazy">
+          <img class="alt" src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/fn-email-e02_performer.jpg?v=1787869573&width=800" alt="" loading="lazy">
+        </a>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">The Performer</h3>
+          <p class="pcard-sub">Creatine + Beetroot + Electrolytes</p>
+          <p class="pcard-meta">30 Sachets &bull; Beets &amp; Lemon</p>
+          <div class="pcard-price"><span class="now num">&pound;19.99</span><span class="was num">&pound;24.99</span></div>
+          <button class="pcard-add" data-name="The Performer">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="pcard" data-cat="performance" data-price="29.99" data-name="Female Balance" data-pos="4">
+        <a href="https://functnl.co.uk/products/female-balance-performance-1" class="pcard-media" aria-label="Female Balance">
+          <span class="flag">BEST SELLER</span>
+          <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Femalebalanceproductphoto01.png?v=1772532269&width=700" alt="Female Balance" loading="lazy">
+          <img class="alt" src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Femalebalanceproductphoto02.jpg?v=1772532266&width=800" alt="" loading="lazy">
+        </a>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">Female Balance</h3>
+          <p class="pcard-sub">Hormone &amp; Performance Support</p>
+          <p class="pcard-meta">60 Capsules &bull; 30 Days</p>
+          <div class="pcard-price"><span class="now num">&pound;29.99</span><span class="was num">&pound;34.99</span></div>
+          <button class="pcard-add" data-name="Female Balance">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="pcard" data-cat="clean" data-price="13.99" data-name="The FUNCTNL Shaker" data-pos="5">
+        <a href="https://functnl.co.uk/products/functional-stainless-steel-shaker-18-8-food-grade" class="pcard-media" aria-label="The FUNCTNL Shaker">
+          <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Shakerproductphoto01.png?v=1775386988&width=700" alt="The FUNCTNL Shaker" loading="lazy">
+        </a>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">The FUNCTNL Shaker</h3>
+          <p class="pcard-sub">Stainless Steel Shaker</p>
+          <p class="pcard-meta">700ml &bull; Leak-Proof Lid</p>
+          <div class="pcard-price"><span class="now num">&pound;13.99</span></div>
+          <button class="pcard-add" data-name="The FUNCTNL Shaker">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="pcard" data-cat="recovery" data-price="29.99" data-name="Protein Gold" data-pos="6">
+        <a href="https://functnl.co.uk/products/brothein" class="pcard-media" aria-label="Protein Gold">
+          <span class="flag">BEST SELLER</span>
+          <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Bone_broth_product_photo_01_38f8555f-61aa-48cf-ae0e-2ea970d301b6.png?v=1775049345&width=700" alt="Protein Gold" loading="lazy">
+          <img class="alt" src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Bone_broth_product_photo_02_6f7fa292-8173-4251-be4c-37ce32cf4e4e.png?v=1775049345&width=800" alt="" loading="lazy">
+        </a>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">Protein Gold</h3>
+          <p class="pcard-sub">Beef Bone Broth Protein</p>
+          <p class="pcard-meta">20 Servings &bull; 3 Flavours</p>
+          <div class="pcard-price"><span class="now num">&pound;29.99</span><span class="was num">&pound;34.99</span></div>
+          <button class="pcard-add" data-name="Protein Gold">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="pcard" data-cat="sleep" data-price="12.99" data-name="Magnesium 3-in-1" data-pos="7">
+        <a href="https://functnl.co.uk/products/magnesium-glycinate-3-in-1" class="pcard-media" aria-label="Magnesium 3-in-1">
+          <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Magnesiumproductphoto01.png?v=1775050964&width=700" alt="Magnesium 3-in-1" loading="lazy">
+        </a>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">Magnesium 3-in-1</h3>
+          <p class="pcard-sub">Sleep &amp; Muscle Support</p>
+          <p class="pcard-meta">60 Capsules &bull; Unflavoured</p>
+          <div class="pcard-price"><span class="now num">&pound;12.99</span></div>
+          <button class="pcard-add" data-name="Magnesium 3-in-1">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="pcard" data-cat="performance" data-price="44.99" data-name="Optitest" data-pos="8">
+        <a href="https://functnl.co.uk/products/optitestÂ®" class="pcard-media" aria-label="Optitest">
+          <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/optitest-day-night.png?v=1775053632&width=700" alt="Optitest" loading="lazy">
+        </a>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">Optitest</h3>
+          <p class="pcard-sub">Testosterone &amp; Vitality</p>
+          <p class="pcard-meta">60 Capsules &bull; AM &amp; PM</p>
+          <div class="pcard-price"><span class="now num">&pound;44.99</span></div>
+          <button class="pcard-add" data-name="Optitest">Add to Cart</button>
+        </div>
+      </article>
+
+      <article class="pcard" data-cat="energy" data-price="8.99" data-name="Actifizz" data-pos="9">
+        <a href="https://functnl.co.uk/products/actifizz-x2" class="pcard-media" aria-label="Actifizz">
+          <img src="https://cdn.shopify.com/s/files/1/0910/7564/1730/files/Actifizz_product_photo_01.png?v=1775057627&width=700" alt="Actifizz" loading="lazy">
+        </a>
+        <div class="pcard-info">
+          <div class="pcard-rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+          <h3 class="pcard-name">Actifizz</h3>
+          <p class="pcard-sub">Effervescent Daily Multivitamin</p>
+          <p class="pcard-meta">20 Tablets &bull; Double Pack</p>
+          <div class="pcard-price"><span class="now num">&pound;8.99</span></div>
+          <button class="pcard-add" data-name="Actifizz">Add to Cart</button>
+        </div>
+      </article>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- ══════════ JOURNAL ══════════ -->
-<section class="journal" id="journal">
-  <div class="wrap">
-    <div class="journal-top">
-      <div>
-        <span class="eyebrow eyebrow--blue">The Journal</span>
-        <h2 class="journal-h reveal">Science, systems, <em>substance.</em></h2>
-      </div>
-      <div class="journal-nav">
-        <a href="#" class="jall">View All <svg class="ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg></a>
-        <button class="circ circ--d" id="jPrev" aria-label="Scroll back">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
-        </button>
-        <button class="circ circ--d" id="jNext" aria-label="Scroll forward">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
-        </button>
-      </div>
-    </div>
-
-    <div class="journal-track" id="jTrack">
-      <article class="jcard">
-        <a href="#" class="jcard-media"><img src="https://functnl.co.uk/cdn/shop/files/freepik__female-athlete-face-from-img1-wearing-a-premium-ov__57239.png?width=700" alt="" loading="lazy"><span class="jtag">Training</span></a>
-        <div class="jcard-body"><div class="jcard-meta">May 29, 2026 &nbsp;&bull;&nbsp; <em>Zohaib Shariff</em></div>
-        <h3 class="jcard-title"><a href="#">Calisthenics Supplements: The Ultimate Guide to Strength &amp; Recovery</a></h3>
-        <p class="jcard-x">Build strength, improve recovery and support performance naturally with a gut-led supplement stack built for bodyweight athletes.</p>
-        <a href="#" class="jcard-read">Read <svg class="ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg></a></div>
-      
-      </article>
-
-      <article class="jcard">
-        <a href="#" class="jcard-media"><img src="https://functnl.co.uk/cdn/shop/files/freepik_minimal-composition-similar-to-img1-replace-pouch-design-with-img2-white-pouch.-make-the-floor-very-darkblackish._0007_d637a942-0bf8-4e58-9fe7-7b93bfcf5dbf.png?width=700" alt="" loading="lazy"><span class="jtag">Science</span></a>
-        <div class="jcard-body"><div class="jcard-meta">Mar 14, 2026 &nbsp;&bull;&nbsp; <em>Zohaib Shariff</em></div>
-        <h3 class="jcard-title"><a href="#">Why Liposomal Curcumin Outperforms Standard Curcumin</a></h3>
-        <p class="jcard-x">The injury recovery protocol I reach for: liposomal curcumin, black ginger and boswellia, and why absorption changes everything.</p>
-        <a href="#" class="jcard-read">Read <svg class="ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg></a></div>
-      
-      </article>
-
-      <article class="jcard">
-        <a href="#" class="jcard-media"><img src="https://functnl.co.uk/cdn/shop/files/The_Performer.png?width=700" alt="" loading="lazy"><span class="jtag">Ingredients</span></a>
-        <div class="jcard-body"><div class="jcard-meta">Mar 14, 2026 &nbsp;&bull;&nbsp; <em>Shipla Tawania</em></div>
-        <h3 class="jcard-title"><a href="#">Why I Started Taking Beetroot Seriously This Year</a></h3>
-        <p class="jcard-x">You know what nobody tells you when you sign up to endurance sport? Recovery is the training. Here is where beetroot fits the system.</p>
-        <a href="#" class="jcard-read">Read <svg class="ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg></a></div>
-      
-      </article>
-
-      <article class="jcard">
-        <a href="#" class="jcard-media"><img src="https://functnl.co.uk/cdn/shop/files/Femalebalanceproductphoto01.png?width=700" alt="" loading="lazy"><span class="jtag">Women's Health</span></a>
-        <div class="jcard-body"><div class="jcard-meta">Mar 14, 2026 &nbsp;&bull;&nbsp; <em>Shipla Tawania</em></div>
-        <h3 class="jcard-title"><a href="#">The Ancient Herb That Changed How I Think About Female Health</a></h3>
-        <p class="jcard-x">Shatavari has been used for centuries. Here is how it earned a place in a modern, evidence-led hormone support formula.</p>
-        <a href="#" class="jcard-read">Read <svg class="ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg></a></div>
-      
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ SOCIAL ══════════ -->
-<section class="social">
-  <div class="wrap social-in">
-    <span class="social-pill">Growing Community</span>
-    <h2 class="social-h">Follow us <a href="#">@functnl.uk</a></h2>
-    <div class="social-grid">
-      <div class="stile"><img src="https://functnl.co.uk/cdn/shop/files/homepage-mobile-model.jpg?v=1775645651&width=500" alt="" loading="lazy"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span></div>
-      <div class="stile"><img src="https://functnl.co.uk/cdn/shop/files/freepik__female-athlete-face-from-img1-wearing-a-premium-ov__57239.png?width=500" alt="" loading="lazy"></div>
-      <div class="stile"><img src="https://functnl.co.uk/cdn/shop/files/The_Performer.png?width=500" alt="" loading="lazy"><span class="play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span></div>
-      <div class="stile"><img src="https://functnl.co.uk/cdn/shop/files/freepik__black-and-white-medium-super-lowangle-shot-of-mode__74434.jpg?v=1774433804&width=500" alt="" loading="lazy"></div>
-      <div class="stile"><img src="https://functnl.co.uk/cdn/shop/files/Joint_Gut_product_photo_01.png?width=500" alt="" loading="lazy"></div>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
 <!-- ══════════ FOOTER ══════════ -->
 <footer class="ftr" id="footer">
@@ -904,42 +912,13 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
     }, 2700);
   })();
 
-  /* ── Hero slider ─────────────────────────── */
-  var slides = document.querySelectorAll('.hero-slide');
-  var dots = document.querySelectorAll('#heroDots .dot');
-  var idx = 0, timer = null, DUR = 6500;
-
-  function go(n){
-    idx = (n + slides.length) % slides.length;
-    slides.forEach(function(s, i){ s.classList.toggle('is-active', i === idx); });
-    dots.forEach(function(d, i){ d.classList.toggle('is-active', i === idx); });
-  }
-  function play(){ stop(); timer = setInterval(function(){ go(idx + 1); }, DUR); }
-  function stop(){ if (timer) { clearInterval(timer); timer = null; } }
-
-  dots.forEach(function(d, i){ d.addEventListener('click', function(){ go(i); play(); }); });
-
-  var hero = document.getElementById('home');
-  hero.addEventListener('mouseenter', stop);
-  hero.addEventListener('mouseleave', play);
-
-  var tx = null;
-  hero.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; stop(); }, {passive:true});
-  hero.addEventListener('touchend', function(e){
-    if (tx === null) return;
-    var dx = e.changedTouches[0].clientX - tx;
-    if (Math.abs(dx) > 45) go(idx + (dx < 0 ? 1 : -1));
-    tx = null; play();
-  }, {passive:true});
-  play();
-
-  /* ── Header shadow ───────────────────────── */
+/* ── Header shadow ───────────────────────── */
   var hdr = document.getElementById('hdr');
   window.addEventListener('scroll', function(){
     hdr.classList.toggle('scrolled', window.scrollY > 8);
   }, {passive:true});
 
-  /* ── Mobile drawer ───────────────────────── */
+/* ── Mobile drawer ───────────────────────── */
   var body = document.body;
   document.getElementById('burger').addEventListener('click', function(){ body.classList.add('drawer-open'); });
   document.getElementById('drawerClose').addEventListener('click', function(){ body.classList.remove('drawer-open'); });
@@ -948,7 +927,7 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
     a.addEventListener('click', function(){ body.classList.remove('drawer-open'); });
   });
 
-  /* ── Cart + toast ────────────────────────── */
+/* ── Cart + toast ────────────────────────── */
   var count = 0, tTimer = null;
   var cartCount = document.getElementById('cartCount');
   var toast = document.getElementById('toast');
@@ -964,80 +943,7 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
     });
   });
 
-  /* ── Strip carousels ─────────────────────── */
-  function scroller(stripId, prevId, nextId){
-    var strip = document.getElementById(stripId);
-    if (!strip) return;
-    var step = function(){
-      var card = strip.querySelector('.ptile, .jcard');
-      return card ? card.getBoundingClientRect().width + 18 : 300;
-    };
-    document.getElementById(prevId).addEventListener('click', function(){ strip.scrollBy({left: -step(), behavior:'smooth'}); });
-    document.getElementById(nextId).addEventListener('click', function(){ strip.scrollBy({left: step(), behavior:'smooth'}); });
-  }
-  /* -- Video reviews slider -- */
-  (function(){
-    var track = document.getElementById('vslTrack');
-    if (!track) return;
-    var tiles = Array.prototype.slice.call(track.children);
-    var N = tiles.length;
-    function setClone(){
-      var f = document.createDocumentFragment();
-      tiles.forEach(function(t){ var c = t.cloneNode(true); c.setAttribute('aria-hidden','true'); f.appendChild(c); });
-      return f;
-    }
-    track.insertBefore(setClone(), track.firstChild);
-    track.appendChild(setClone());
-    var all = Array.prototype.slice.call(track.children);
-    var idx = N;
-    function metrics(){
-      var ref = all[0];
-      for (var i = 0; i < all.length; i++){
-        if (!all[i].classList.contains('is-active')) { ref = all[i]; break; }
-      }
-      var r = { w: ref.offsetWidth };
-      var gap = parseFloat(getComputedStyle(track).gap) || 20;
-      return { w: r.w, gap: gap };
-    }
-    function apply(anim){
-      var m = metrics();
-      var cw = track.parentElement.getBoundingClientRect().width;
-      var offset = cw / 2 - (m.w + 44) / 2 - idx * (m.w + m.gap);
-      track.style.transition = anim ? '' : 'none';
-      track.style.transform = 'translateX(' + offset + 'px)';
-      all.forEach(function(t, i){ t.classList.toggle('is-active', i === idx); });
-      if (!anim) { void track.offsetWidth; track.style.transition = ''; }
-    }
-    function normalize(){
-      if (idx >= 2 * N) { idx -= N; apply(false); }
-      else if (idx < N) { idx += N; apply(false); }
-    }
-    function go(d){ idx += d; apply(true); scheduleNormalize(); }
-    var normT = null;
-    function scheduleNormalize(){ clearTimeout(normT); normT = setTimeout(normalize, 650); }
-    document.getElementById('vPrev').addEventListener('click', function(){ go(-1); start(); });
-    document.getElementById('vNext').addEventListener('click', function(){ go(1); start(); });
-    var sx = null;
-    track.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, {passive:true});
-    track.addEventListener('touchend', function(e){
-      if (sx === null) return;
-      var dx = e.changedTouches[0].clientX - sx;
-      if (Math.abs(dx) > 40) { go(dx < 0 ? 1 : -1); start(); }
-      sx = null;
-    }, {passive:true});
-    var timer = null;
-    function start(){ stop(); timer = setInterval(function(){ go(1); }, 3800); }
-    function stop(){ if (timer) { clearInterval(timer); timer = null; } }
-    var vsl = document.getElementById('vsl');
-    vsl.addEventListener('mouseenter', stop);
-    vsl.addEventListener('mouseleave', start);
-    window.addEventListener('resize', function(){ apply(false); });
-    apply(false);
-    start();
-  })();
-  scroller('jTrack', 'jPrev', 'jNext');
-
-  /* ── Newsletter ──────────────────────────── */
+/* ── Newsletter ──────────────────────────── */
   var nlForm = document.getElementById('nlForm');
   nlForm.addEventListener('submit', function(e){
     e.preventDefault();
@@ -1053,47 +959,39 @@ body.drawer-open .overlay{opacity:1;pointer-events:auto}
     nlForm.reset();
   });
 
-  /* ── Stat count-up ────────────────────── */
-  (function(){
-    var nums = document.querySelectorAll('.stat b');
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!('IntersectionObserver' in window) || reduce || !nums.length) return;
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (!en.isIntersecting) return;
-        io.unobserve(en.target);
-        var el = en.target;
-        var m = el.textContent.match(/^(\d+)(.*)$/);
-        if (!m) return;
-        var end = parseInt(m[1], 10), suffix = m[2], start = null, DUR = 1400;
-        el.textContent = '0' + suffix;
-        function tick(ts){
-          if (start === null) start = ts;
-          var t = Math.min((ts - start) / DUR, 1);
-          var e = 1 - Math.pow(1 - t, 3);
-          el.textContent = Math.round(end * e) + suffix;
-          if (t < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      });
-    }, {threshold: .5});
-    nums.forEach(function(el){ io.observe(el); });
-  })();
-
-  /* ── Reveal on scroll ────────────────────── */
-  var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-      });
-    }, {threshold: .14, rootMargin: '0px 0px -6% 0px'});
-    reveals.forEach(function(el){ io.observe(el); });
-  } else {
-    reveals.forEach(function(el){ el.classList.add('in'); });
-  }
 })();
 </script>
 
+<script>
+(function(){
+  var sel = document.getElementById('sortSel');
+  if (sel) {
+    sel.addEventListener('change', function(){
+      var mode = sel.value;
+      var grid = document.getElementById('allGrid');
+      (function(grid){
+        var cards = Array.prototype.slice.call(grid.querySelectorAll('.pcard'));
+        if (mode === 'price-asc') cards.sort(function(a, b){ return (+a.dataset.price) - (+b.dataset.price); });
+        else if (mode === 'price-desc') cards.sort(function(a, b){ return (+b.dataset.price) - (+a.dataset.price); });
+        else if (mode === 'alpha') cards.sort(function(a, b){ return a.dataset.name.localeCompare(b.dataset.name); });
+        else cards.sort(function(a, b){ return (+a.dataset.pos) - (+b.dataset.pos); });
+        cards.forEach(function(c){ grid.appendChild(c); });
+      })(grid);
+    });
+  }
+  var links = document.querySelectorAll('.circle, .mega-col a[data-filter]');
+  links.forEach(function(l){
+    l.addEventListener('click', function(){
+      var f = l.getAttribute('data-filter');
+      var wasActive = l.classList.contains('is-active');
+      links.forEach(function(x){ x.classList.remove('is-active'); });
+      document.querySelectorAll('#allGrid .pcard').forEach(function(c){
+        c.style.display = (!wasActive && f && c.getAttribute('data-cat') !== f) ? 'none' : '';
+      });
+      if (!wasActive && f) l.classList.add('is-active');
+    });
+  });
+})();
+</script>
 </body>
 </html>
