@@ -1,16 +1,16 @@
 {% comment %}
-  FX Footer — link columns, newsletter, socials, wordmark, legal bar.
+  HSN Footer — link columns, newsletter, socials, wordmark, legal bar.
   Settings groups: Content, Colors, Spacing. Blocks: link column.
   Designed for the "footer" section group.
 {% endcomment %}
 
-<footer id="{{ section.id }}" class="fx-footer section-{{ section.id }}" style="--ft-accent: {{ section.settings.accent }};" {{ section.shopify_attributes }}>
-  <div class="fx-footer__grid">
+<footer id="{{ section.id }}" class="hsn-footer section-{{ section.id }}" style="--ft-accent: {{ section.settings.accent }};" {{ section.shopify_attributes }}>
+  <div class="hsn-footer__grid">
     {%- for block in section.blocks -%}
       {%- if block.type == 'link_column' -%}
         <div {{ block.shopify_attributes }}>
-          <span class="fx-footer__h">{{ block.settings.title | escape }}</span>
-          <ul class="fx-footer__list">
+          <span class="hsn-footer__h">{{ block.settings.title | escape }}</span>
+          <ul class="hsn-footer__list">
             {%- for link in block.settings.menu.links -%}
               <li><a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a></li>
             {%- endfor -%}
@@ -18,22 +18,22 @@
         </div>
       {%- elsif block.type == 'newsletter' -%}
         <div {{ block.shopify_attributes }}>
-          <span class="fx-footer__h">{{ block.settings.title | escape }}</span>
+          <span class="hsn-footer__h">{{ block.settings.title | escape }}</span>
           {%- if block.settings.text != blank -%}
-            <p class="fx-footer__note">{{ block.settings.text | escape }}</p>
+            <p class="hsn-footer__note">{{ block.settings.text | escape }}</p>
           {%- endif -%}
-          {%- form 'customer', class: 'fx-footer__form' -%}
+          {%- form 'customer', class: 'hsn-footer__form' -%}
             <input type="hidden" name="contact[tags]" value="newsletter">
             {%- if form.posted_successfully? -%}
-              <p class="fx-footer__msg" role="status">Welcome to the system. Check your inbox.</p>
+              <p class="hsn-footer__msg" role="status">Welcome to the system. Check your inbox.</p>
             {%- elsif form.errors -%}
-              <p class="fx-footer__msg fx-footer__msg--err" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+              <p class="hsn-footer__msg hsn-footer__msg--err" role="alert">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
             {%- endif -%}
-            <div class="fx-footer__sub">
+            <div class="hsn-footer__sub">
               <input
                 type="email"
                 name="contact[email]"
-                id="fx-news-{{ section.id }}-{{ block.id }}"
+                id="hsn-news-{{ section.id }}-{{ block.id }}"
                 placeholder="Your email"
                 aria-label="Email address"
                 autocomplete="email"
@@ -45,7 +45,7 @@
             </div>
           {%- endform -%}
           {%- if section.settings.show_socials -%}
-            <div class="fx-footer__socials">
+            <div class="hsn-footer__socials">
               {%- if section.settings.social_instagram != blank -%}
                 <a href="{{ section.settings.social_instagram }}" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg></a>
               {%- endif -%}
@@ -63,15 +63,15 @@
   </div>
 
   {%- if section.settings.wordmark != blank -%}
-  <div class="fx-footer__mark">
+  <div class="hsn-footer__mark">
     {{ section.settings.wordmark | image_url: width: 2400 | image_tag: widths: '800, 1400, 2000, 2400', sizes: '100vw', alt: shop.name | escape, loading: 'lazy', decoding: 'async' }}
   </div>
   {%- endif -%}
 
-  <div class="fx-footer__bar">
-    <div class="fx-footer__legal">
+  <div class="hsn-footer__bar">
+    <div class="hsn-footer__legal">
       <span>{{ section.settings.copyright | escape }}</span>
-      <span class="fx-footer__legal-links">
+      <span class="hsn-footer__legal-links">
         {%- for link in section.settings.legal_menu.links -%}
           <a href="{{ link.url }}">{{ link.title | escape }}</a>
           {%- unless forloop.last -%}<span aria-hidden="true">&middot;</span>{%- endunless -%}
@@ -82,12 +82,12 @@
 </footer>
 
 {% style %}
-  .section-{{ section.id }} .fx-footer {
+  .section-{{ section.id }} .hsn-footer {
     background: #000;
     color: #fff;
     padding-top: clamp(52px, 6vw, 78px);
   }
-  .section-{{ section.id }} .fx-footer__grid {
+  .section-{{ section.id }} .hsn-footer__grid {
     max-width: 1400px;
     margin-inline: auto;
     padding-inline: clamp(16px, 4.4vw, 72px);
@@ -97,7 +97,7 @@
     padding-bottom: clamp(40px, 5vw, 64px);
     box-sizing: border-box;
   }
-  .section-{{ section.id }} .fx-footer__h {
+  .section-{{ section.id }} .hsn-footer__h {
     display: block;
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 11px;
@@ -107,29 +107,29 @@
     font-weight: 750;
     margin-bottom: 30px;
   }
-  .section-{{ section.id }} .fx-footer__list {
+  .section-{{ section.id }} .hsn-footer__list {
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  .section-{{ section.id }} .fx-footer__list li {
+  .section-{{ section.id }} .hsn-footer__list li {
     margin-bottom: 20px;
   }
-  .section-{{ section.id }} .fx-footer__list li:last-child {
+  .section-{{ section.id }} .hsn-footer__list li:last-child {
     margin-bottom: 0;
   }
-  .section-{{ section.id }} .fx-footer__list a {
+  .section-{{ section.id }} .hsn-footer__list a {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.82);
     text-decoration: none;
     transition: color 0.13s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-{{ section.id }} .fx-footer__list a:hover,
-  .section-{{ section.id }} .fx-footer__list a:focus-visible {
+  .section-{{ section.id }} .hsn-footer__list a:hover,
+  .section-{{ section.id }} .hsn-footer__list a:focus-visible {
     color: var(--ft-accent);
   }
-  .section-{{ section.id }} .fx-footer__note {
+  .section-{{ section.id }} .hsn-footer__note {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 14px;
     line-height: 1.5;
@@ -137,11 +137,11 @@
     margin: 0 0 20px;
     max-width: 29ch;
   }
-  .section-{{ section.id }} .fx-footer__sub {
+  .section-{{ section.id }} .hsn-footer__sub {
     display: flex;
     max-width: 280px;
   }
-  .section-{{ section.id }} .fx-footer__sub input {
+  .section-{{ section.id }} .hsn-footer__sub input {
     flex: 1;
     min-width: 0;
     background: transparent;
@@ -154,14 +154,14 @@
     padding: 11px 14px;
     box-sizing: border-box;
   }
-  .section-{{ section.id }} .fx-footer__sub input::placeholder {
+  .section-{{ section.id }} .hsn-footer__sub input::placeholder {
     color: rgba(255, 255, 255, 0.45);
   }
-  .section-{{ section.id }} .fx-footer__sub input:focus {
+  .section-{{ section.id }} .hsn-footer__sub input:focus {
     outline: 0;
     border-color: var(--ft-accent);
   }
-  .section-{{ section.id }} .fx-footer__sub button {
+  .section-{{ section.id }} .hsn-footer__sub button {
     flex: none;
     padding: 11px 20px;
     border: 0;
@@ -176,25 +176,25 @@
     cursor: pointer;
     transition: background 0.13s cubic-bezier(0.4, 0, 0.2, 1), color 0.13s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-{{ section.id }} .fx-footer__sub button:hover {
+  .section-{{ section.id }} .hsn-footer__sub button:hover {
     background: #fff;
     color: #000;
   }
-  .section-{{ section.id }} .fx-footer__msg {
+  .section-{{ section.id }} .hsn-footer__msg {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 13px;
     color: #7eb8d4;
     margin: 10px 0 0;
   }
-  .section-{{ section.id }} .fx-footer__msg--err {
+  .section-{{ section.id }} .hsn-footer__msg--err {
     color: #e08a8a;
   }
-  .section-{{ section.id }} .fx-footer__socials {
+  .section-{{ section.id }} .hsn-footer__socials {
     display: flex;
     gap: 16px;
     margin-top: 24px;
   }
-  .section-{{ section.id }} .fx-footer__socials a {
+  .section-{{ section.id }} .hsn-footer__socials a {
     width: 34px;
     height: 34px;
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -204,27 +204,27 @@
     color: rgba(255, 255, 255, 0.85);
     transition: color 0.13s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.13s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-{{ section.id }} .fx-footer__socials a:hover,
-  .section-{{ section.id }} .fx-footer__socials a:focus-visible {
+  .section-{{ section.id }} .hsn-footer__socials a:hover,
+  .section-{{ section.id }} .hsn-footer__socials a:focus-visible {
     color: var(--ft-accent);
     border-color: var(--ft-accent);
   }
-  .section-{{ section.id }} .fx-footer__mark {
+  .section-{{ section.id }} .hsn-footer__mark {
     max-width: 1400px;
     margin-inline: auto;
     padding-inline: clamp(16px, 4.4vw, 72px);
     padding-top: clamp(16px, 2vw, 28px);
   }
-  .section-{{ section.id }} .fx-footer__mark img {
+  .section-{{ section.id }} .hsn-footer__mark img {
     display: block;
     width: 100%;
     height: auto;
   }
-  .section-{{ section.id }} .fx-footer__bar {
+  .section-{{ section.id }} .hsn-footer__bar {
     background: #0e0e0e;
     margin-top: clamp(16px, 2vw, 28px);
   }
-  .section-{{ section.id }} .fx-footer__legal {
+  .section-{{ section.id }} .hsn-footer__legal {
     max-width: 1400px;
     margin-inline: auto;
     padding-inline: clamp(16px, 4.4vw, 72px);
@@ -238,15 +238,15 @@
     color: rgba(255, 255, 255, 0.42);
     box-sizing: border-box;
   }
-  .section-{{ section.id }} .fx-footer__legal-links a {
+  .section-{{ section.id }} .hsn-footer__legal-links a {
     color: inherit;
     text-decoration: none;
   }
-  .section-{{ section.id }} .fx-footer__legal-links a:hover,
-  .section-{{ section.id }} .fx-footer__legal-links a:focus-visible {
+  .section-{{ section.id }} .hsn-footer__legal-links a:hover,
+  .section-{{ section.id }} .hsn-footer__legal-links a:focus-visible {
     color: var(--ft-accent);
   }
-  .section-{{ section.id }} .fx-footer__legal-links span {
+  .section-{{ section.id }} .hsn-footer__legal-links span {
     margin-inline: 8px;
   }
   .section-{{ section.id }} :is(a, button, input):focus-visible {
@@ -254,18 +254,18 @@
     outline-offset: 2px;
   }
   @media (max-width: 880px) {
-    .section-{{ section.id }} .fx-footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 28px; }
+    .section-{{ section.id }} .hsn-footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 28px; }
   }
   @media (max-width: 520px) {
-    .section-{{ section.id }} .fx-footer__grid { grid-template-columns: 1fr; gap: 34px; }
+    .section-{{ section.id }} .hsn-footer__grid { grid-template-columns: 1fr; gap: 34px; }
   }
 {% endstyle %}
 
 {% schema %}
 {
-  "name": "FX Footer",
+  "name": "HSN Footer",
   "tag": "footer",
-  "class": "fx-footer-section",
+  "class": "hsn-footer-section",
   "settings": [
     { "type": "header", "content": "Content" },
     { "type": "image_picker", "id": "wordmark", "label": "Wordmark image", "info": "Large logo shown above the legal bar." },

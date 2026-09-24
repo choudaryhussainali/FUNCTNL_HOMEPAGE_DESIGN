@@ -3,7 +3,7 @@
   "name": "Header group",
   "sections": {
     "announcement": {
-      "type": "fx-announcement",
+      "type": "hsn-announcement",
       "blocks": {
         "m1": {
           "type": "message",
@@ -39,7 +39,7 @@
       "settings": {}
     },
     "header": {
-      "type": "fx-header",
+      "type": "hsn-header",
       "settings": {
         "menu": "main-menu",
         "logo_text": "FUNCTNL."

@@ -1,45 +1,45 @@
 {% comment %}
-  FX Video Reviews — heading, rating line, scroll-snap tile slider with autoplay.
+  HSN Video Reviews — heading, rating line, scroll-snap tile slider with autoplay.
   Settings groups: Content, Layout, Colors, Animation. Blocks: review tile.
 {% endcomment %}
 
 <div
   id="{{ section.id }}"
-  class="fx-vsl section-{{ section.id }}"
+  class="hsn-vsl section-{{ section.id }}"
   style="--vr-pt: {{ section.settings.padding_top }}px; --vr-pb: {{ section.settings.padding_bottom }}px; --vr-bg: {{ section.settings.bg }}; --vr-accent: {{ section.settings.accent }};"
   {{ section.shopify_attributes }}
 >
-  <div class="fx-vsl__wrap">
-    <h2 class="fx-vsl__heading">{{ section.settings.heading | escape }}</h2>
+  <div class="hsn-vsl__wrap">
+    <h2 class="hsn-vsl__heading">{{ section.settings.heading | escape }}</h2>
     {%- if section.settings.show_rating -%}
-      <div class="fx-vsl__rating">
-        <span class="fx-vsl__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+      <div class="hsn-vsl__rating">
+        <span class="hsn-vsl__stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
         <span><b>{{ section.settings.rating_value | escape }}</b> {{ section.settings.rating_text | escape }}</span>
       </div>
     {%- endif -%}
   </div>
 
-  <div class="fx-vsl__scroller" data-fx-vsl-role="track" tabindex="0" aria-label="{{ section.settings.heading | escape }}">
+  <div class="hsn-vsl__scroller" data-hsn-vsl-role="track" tabindex="0" aria-label="{{ section.settings.heading | escape }}">
     {%- for block in section.blocks -%}
-      <div class="fx-vsl__tile" data-fx-tile {{ block.shopify_attributes }}>
-        {%- if block.settings.link != blank -%}<a class="fx-vsl__media" href="{{ block.settings.link }}" aria-label="{{ block.settings.alt | default: 'Customer video' | escape }}">{%- else -%}<div class="fx-vsl__media">{%- endif -%}
+      <div class="hsn-vsl__tile" data-hsn-tile {{ block.shopify_attributes }}>
+        {%- if block.settings.link != blank -%}<a class="hsn-vsl__media" href="{{ block.settings.link }}" aria-label="{{ block.settings.alt | default: 'Customer video' | escape }}">{%- else -%}<div class="hsn-vsl__media">{%- endif -%}
           {%- if block.settings.image != blank -%}
             {{ block.settings.image | image_url: width: 700 | image_tag: widths: '240, 380, 500, 700', sizes: '(min-width: 1100px) 17vw, 62vw', alt: block.settings.alt | escape, loading: 'lazy', decoding: 'async' }}
           {%- else -%}
-            {{ 'image' | placeholder_svg_tag: 'fx-vsl__placeholder' }}
+            {{ 'image' | placeholder_svg_tag: 'hsn-vsl__placeholder' }}
           {%- endif -%}
-          <span class="fx-vsl__play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+          <span class="hsn-vsl__play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
         {%- if block.settings.link != blank -%}</a>{%- else -%}</div>{%- endif -%}
       </div>
     {%- endfor -%}
   </div>
 
-  <div class="fx-vsl__wrap fx-vsl__navrow">
-    <div class="fx-vsl__nav">
-      <button type="button" class="fx-vsl__circ" data-fx-vsl-role="prev" aria-label="Previous reviews">
+  <div class="hsn-vsl__wrap hsn-vsl__navrow">
+    <div class="hsn-vsl__nav">
+      <button type="button" class="hsn-vsl__circ" data-hsn-vsl-role="prev" aria-label="Previous reviews">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
       </button>
-      <button type="button" class="fx-vsl__circ" data-fx-vsl-role="next" aria-label="Next reviews">
+      <button type="button" class="hsn-vsl__circ" data-hsn-vsl-role="next" aria-label="Next reviews">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
       </button>
     </div>
@@ -47,18 +47,18 @@
 </div>
 
 {% style %}
-  .section-{{ section.id }} .fx-vsl {
+  .section-{{ section.id }} .hsn-vsl {
     background: var(--vr-bg);
     padding-block: var(--vr-pt) var(--vr-pb);
     overflow: hidden;
   }
-  .section-{{ section.id }} .fx-vsl__wrap {
+  .section-{{ section.id }} .hsn-vsl__wrap {
     max-width: 1400px;
     margin-inline: auto;
     padding-inline: clamp(16px, 4.4vw, 72px);
     box-sizing: border-box;
   }
-  .section-{{ section.id }} .fx-vsl__heading {
+  .section-{{ section.id }} .hsn-vsl__heading {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: clamp(24px, 3.2vw, 42px);
@@ -69,7 +69,7 @@
     margin: 0 auto 16px;
     max-width: 760px;
   }
-  .section-{{ section.id }} .fx-vsl__rating {
+  .section-{{ section.id }} .hsn-vsl__rating {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,15 +80,15 @@
     color: #4d4d4d;
     margin-bottom: clamp(34px, 4vw, 56px);
   }
-  .section-{{ section.id }} .fx-vsl__rating b {
+  .section-{{ section.id }} .hsn-vsl__rating b {
     color: #000;
   }
-  .section-{{ section.id }} .fx-vsl__stars {
+  .section-{{ section.id }} .hsn-vsl__stars {
     color: var(--vr-accent);
     letter-spacing: 2.5px;
     font-size: 15px;
   }
-  .section-{{ section.id }} .fx-vsl__scroller {
+  .section-{{ section.id }} .hsn-vsl__scroller {
     display: flex;
     gap: 20px;
     overflow-x: auto;
@@ -98,10 +98,10 @@
     padding-block: 14px;
     box-sizing: border-box;
   }
-  .section-{{ section.id }} .fx-vsl__scroller::-webkit-scrollbar {
+  .section-{{ section.id }} .hsn-vsl__scroller::-webkit-scrollbar {
     display: none;
   }
-  .section-{{ section.id }} .fx-vsl__tile {
+  .section-{{ section.id }} .hsn-vsl__tile {
     flex: none;
     width: clamp(190px, 16.5vw, 236px);
     aspect-ratio: 9 / 14;
@@ -112,23 +112,23 @@
     transform: scale(0.94);
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-{{ section.id }} .fx-vsl__tile.is-active {
+  .section-{{ section.id }} .hsn-vsl__tile.is-active {
     transform: scale(1.06);
   }
-  .section-{{ section.id }} .fx-vsl__media {
+  .section-{{ section.id }} .hsn-vsl__media {
     display: block;
     position: relative;
     width: 100%;
     height: 100%;
   }
-  .section-{{ section.id }} .fx-vsl__media img,
-  .section-{{ section.id }} .fx-vsl__media .fx-vsl__placeholder {
+  .section-{{ section.id }} .hsn-vsl__media img,
+  .section-{{ section.id }} .hsn-vsl__media .hsn-vsl__placeholder {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  .section-{{ section.id }} .fx-vsl__media .fx-vsl__placeholder {
+  .section-{{ section.id }} .hsn-vsl__media .hsn-vsl__placeholder {
     width: 60%;
     height: 60%;
     margin: auto;
@@ -136,7 +136,7 @@
     inset: 0;
     opacity: 0.4;
   }
-  .section-{{ section.id }} .fx-vsl__play {
+  .section-{{ section.id }} .hsn-vsl__play {
     position: absolute;
     inset: 0;
     margin: auto;
@@ -150,16 +150,16 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
     pointer-events: none;
   }
-  .section-{{ section.id }} .fx-vsl__navrow {
+  .section-{{ section.id }} .hsn-vsl__navrow {
     display: flex;
     justify-content: center;
     margin-top: clamp(22px, 3vw, 34px);
   }
-  .section-{{ section.id }} .fx-vsl__nav {
+  .section-{{ section.id }} .hsn-vsl__nav {
     display: flex;
     gap: 14px;
   }
-  .section-{{ section.id }} .fx-vsl__circ {
+  .section-{{ section.id }} .hsn-vsl__circ {
     width: 46px;
     height: 46px;
     border-radius: 50%;
@@ -172,8 +172,8 @@
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
     transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-{{ section.id }} .fx-vsl__circ:hover,
-  .section-{{ section.id }} .fx-vsl__circ:focus-visible {
+  .section-{{ section.id }} .hsn-vsl__circ:hover,
+  .section-{{ section.id }} .hsn-vsl__circ:focus-visible {
     background: #000;
     color: #fff;
   }
@@ -182,8 +182,8 @@
     outline-offset: 2px;
   }
   @media (prefers-reduced-motion: reduce) {
-    .section-{{ section.id }} .fx-vsl__tile,
-    .section-{{ section.id }} .fx-vsl__scroller {
+    .section-{{ section.id }} .hsn-vsl__tile,
+    .section-{{ section.id }} .hsn-vsl__scroller {
       scroll-behavior: auto;
       transition: none;
     }
@@ -193,17 +193,17 @@
 <script>
   (function () {
     var root = document.getElementById('{{ section.id }}');
-    if (!root || root.dataset.fxInit === 'true') return;
-    root.dataset.fxInit = 'true';
-    var track = root.querySelector('[data-fx-vsl-role="track"]');
-    var tiles = Array.prototype.slice.call(root.querySelectorAll('[data-fx-tile]'));
+    if (!root || root.dataset.hsnInit === 'true') return;
+    root.dataset.hsnInit = 'true';
+    var track = root.querySelector('[data-hsn-vsl-role="track"]');
+    var tiles = Array.prototype.slice.call(root.querySelectorAll('[data-hsn-tile]'));
     if (!track || !tiles.length) return;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     function step() { return tiles[0].getBoundingClientRect().width + 20; }
     function next() { track.scrollBy({ left: step(), behavior: reduce ? 'auto' : 'smooth' }); }
     function prev() { track.scrollBy({ left: -step(), behavior: reduce ? 'auto' : 'smooth' }); }
-    root.querySelector('[data-fx-vsl-role="next"]').addEventListener('click', function () { next(); restart(); });
-    root.querySelector('[data-fx-vsl-role="prev"]').addEventListener('click', function () { prev(); restart(); });
+    root.querySelector('[data-hsn-vsl-role="next"]').addEventListener('click', function () { next(); restart(); });
+    root.querySelector('[data-hsn-vsl-role="prev"]').addEventListener('click', function () { prev(); restart(); });
     var io = null;
     if ('IntersectionObserver' in window) {
       io = new IntersectionObserver(function (entries) {
@@ -225,7 +225,7 @@
     root.addEventListener('mouseenter', stop);
     root.addEventListener('mouseleave', start);
     document.addEventListener('shopify:block:select', function (e) {
-      var t = e.target.closest('[data-fx-tile]');
+      var t = e.target.closest('[data-hsn-tile]');
       if (t && root.contains(t)) t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'nearest', inline: 'center' });
     });
     start();
@@ -234,9 +234,9 @@
 
 {% schema %}
 {
-  "name": "FX Video Reviews",
+  "name": "HSN Video Reviews",
   "tag": "section",
-  "class": "fx-vsl-section",
+  "class": "hsn-vsl-section",
   "settings": [
     { "type": "header", "content": "Content" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Fueling athletes from the core" },
@@ -267,7 +267,7 @@
   "max_blocks": 12,
   "presets": [
     {
-      "name": "FX Video Reviews",
+      "name": "HSN Video Reviews",
       "blocks": [
         { "type": "review" },
         { "type": "review" },

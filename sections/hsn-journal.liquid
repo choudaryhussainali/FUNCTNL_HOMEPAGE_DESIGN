@@ -1,50 +1,50 @@
 {% comment %}
-  FX Journal — article cards from a blog. Groups: Content, Layout, Colors, Spacing.
+  HSN Journal — article cards from a blog. Groups: Content, Layout, Colors, Spacing.
 {% endcomment %}
 
 <div
   id="{{ section.id }}"
-  class="fx-journal section-{{ section.id }}"
+  class="hsn-journal section-{{ section.id }}"
   style="--jl-pt: {{ section.settings.padding_top }}px; --jl-pb: {{ section.settings.padding_bottom }}px; --jl-accent: {{ section.settings.accent }};"
   {{ section.shopify_attributes }}
 >
-  <div class="fx-journal__wrap">
-    <div class="fx-journal__top">
+  <div class="hsn-journal__wrap">
+    <div class="hsn-journal__top">
       <div>
-        <span class="fx-journal__eyebrow">{{ section.settings.eyebrow | escape }}</span>
-        <h2 class="fx-journal__heading">{{ section.settings.heading | escape }}</h2>
+        <span class="hsn-journal__eyebrow">{{ section.settings.eyebrow | escape }}</span>
+        <h2 class="hsn-journal__heading">{{ section.settings.heading | escape }}</h2>
       </div>
-      <div class="fx-journal__nav">
-        <button type="button" class="fx-journal__circ" data-fx-journal-role="prev" aria-label="Scroll back">
+      <div class="hsn-journal__nav">
+        <button type="button" class="hsn-journal__circ" data-hsn-journal-role="prev" aria-label="Scroll back">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
         </button>
-        <button type="button" class="fx-journal__circ" data-fx-journal-role="next" aria-label="Scroll forward">
+        <button type="button" class="hsn-journal__circ" data-hsn-journal-role="next" aria-label="Scroll forward">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
         </button>
       </div>
     </div>
 
-    <div class="fx-journal__track" data-fx-journal-role="track">
+    <div class="hsn-journal__track" data-hsn-journal-role="track">
       {%- if section.settings.blog != blank -%}
         {%- for article in section.settings.blog.articles limit: section.settings.posts_to_show -%}
-          <article class="fx-jcard">
-            <a href="{{ article.url }}" class="fx-jcard__media" aria-hidden="true" tabindex="-1">
+          <article class="hsn-jcard">
+            <a href="{{ article.url }}" class="hsn-jcard__media" aria-hidden="true" tabindex="-1">
               {%- if article.image -%}
                 {{ article.image | image_url: width: 800 | image_tag: widths: '340, 500, 800', sizes: '(min-width: 1101px) 22vw, 78vw', alt: '', loading: 'lazy', decoding: 'async' }}
               {%- else -%}
-                {{ 'image' | placeholder_svg_tag: 'fx-jcard__placeholder' }}
+                {{ 'image' | placeholder_svg_tag: 'hsn-jcard__placeholder' }}
               {%- endif -%}
             </a>
-            <div class="fx-jcard__body">
-              <p class="fx-jcard__meta">
+            <div class="hsn-jcard__body">
+              <p class="hsn-jcard__meta">
                 {{ article.published_at | date: format: 'abbreviated_date' }}
                 {%- if article.author != blank %} &bull; <em>{{ article.author | escape }}</em>{% endif -%}
               </p>
-              <h3 class="fx-jcard__title"><a href="{{ article.url }}">{{ article.title | escape }}</a></h3>
+              <h3 class="hsn-jcard__title"><a href="{{ article.url }}">{{ article.title | escape }}</a></h3>
               {%- if article.excerpt != blank -%}
-                <p class="fx-jcard__excerpt">{{ article.excerpt | strip_html | truncate: 120 | escape }}</p>
+                <p class="hsn-jcard__excerpt">{{ article.excerpt | strip_html | truncate: 120 | escape }}</p>
               {%- endif -%}
-              <a href="{{ article.url }}" class="fx-jcard__read">Read
+              <a href="{{ article.url }}" class="hsn-jcard__read">Read
                 <svg width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg>
               </a>
             </div>
@@ -52,15 +52,15 @@
         {%- endfor -%}
       {%- else -%}
         {%- for i in (1..4) -%}
-          <article class="fx-jcard">
-            <div class="fx-jcard__media" aria-hidden="true">
-              {{ 'image' | append: i | placeholder_svg_tag: 'fx-jcard__placeholder' }}
+          <article class="hsn-jcard">
+            <div class="hsn-jcard__media" aria-hidden="true">
+              {{ 'image' | append: i | placeholder_svg_tag: 'hsn-jcard__placeholder' }}
             </div>
-            <div class="fx-jcard__body">
-              <p class="fx-jcard__meta">{{ 'today' | date: format: 'abbreviated_date' }}</p>
-              <h3 class="fx-jcard__title">{{ 'Example journal article title' | escape }}</h3>
-              <p class="fx-jcard__excerpt">{{ 'A short excerpt of the article appears here once content is added.' | escape }}</p>
-              <span class="fx-jcard__read">Read</span>
+            <div class="hsn-jcard__body">
+              <p class="hsn-jcard__meta">{{ 'today' | date: format: 'abbreviated_date' }}</p>
+              <h3 class="hsn-jcard__title">{{ 'Example journal article title' | escape }}</h3>
+              <p class="hsn-jcard__excerpt">{{ 'A short excerpt of the article appears here once content is added.' | escape }}</p>
+              <span class="hsn-jcard__read">Read</span>
             </div>
           </article>
         {%- endfor -%}
@@ -70,18 +70,18 @@
 </div>
 
 {% style %}
-  .section-{{ section.id }} .fx-journal {
+  .section-{{ section.id }} .hsn-journal {
     background: #000;
     color: #fff;
     padding-block: var(--jl-pt) var(--jl-pb);
   }
-  .section-{{ section.id }} .fx-journal__wrap {
+  .section-{{ section.id }} .hsn-journal__wrap {
     max-width: 1400px;
     margin-inline: auto;
     padding-inline: clamp(16px, 4.4vw, 72px);
     box-sizing: border-box;
   }
-  .section-{{ section.id }} .fx-journal__top {
+  .section-{{ section.id }} .hsn-journal__top {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
@@ -90,7 +90,7 @@
     padding-top: clamp(26px, 3vw, 40px);
     margin-bottom: clamp(28px, 3.5vw, 46px);
   }
-  .section-{{ section.id }} .fx-journal__eyebrow {
+  .section-{{ section.id }} .hsn-journal__eyebrow {
     display: block;
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 12px;
@@ -100,7 +100,7 @@
     color: var(--jl-accent);
     margin-bottom: 14px;
   }
-  .section-{{ section.id }} .fx-journal__heading {
+  .section-{{ section.id }} .hsn-journal__heading {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: clamp(24px, 3.2vw, 42px);
@@ -108,12 +108,12 @@
     color: #fff;
     margin: 0;
   }
-  .section-{{ section.id }} .fx-journal__nav {
+  .section-{{ section.id }} .hsn-journal__nav {
     display: flex;
     gap: 12px;
     flex: none;
   }
-  .section-{{ section.id }} .fx-journal__circ {
+  .section-{{ section.id }} .hsn-journal__circ {
     width: 46px;
     height: 46px;
     border-radius: 50%;
@@ -125,17 +125,17 @@
     cursor: pointer;
     transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-{{ section.id }} .fx-journal__circ:hover,
-  .section-{{ section.id }} .fx-journal__circ:focus-visible {
+  .section-{{ section.id }} .hsn-journal__circ:hover,
+  .section-{{ section.id }} .hsn-journal__circ:focus-visible {
     background: #fff;
     color: #000;
   }
-  .section-{{ section.id }} .fx-journal__track {
+  .section-{{ section.id }} .hsn-journal__track {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(18px, 2vw, 30px);
   }
-  .section-{{ section.id }} .fx-jcard {
+  .section-{{ section.id }} .hsn-jcard {
     display: flex;
     flex-direction: column;
     min-width: 0;
@@ -145,37 +145,37 @@
     overflow: hidden;
     transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .section-{{ section.id }} .fx-jcard:hover {
+  .section-{{ section.id }} .hsn-jcard:hover {
     border-color: var(--jl-accent);
     box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5);
   }
-  .section-{{ section.id }} .fx-jcard__media {
+  .section-{{ section.id }} .hsn-jcard__media {
     display: block;
     aspect-ratio: 16 / 10;
     overflow: hidden;
     background: #111;
   }
-  .section-{{ section.id }} .fx-jcard__media img,
-  .section-{{ section.id }} .fx-jcard__media .fx-jcard__placeholder {
+  .section-{{ section.id }} .hsn-jcard__media img,
+  .section-{{ section.id }} .hsn-jcard__media .hsn-jcard__placeholder {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .section-{{ section.id }} .fx-jcard__media .fx-jcard__placeholder {
+  .section-{{ section.id }} .hsn-jcard__media .hsn-jcard__placeholder {
     opacity: 0.4;
   }
-  .section-{{ section.id }} .fx-jcard:hover .fx-jcard__media img {
+  .section-{{ section.id }} .hsn-jcard:hover .hsn-jcard__media img {
     transform: scale(1.06);
   }
-  .section-{{ section.id }} .fx-jcard__body {
+  .section-{{ section.id }} .hsn-jcard__body {
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 20px 22px;
   }
-  .section-{{ section.id }} .fx-jcard__meta {
+  .section-{{ section.id }} .hsn-jcard__meta {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 11.5px;
     letter-spacing: 0.06em;
@@ -183,31 +183,31 @@
     color: rgba(255, 255, 255, 0.5);
     margin: 0 0 12px;
   }
-  .section-{{ section.id }} .fx-jcard__meta em {
+  .section-{{ section.id }} .hsn-jcard__meta em {
     font-style: normal;
     color: rgba(255, 255, 255, 0.85);
   }
-  .section-{{ section.id }} .fx-jcard__title {
+  .section-{{ section.id }} .hsn-jcard__title {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.45;
     margin: 0 0 12px;
   }
-  .section-{{ section.id }} .fx-jcard__title a {
+  .section-{{ section.id }} .hsn-jcard__title a {
     color: #fff;
   }
-  .section-{{ section.id }} .fx-jcard:hover .fx-jcard__title a {
+  .section-{{ section.id }} .hsn-jcard:hover .hsn-jcard__title a {
     color: var(--jl-accent);
   }
-  .section-{{ section.id }} .fx-jcard__excerpt {
+  .section-{{ section.id }} .hsn-jcard__excerpt {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 13.5px;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.55);
     margin: 0 0 18px;
   }
-  .section-{{ section.id }} .fx-jcard__read {
+  .section-{{ section.id }} .hsn-jcard__read {
     display: inline-flex;
     align-items: center;
     gap: 9px;
@@ -221,14 +221,14 @@
     text-transform: uppercase;
     color: #fff;
   }
-  .section-{{ section.id }} .fx-jcard__read svg {
+  .section-{{ section.id }} .hsn-jcard__read svg {
     color: var(--jl-accent);
     transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-{{ section.id }} .fx-jcard:hover .fx-jcard__read {
+  .section-{{ section.id }} .hsn-jcard:hover .hsn-jcard__read {
     color: var(--jl-accent);
   }
-  .section-{{ section.id }} .fx-jcard:hover .fx-jcard__read svg {
+  .section-{{ section.id }} .hsn-jcard:hover .hsn-jcard__read svg {
     transform: translateX(4px);
   }
   .section-{{ section.id }} :is(a, button):focus-visible {
@@ -236,7 +236,7 @@
     outline-offset: 2px;
   }
   @media (max-width: 1100px) {
-    .section-{{ section.id }} .fx-journal__track {
+    .section-{{ section.id }} .hsn-journal__track {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -244,25 +244,25 @@
       margin-inline: calc(clamp(16px, 4.4vw, 72px) * -1);
       padding-inline: clamp(16px, 4.4vw, 72px);
     }
-    .section-{{ section.id }} .fx-journal__track::-webkit-scrollbar { display: none; }
-    .section-{{ section.id }} .fx-jcard { flex: 0 0 min(78vw, 340px); scroll-snap-align: start; }
+    .section-{{ section.id }} .hsn-journal__track::-webkit-scrollbar { display: none; }
+    .section-{{ section.id }} .hsn-jcard { flex: 0 0 min(78vw, 340px); scroll-snap-align: start; }
   }
 {% endstyle %}
 
 <script>
   (function () {
     var root = document.getElementById('{{ section.id }}');
-    if (!root || root.dataset.fxInit === 'true') return;
-    root.dataset.fxInit = 'true';
-    var track = root.querySelector('[data-fx-journal-role="track"]');
+    if (!root || root.dataset.hsnInit === 'true') return;
+    root.dataset.hsnInit = 'true';
+    var track = root.querySelector('[data-hsn-journal-role="track"]');
     if (!track) return;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var card = track.querySelector('.fx-jcard');
+    var card = track.querySelector('.hsn-jcard');
     function step() { return card ? card.getBoundingClientRect().width + 24 : 320; }
-    root.querySelector('[data-fx-journal-role="prev"]').addEventListener('click', function () {
+    root.querySelector('[data-hsn-journal-role="prev"]').addEventListener('click', function () {
       track.scrollBy({ left: -step(), behavior: reduce ? 'auto' : 'smooth' });
     });
-    root.querySelector('[data-fx-journal-role="next"]').addEventListener('click', function () {
+    root.querySelector('[data-hsn-journal-role="next"]').addEventListener('click', function () {
       track.scrollBy({ left: step(), behavior: reduce ? 'auto' : 'smooth' });
     });
   })();
@@ -270,9 +270,9 @@
 
 {% schema %}
 {
-  "name": "FX Journal",
+  "name": "HSN Journal",
   "tag": "section",
-  "class": "fx-journal-section",
+  "class": "hsn-journal-section",
   "settings": [
     { "type": "header", "content": "Content" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Journal" },
@@ -286,7 +286,7 @@
     { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 20, "max": 140, "step": 4, "unit": "px", "default": 96 }
   ],
   "presets": [
-    { "name": "FX Journal" }
+    { "name": "HSN Journal" }
   ]
 }
 {% endschema %}

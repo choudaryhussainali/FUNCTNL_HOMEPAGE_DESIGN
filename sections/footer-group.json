@@ -3,7 +3,7 @@
   "name": "Footer group",
   "sections": {
     "footer": {
-      "type": "fx-footer",
+      "type": "hsn-footer",
       "blocks": {
         "c1": {
           "type": "link_column",

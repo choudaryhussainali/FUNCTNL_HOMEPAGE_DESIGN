@@ -1,5 +1,5 @@
 {% comment %}
-  FX Featured Collection — product grid with hover image, badges, quick add.
+  HSN Featured Collection — product grid with hover image, badges, quick add.
   Settings groups: Content, Layout, Colors, Product card. Blocks: none (uses collection).
 {% endcomment %}
 
@@ -11,16 +11,16 @@
 
 <div
   id="{{ section.id }}"
-  class="fx-collection section-{{ section.id }}"
+  class="hsn-collection section-{{ section.id }}"
   style="--cl-pt: {{ section.settings.padding_top }}px; --cl-pb: {{ section.settings.padding_bottom }}px; --cl-cols-d: {{ section.settings.columns_desktop }}; --cl-cols-m: {{ section.settings.columns_mobile }}; --cl-accent-text: {{ section.settings.accent_text }};"
   {{ section.shopify_attributes }}
 >
-  <div class="fx-collection__wrap{% unless section.settings.full_width %} fx-collection--page-width{% endunless %}">
+  <div class="hsn-collection__wrap{% unless section.settings.full_width %} hsn-collection--page-width{% endunless %}">
     {%- if section.settings.heading != blank -%}
-      <h2 class="fx-collection__heading">{{ section.settings.heading | escape }}</h2>
+      <h2 class="hsn-collection__heading">{{ section.settings.heading | escape }}</h2>
     {%- endif -%}
 
-    <div class="fx-collection__grid">
+    <div class="hsn-collection__grid">
       {%- if collection != blank -%}
         {%- for product in collection.products limit: products_to_show -%}
           {%- liquid
@@ -30,77 +30,77 @@
             endif
             assign second_image = product.images[1]
           -%}
-          <article class="fx-card" data-fx-product-card>
-            <a class="fx-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
+          <article class="hsn-card" data-hsn-product-card>
+            <a class="hsn-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
               {%- if section.settings.show_badge -%}
                 {%- if product.available == false -%}
-                  <span class="fx-card__flag">Sold out</span>
+                  <span class="hsn-card__flag">Sold out</span>
                 {%- elsif on_sale -%}
-                  <span class="fx-card__flag">Sale</span>
+                  <span class="hsn-card__flag">Sale</span>
                 {%- elsif product.tags contains section.settings.badge_tag -%}
-                  <span class="fx-card__flag">{{ section.settings.badge_tag | escape }}</span>
+                  <span class="hsn-card__flag">{{ section.settings.badge_tag | escape }}</span>
                 {%- endif -%}
               {%- endif -%}
               {%- if product.featured_image -%}
                 {{ product.featured_image | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 1100px) 23vw, (min-width: 800px) 45vw, 70vw', alt: product.featured_image.alt | default: product.title, loading: 'lazy', decoding: 'async' }}
                 {%- if section.settings.hover_image and second_image -%}
-                  {{ second_image | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 1100px) 23vw, (min-width: 800px) 45vw, 70vw', alt: '', loading: 'lazy', decoding: 'async', class: 'fx-card__img-alt' }}
+                  {{ second_image | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 1100px) 23vw, (min-width: 800px) 45vw, 70vw', alt: '', loading: 'lazy', decoding: 'async', class: 'hsn-card__img-alt' }}
                 {%- endif -%}
               {%- else -%}
-                {{ 'product-1' | placeholder_svg_tag: 'fx-card__placeholder' }}
+                {{ 'product-1' | placeholder_svg_tag: 'hsn-card__placeholder' }}
               {%- endif -%}
             </a>
 
-            <div class="fx-card__info">
+            <div class="hsn-card__info">
               {%- if section.settings.show_rating and product.metafields.reviews.rating.value != blank -%}
                 {%- assign rating = product.metafields.reviews.rating.value -%}
-                <div class="fx-card__rate" role="img" aria-label="{{ rating.rating }} out of 5 stars">
+                <div class="hsn-card__rate" role="img" aria-label="{{ rating.rating }} out of 5 stars">
                   {%- for i in (1..5) -%}
-                    <span class="fx-card__star{% if i > rating.rating %} fx-card__star--off{% endif %}" aria-hidden="true">&#9733;</span>
+                    <span class="hsn-card__star{% if i > rating.rating %} hsn-card__star--off{% endif %}" aria-hidden="true">&#9733;</span>
                   {%- endfor -%}
                 </div>
               {%- endif -%}
 
-              <h3 class="fx-card__name"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
+              <h3 class="hsn-card__name"><a href="{{ product.url }}">{{ product.title | escape }}</a></h3>
               {%- if section.settings.show_vendor and product.vendor != blank -%}
-                <p class="fx-card__vendor">{{ product.vendor | escape }}</p>
+                <p class="hsn-card__vendor">{{ product.vendor | escape }}</p>
               {%- endif -%}
 
-              <div class="fx-card__price">
+              <div class="hsn-card__price">
                 {%- if product.compare_at_price > product.price -%}
-                  <span class="fx-card__price-now">{{ product.price | money }}</span>
-                  <s class="fx-card__price-was">{{ product.compare_at_price | money }}</s>
+                  <span class="hsn-card__price-now">{{ product.price | money }}</span>
+                  <s class="hsn-card__price-was">{{ product.compare_at_price | money }}</s>
                 {%- else -%}
-                  <span class="fx-card__price-now">{{ product.price | money }}</span>
+                  <span class="hsn-card__price-now">{{ product.price | money }}</span>
                 {%- endif -%}
               </div>
 
               {%- if product.available -%}
                 {%- if product.variants.size == 1 -%}
-                  {%- form 'product', product, class: 'fx-card__form' -%}
+                  {%- form 'product', product, class: 'hsn-card__form' -%}
                     <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                     <input type="hidden" name="quantity" value="1">
-                    <button type="submit" class="fx-card__add">{{ section.settings.add_label | escape }}</button>
+                    <button type="submit" class="hsn-card__add">{{ section.settings.add_label | escape }}</button>
                   {%- endform -%}
                 {%- else -%}
-                  <a class="fx-card__add" href="{{ product.url }}">{{ section.settings.choose_label | escape }}</a>
+                  <a class="hsn-card__add" href="{{ product.url }}">{{ section.settings.choose_label | escape }}</a>
                 {%- endif -%}
               {%- else -%}
-                <button type="button" class="fx-card__add" disabled>Sold out</button>
+                <button type="button" class="hsn-card__add" disabled>Sold out</button>
               {%- endif -%}
             </div>
           </article>
         {%- endfor -%}
       {%- else -%}
         {%- for i in (1..4) -%}
-          <article class="fx-card" data-fx-product-card>
-            <a class="fx-card__media" href="{{ routes.all_products_collection_url }}" aria-hidden="true" tabindex="-1">
-              {{ 'product-' | append: i | placeholder_svg_tag: 'fx-card__placeholder' }}
+          <article class="hsn-card" data-hsn-product-card>
+            <a class="hsn-card__media" href="{{ routes.all_products_collection_url }}" aria-hidden="true" tabindex="-1">
+              {{ 'product-' | append: i | placeholder_svg_tag: 'hsn-card__placeholder' }}
             </a>
-            <div class="fx-card__info">
-              <h3 class="fx-card__name">{{ 'Example product title' | escape }}</h3>
-              <div class="fx-card__price"><span class="fx-card__price-now">{{ 1999 | money }}</span></div>
-              <button type="button" class="fx-card__add" disabled>{{ section.settings.add_label | escape }}</button>
+            <div class="hsn-card__info">
+              <h3 class="hsn-card__name">{{ 'Example product title' | escape }}</h3>
+              <div class="hsn-card__price"><span class="hsn-card__price-now">{{ 1999 | money }}</span></div>
+              <button type="button" class="hsn-card__add" disabled>{{ section.settings.add_label | escape }}</button>
             </div>
           </article>
         {%- endfor -%}
@@ -108,10 +108,10 @@
     </div>
 
     {%- if section.settings.show_cta -%}
-      <div class="fx-collection__cta">
-        <a class="fx-collection__btn" href="{{ collection.url | default: routes.all_products_collection_url }}">
+      <div class="hsn-collection__cta">
+        <a class="hsn-collection__btn" href="{{ collection.url | default: routes.all_products_collection_url }}">
           {{ section.settings.cta_label | escape }}
-          <svg class="fx-collection__btn-ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg>
+          <svg class="hsn-collection__btn-ar" width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg>
         </a>
       </div>
     {%- endif -%}
@@ -119,15 +119,15 @@
 </div>
 
 {% style %}
-  .section-{{ section.id }} .fx-collection__wrap {
+  .section-{{ section.id }} .hsn-collection__wrap {
     padding-block: var(--cl-pt) var(--cl-pb);
     padding-inline: clamp(16px, 4.4vw, 72px);
   }
-  .section-{{ section.id }} .fx-collection--page-width {
+  .section-{{ section.id }} .hsn-collection--page-width {
     max-width: 1400px;
     margin-inline: auto;
   }
-  .section-{{ section.id }} .fx-collection__heading {
+  .section-{{ section.id }} .hsn-collection__heading {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: clamp(22px, 3vw, 40px);
@@ -135,12 +135,12 @@
     color: #000;
     margin: 0 0 clamp(20px, 3vw, 36px);
   }
-  .section-{{ section.id }} .fx-collection__grid {
+  .section-{{ section.id }} .hsn-collection__grid {
     display: grid;
     grid-template-columns: repeat(var(--cl-cols-d), minmax(0, 1fr));
     gap: clamp(16px, 1.8vw, 26px);
   }
-  .section-{{ section.id }} .fx-card {
+  .section-{{ section.id }} .hsn-card {
     display: flex;
     flex-direction: column;
     background: #f4f4f2;
@@ -149,10 +149,10 @@
     overflow: hidden;
     transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .section-{{ section.id }} .fx-card:hover {
+  .section-{{ section.id }} .hsn-card:hover {
     box-shadow: 0 20px 44px rgba(0, 0, 0, 0.09);
   }
-  .section-{{ section.id }} .fx-card__media {
+  .section-{{ section.id }} .hsn-card__media {
     position: relative;
     display: block;
     aspect-ratio: 1 / 1;
@@ -161,32 +161,32 @@
     overflow: hidden;
     background: #f1f1ef;
   }
-  .section-{{ section.id }} .fx-card__media img {
+  .section-{{ section.id }} .hsn-card__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .section-{{ section.id }} .fx-card:hover .fx-card__media img {
+  .section-{{ section.id }} .hsn-card:hover .hsn-card__media img {
     transform: scale(1.05);
   }
-  .section-{{ section.id }} .fx-card__img-alt {
+  .section-{{ section.id }} .hsn-card__img-alt {
     position: absolute;
     inset: 0;
     opacity: 0;
     transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-{{ section.id }} .fx-card:hover .fx-card__img-alt {
+  .section-{{ section.id }} .hsn-card:hover .hsn-card__img-alt {
     opacity: 1;
   }
-  .section-{{ section.id }} .fx-card__placeholder,
-  .section-{{ section.id }} .fx-card__media svg {
+  .section-{{ section.id }} .hsn-card__placeholder,
+  .section-{{ section.id }} .hsn-card__media svg {
     width: 100%;
     height: 100%;
     opacity: 0.4;
   }
-  .section-{{ section.id }} .fx-card__flag {
+  .section-{{ section.id }} .hsn-card__flag {
     position: absolute;
     top: 14px;
     right: 14px;
@@ -201,23 +201,23 @@
     padding: 6px 12px;
     border-radius: 3px;
   }
-  .section-{{ section.id }} .fx-card__info {
+  .section-{{ section.id }} .hsn-card__info {
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 18px 20px 20px;
     min-width: 0;
   }
-  .section-{{ section.id }} .fx-card__rate {
+  .section-{{ section.id }} .hsn-card__rate {
     color: #3e7ea0;
     font-size: 12px;
     letter-spacing: 2px;
     margin-bottom: 10px;
   }
-  .section-{{ section.id }} .fx-card__star--off {
+  .section-{{ section.id }} .hsn-card__star--off {
     opacity: 0.25;
   }
-  .section-{{ section.id }} .fx-card__name {
+  .section-{{ section.id }} .hsn-card__name {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: 13px;
@@ -226,31 +226,31 @@
     line-height: 1.35;
     margin: 0 0 8px;
   }
-  .section-{{ section.id }} .fx-card__name a {
+  .section-{{ section.id }} .hsn-card__name a {
     color: #000;
   }
-  .section-{{ section.id }} .fx-card__vendor {
+  .section-{{ section.id }} .hsn-card__vendor {
     font-size: 12px;
     color: #8a8a8a;
     margin: 0 0 8px;
   }
-  .section-{{ section.id }} .fx-card__price {
+  .section-{{ section.id }} .hsn-card__price {
     display: flex;
     align-items: baseline;
     gap: 10px;
     margin: 0 0 16px;
   }
-  .section-{{ section.id }} .fx-card__price-now {
+  .section-{{ section.id }} .hsn-card__price-now {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: 15px;
     color: #000;
   }
-  .section-{{ section.id }} .fx-card__price-was {
+  .section-{{ section.id }} .hsn-card__price-was {
     font-size: 13px;
     color: #9a9a9a;
   }
-  .section-{{ section.id }} .fx-card__add {
+  .section-{{ section.id }} .hsn-card__add {
     margin-top: auto;
     width: 100%;
     min-height: 46px;
@@ -273,24 +273,24 @@
     justify-content: center;
     transition: background-position 0.5s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s;
   }
-  .section-{{ section.id }} .fx-card__add:hover:not([disabled]),
-  .section-{{ section.id }} .fx-card__add:focus-visible {
+  .section-{{ section.id }} .hsn-card__add:hover:not([disabled]),
+  .section-{{ section.id }} .hsn-card__add:focus-visible {
     background-position: 0 0;
     color: #fff;
   }
-  .section-{{ section.id }} .fx-card__add[disabled] {
+  .section-{{ section.id }} .hsn-card__add[disabled] {
     opacity: 0.45;
     cursor: not-allowed;
   }
-  .section-{{ section.id }} .fx-card__form {
+  .section-{{ section.id }} .hsn-card__form {
     margin: 0;
   }
-  .section-{{ section.id }} .fx-collection__cta {
+  .section-{{ section.id }} .hsn-collection__cta {
     display: flex;
     justify-content: center;
     margin-top: clamp(34px, 4vw, 54px);
   }
-  .section-{{ section.id }} .fx-collection__btn {
+  .section-{{ section.id }} .hsn-collection__btn {
     display: inline-flex;
     align-items: center;
     gap: 14px;
@@ -306,8 +306,8 @@
     border-radius: 3px;
     transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-{{ section.id }} .fx-collection__btn:hover,
-  .section-{{ section.id }} .fx-collection__btn:focus-visible {
+  .section-{{ section.id }} .hsn-collection__btn:hover,
+  .section-{{ section.id }} .hsn-collection__btn:focus-visible {
     background: #7eb8d4;
     color: #000;
   }
@@ -316,7 +316,7 @@
     outline-offset: 2px;
   }
   @media (max-width: 1100px) {
-    .section-{{ section.id }} .fx-collection__grid {
+    .section-{{ section.id }} .hsn-collection__grid {
       grid-template-columns: repeat(var(--cl-cols-m), minmax(0, 1fr));
     }
   }
@@ -324,9 +324,9 @@
 
 {% schema %}
 {
-  "name": "FX Featured Collection",
+  "name": "HSN Featured Collection",
   "tag": "section",
-  "class": "fx-collection-section",
+  "class": "hsn-collection-section",
   "settings": [
     { "type": "header", "content": "Content" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Best sellers" },
@@ -356,7 +356,7 @@
     { "type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": false }
   ],
   "presets": [
-    { "name": "FX Featured Collection" }
+    { "name": "HSN Featured Collection" }
   ]
 }
 {% endschema %}

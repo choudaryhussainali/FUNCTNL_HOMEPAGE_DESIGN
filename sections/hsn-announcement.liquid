@@ -1,15 +1,15 @@
 {% comment %}
-  FX Announcement — rotating announcement bar.
+  HSN Announcement — rotating announcement bar.
   Settings groups: Content, Colors, Spacing, Animation. Blocks: message.
 {% endcomment %}
 
 <div
   id="{{ section.id }}"
-  class="fx-ann section-{{ section.id }}"
+  class="hsn-ann section-{{ section.id }}"
   style="--ann-bg: {{ section.settings.bg }}; --ann-color: {{ section.settings.text_color }}; --ann-dot: {{ section.settings.dot_color }}; --ann-pt: {{ section.settings.padding_top }}px; --ann-pb: {{ section.settings.padding_bottom }}px;"
   {{ section.shopify_attributes }}
 >
-  <div class="fx-ann__track" data-fx-ann-role="rotator" data-fx-speed="{{ section.settings.speed | times: 1000 }}">
+  <div class="hsn-ann__track" data-hsn-ann-role="rotator" data-hsn-speed="{{ section.settings.speed | times: 1000 }}">
     {%- for block in section.blocks -%}
       {%- liquid
         assign tag = 'span'
@@ -18,8 +18,8 @@
         endif
       -%}
       <{{ tag }}
-        class="fx-ann__item{% if forloop.first %} is-active{% endif %}"
-        data-fx-index="{{ forloop.index0 }}"
+        class="hsn-ann__item{% if forloop.first %} is-active{% endif %}"
+        data-hsn-index="{{ forloop.index0 }}"
         {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}
         {{ block.shopify_attributes }}
       >
@@ -30,7 +30,7 @@
 </div>
 
 {% style %}
-  .section-{{ section.id }} .fx-ann {
+  .section-{{ section.id }} .hsn-ann {
     background: var(--ann-bg);
     color: var(--ann-color);
     text-align: center;
@@ -38,7 +38,7 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
-  .section-{{ section.id }} .fx-ann__track {
+  .section-{{ section.id }} .hsn-ann__track {
     display: block;
     height: 1.1em;
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
@@ -48,36 +48,36 @@
     text-transform: uppercase;
     line-height: 1.1;
   }
-  .section-{{ section.id }} .fx-ann__item {
+  .section-{{ section.id }} .hsn-ann__item {
     display: none;
   }
-  .section-{{ section.id }} .fx-ann__item.is-active {
+  .section-{{ section.id }} .hsn-ann__item.is-active {
     display: inline-block;
   }
-  .section-{{ section.id }} a.fx-ann__item {
+  .section-{{ section.id }} a.hsn-ann__item {
     color: inherit;
   }
-  .section-{{ section.id }} a.fx-ann__item:hover {
+  .section-{{ section.id }} a.hsn-ann__item:hover {
     color: var(--ann-dot);
   }
   @media (prefers-reduced-motion: reduce) {
-    .section-{{ section.id }} .fx-ann__track {
+    .section-{{ section.id }} .hsn-ann__track {
       height: auto;
     }
-    .section-{{ section.id }} .fx-ann__item {
+    .section-{{ section.id }} .hsn-ann__item {
       display: block;
       padding: 3px 0;
     }
   }
 {% endstyle %}
 
-<script src="data:text/javascript,(function(){var r=document.currentScript.previousElementSibling;if(!r)return;var items=r.querySelectorAll('.fx-ann__item');var speed=parseInt(r.getAttribute('data-fx-speed'),10)||6000;var i=0;var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduce||items.length<2)return;setInterval(function(){items[i].classList.remove('is-active');i=(i+1)%items.length;items[i].classList.add('is-active');},speed);})();"></script>
+<script src="data:text/javascript,(function(){var r=document.currentScript.previousElementSibling;if(!r)return;var items=r.querySelectorAll('.hsn-ann__item');var speed=parseInt(r.getAttribute('data-hsn-speed'),10)||6000;var i=0;var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduce||items.length<2)return;setInterval(function(){items[i].classList.remove('is-active');i=(i+1)%items.length;items[i].classList.add('is-active');},speed);})();"></script>
 
 {% schema %}
 {
-  "name": "FX Announcement",
+  "name": "HSN Announcement",
   "tag": "aside",
-  "class": "fx-announcement-section",
+  "class": "hsn-announcement-section",
   "settings": [
     { "type": "header", "content": "Content" },
     { "type": "paragraph", "content": "Messages rotate in order. Add one message per item." },
@@ -104,7 +104,7 @@
   "max_blocks": 6,
   "presets": [
     {
-      "name": "FX Announcement",
+      "name": "HSN Announcement",
       "blocks": [
         { "type": "message", "settings": { "text": "Subscribe & Save" } },
         { "type": "message", "settings": { "text": "30-Day Money-Back" } },

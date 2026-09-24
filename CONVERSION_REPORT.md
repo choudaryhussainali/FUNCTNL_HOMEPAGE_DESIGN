@@ -7,19 +7,19 @@ Deliverables: 13 self-contained sections in `sections/`, `templates/index.json`,
 
 | # | File | Purpose | Dynamic data | Interactions |
 |---|------|---------|--------------|--------------|
-| 1 | `fx-announcement.liquid` | Rotating announcement bar | message blocks with optional links | JS rotator, block select in editor, reduced-motion shows all |
-| 2 | `fx-header.liquid` | Logo, nav, search, cart, mobile drawer, skip link | logo image, link_list, cart count | drawer (Esc/overlay close), search details, editor-safe |
-| 3 | `fx-hero.liquid` | Two-slide fade hero with dots | slide blocks: image, copy, CTA | autoplay + dots + swipe, block select, LCP eager/high |
-| 4 | `fx-marquee.liquid` | Infinite word band | word blocks | CSS transform marquee, pause on hover, reduced-motion static |
-| 5 | `fx-featured-collection.liquid` | Product grid + Shop All | collection picker, `collection.products` | quick add (`{% form 'product' %}`), hover image, badges |
-| 6 | `fx-stats.liquid` | Count-up figures band | stat blocks | IntersectionObserver count-up |
-| 7 | `fx-video-reviews.liquid` | Rating + video tile slider | review image blocks + links | scroll-snap slider, arrows, autoplay, center-scale |
-| 8 | `fx-bundle.liquid` | Promo split (image left) | image, inline_richtext, CTA | — |
-| 9 | `fx-featured-product.liquid` | Product spotlight + chips | product picker, stat/chip blocks | native add-to-cart form |
-| 10 | `fx-story.liquid` | Founder story split | image, inline_richtext, CTA | — |
-| 11 | `fx-journal.liquid` | Article cards | blog picker, `blog.articles` | scroll-snap + arrows |
-| 12 | `fx-social-grid.liquid` | Community image wall | image blocks, handle link | — |
-| 13 | `fx-footer.liquid` | Link columns, newsletter, socials, wordmark, legal | link_column blocks, `{% form 'customer' %}`, images | accessible newsletter with success/error states |
+| 1 | `hsn-announcement.liquid` | Rotating announcement bar | message blocks with optional links | JS rotator, block select in editor, reduced-motion shows all |
+| 2 | `hsn-header.liquid` | Logo, nav, search, cart, mobile drawer, skip link | logo image, link_list, cart count | drawer (Esc/overlay close), search details, editor-safe |
+| 3 | `hsn-hero.liquid` | Two-slide fade hero with dots | slide blocks: image, copy, CTA | autoplay + dots + swipe, block select, LCP eager/high |
+| 4 | `hsn-marquee.liquid` | Infinite word band | word blocks | CSS transform marquee, pause on hover, reduced-motion static |
+| 5 | `hsn-featured-collection.liquid` | Product grid + Shop All | collection picker, `collection.products` | quick add (`{% form 'product' %}`), hover image, badges |
+| 6 | `hsn-stats.liquid` | Count-up figures band | stat blocks | IntersectionObserver count-up |
+| 7 | `hsn-video-reviews.liquid` | Rating + video tile slider | review image blocks + links | scroll-snap slider, arrows, autoplay, center-scale |
+| 8 | `hsn-bundle.liquid` | Promo split (image left) | image, inline_richtext, CTA | — |
+| 9 | `hsn-featured-product.liquid` | Product spotlight + chips | product picker, stat/chip blocks | native add-to-cart form |
+| 10 | `hsn-story.liquid` | Founder story split | image, inline_richtext, CTA | — |
+| 11 | `hsn-journal.liquid` | Article cards | blog picker, `blog.articles` | scroll-snap + arrows |
+| 12 | `hsn-social-grid.liquid` | Community image wall | image blocks, handle link | — |
+| 13 | `hsn-footer.liquid` | Link columns, newsletter, socials, wordmark, legal | link_column blocks, `{% form 'customer' %}`, images | accessible newsletter with success/error states |
 
 ## Assumptions
 
@@ -49,4 +49,4 @@ Deliverables: 13 self-contained sections in `sections/`, `templates/index.json`,
 
 ## Self-audit
 
-For every section file: Liquid tags balanced and validated; `{% schema %}` parses as strict JSON with presets, grouped settings and in-range defaults; CSS fully scoped under `.section-{{ section.id }}` with `fx-*` BEM classes, zero global selectors, zero `!important`; JS is a scoped IIFE guarded by `data-fx-init`, re-runs on section re-render, uses event delegation and `prefers-reduced-motion` guards; native flows untouched; images use `image_url`/`image_tag` with `widths`/`sizes`, explicit sizing via aspect-ratio, lazy below the fold and eager/high priority on the hero LCP; focus-visible styles in every interactive section; placeholders (`placeholder_svg_tag`) render when collections/blogs/images are unset.
+For every section file: Liquid tags balanced and validated; `{% schema %}` parses as strict JSON with presets, grouped settings and in-range defaults; CSS fully scoped under `.section-{{ section.id }}` with `hsn-*` BEM classes, zero global selectors, zero `!important`; JS is a scoped IIFE guarded by `data-hsn-init`, re-runs on section re-render, uses event delegation and `prefers-reduced-motion` guards; native flows untouched; images use `image_url`/`image_tag` with `widths`/`sizes`, explicit sizing via aspect-ratio, lazy below the fold and eager/high priority on the hero LCP; focus-visible styles in every interactive section; placeholders (`placeholder_svg_tag`) render when collections/blogs/images are unset.

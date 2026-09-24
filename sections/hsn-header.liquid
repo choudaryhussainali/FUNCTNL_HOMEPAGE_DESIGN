@@ -1,5 +1,5 @@
 {% comment %}
-  FX Header — logo, navigation, search, cart, mobile drawer.
+  HSN Header — logo, navigation, search, cart, mobile drawer.
   Settings groups: Content, Colors, Layout. Loads brand fonts (PP Monument Extended + Outfit).
   Provides the page skip link. Designed for the "header" section group.
 {% endcomment %}
@@ -12,38 +12,38 @@
 -%}
 {{ font_link }}
 
-<a class="fx-header__skip" href="#MainContent">Skip to content</a>
+<a class="hsn-header__skip" href="#MainContent">Skip to content</a>
 
-<header id="{{ section.id }}" class="fx-header section-{{ section.id }}" style="--hd-accent: {{ section.settings.accent }};" {{ section.shopify_attributes }}>
-  <div class="fx-header__in">
+<header id="{{ section.id }}" class="hsn-header section-{{ section.id }}" style="--hd-accent: {{ section.settings.accent }};" {{ section.shopify_attributes }}>
+  <div class="hsn-header__in">
     <button
       type="button"
-      class="fx-header__burger"
-      data-fx-drawer-open
+      class="hsn-header__burger"
+      data-hsn-drawer-open
       aria-expanded="false"
-      aria-controls="fx-drawer-{{ section.id }}"
+      aria-controls="hsn-drawer-{{ section.id }}"
       aria-label="Open menu"
     >
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
     </button>
 
-    <a class="fx-header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+    <a class="hsn-header__logo" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
       {%- if section.settings.logo != blank -%}
         {{ section.settings.logo | image_url: width: 360 | image_tag: widths: '180, 270, 360', sizes: '(max-width: 400px) 45vw, 180px', alt: shop.name, loading: 'eager', decoding: 'async' }}
       {%- else -%}
-        <span class="fx-header__logo-text">{{ section.settings.logo_text | escape }}</span>
+        <span class="hsn-header__logo-text">{{ section.settings.logo_text | escape }}</span>
       {%- endif -%}
     </a>
 
-    <nav class="fx-header__nav" aria-label="Primary">
+    <nav class="hsn-header__nav" aria-label="Primary">
       {%- for link in section.settings.menu.links -%}
         <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
       {%- endfor -%}
     </nav>
 
-    <div class="fx-header__actions">
+    <div class="hsn-header__actions">
       {%- if section.settings.show_search -%}
-        <details class="fx-header__search">
+        <details class="hsn-header__search">
           <summary aria-label="Search">
             <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.6"/><path d="M15.6 15.6 20 20"/></svg>
           </summary>
@@ -55,20 +55,20 @@
         </details>
       {%- endif -%}
 
-      <a class="fx-header__cart" href="{{ routes.cart_url }}" aria-label="{{ 'cart.general.title' | default: 'Cart' }} ({{ cart.item_count }})">
+      <a class="hsn-header__cart" href="{{ routes.cart_url }}" aria-label="{{ 'cart.general.title' | default: 'Cart' }} ({{ cart.item_count }})">
         <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M4.6 7.4h14.8l-1 12.4a1.2 1.2 0 0 1-1.2 1.1H6.8a1.2 1.2 0 0 1-1.2-1.1z"/><path d="M8.6 9.6V6.4a3.4 3.4 0 0 1 6.8 0v3.2"/></svg>
         {%- if cart.item_count > 0 -%}
-          <span class="fx-header__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+          <span class="hsn-header__cart-count" aria-hidden="true">{{ cart.item_count }}</span>
         {%- endif -%}
       </a>
     </div>
   </div>
 
-  <div class="fx-header__overlay" data-fx-drawer-close hidden></div>
-  <aside class="fx-header__drawer" id="fx-drawer-{{ section.id }}" aria-label="Menu" hidden>
-    <div class="fx-header__drawer-top">
-      <span class="fx-header__drawer-brand">{{ section.settings.logo_text | escape }}</span>
-      <button type="button" data-fx-drawer-close aria-label="Close menu">
+  <div class="hsn-header__overlay" data-hsn-drawer-close hidden></div>
+  <aside class="hsn-header__drawer" id="hsn-drawer-{{ section.id }}" aria-label="Menu" hidden>
+    <div class="hsn-header__drawer-top">
+      <span class="hsn-header__drawer-brand">{{ section.settings.logo_text | escape }}</span>
+      <button type="button" data-hsn-drawer-close aria-label="Close menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>
       </button>
     </div>
@@ -77,18 +77,18 @@
         <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title | escape }}</a>
       {%- endfor -%}
     </nav>
-    <p class="fx-header__drawer-foot">#SAYNOTOBLOATING</p>
+    <p class="hsn-header__drawer-foot">#SAYNOTOBLOATING</p>
   </aside>
 </header>
 
 {% style %}
-  .section-{{ section.id }}.fx-header {
+  .section-{{ section.id }}.hsn-header {
     background: #000;
     color: #fff;
     position: relative;
     z-index: 40;
   }
-  .section-{{ section.id }} .fx-header__skip {
+  .section-{{ section.id }} .hsn-header__skip {
     position: absolute;
     left: -9999px;
     top: 0;
@@ -98,40 +98,40 @@
     z-index: 100;
     font-size: 13px;
   }
-  .section-{{ section.id }} .fx-header__skip:focus-visible {
+  .section-{{ section.id }} .hsn-header__skip:focus-visible {
     left: 12px;
     top: 12px;
   }
-  .section-{{ section.id }} .fx-header__in {
+  .section-{{ section.id }} .hsn-header__in {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 24px;
     padding: 16px clamp(20px, 6.6vw, 90px);
   }
-  .section-{{ section.id }} .fx-header__logo {
+  .section-{{ section.id }} .hsn-header__logo {
     display: inline-flex;
     align-items: center;
     justify-self: start;
     color: #fff;
   }
-  .section-{{ section.id }} .fx-header__logo img {
+  .section-{{ section.id }} .hsn-header__logo img {
     height: 19px;
     width: auto;
     display: block;
   }
-  .section-{{ section.id }} .fx-header__logo-text {
+  .section-{{ section.id }} .hsn-header__logo-text {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: 17px;
     letter-spacing: 0.02em;
   }
-  .section-{{ section.id }} .fx-header__nav {
+  .section-{{ section.id }} .hsn-header__nav {
     display: flex;
     gap: clamp(20px, 3vw, 42px);
     justify-self: center;
   }
-  .section-{{ section.id }} .fx-header__nav a {
+  .section-{{ section.id }} .hsn-header__nav a {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 14px;
     font-weight: 600;
@@ -139,26 +139,26 @@
     text-transform: uppercase;
     color: #fff;
     white-space: nowrap;
-    transition: color 0.13s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1));
+    transition: color 0.13s var(--hsn-eq, cubic-bezier(0.4, 0, 0.2, 1));
   }
-  .section-{{ section.id }} .fx-header__nav a:hover,
-  .section-{{ section.id }} .fx-header__nav a:focus-visible,
-  .section-{{ section.id }} .fx-header__nav a[aria-current='page'] {
+  .section-{{ section.id }} .hsn-header__nav a:hover,
+  .section-{{ section.id }} .hsn-header__nav a:focus-visible,
+  .section-{{ section.id }} .hsn-header__nav a[aria-current='page'] {
     color: var(--hd-accent);
   }
-  .section-{{ section.id }} .fx-header__actions {
+  .section-{{ section.id }} .hsn-header__actions {
     display: flex;
     gap: clamp(16px, 2vw, 28px);
     align-items: center;
     justify-self: end;
   }
-  .section-{{ section.id }} .fx-header__actions > * {
+  .section-{{ section.id }} .hsn-header__actions > * {
     color: #fff;
   }
-  .section-{{ section.id }} .fx-header__burger,
-  .section-{{ section.id }} .fx-header__actions summary,
-  .section-{{ section.id }} .fx-header__actions button,
-  .section-{{ section.id }} .fx-header__drawer button {
+  .section-{{ section.id }} .hsn-header__burger,
+  .section-{{ section.id }} .hsn-header__actions summary,
+  .section-{{ section.id }} .hsn-header__actions button,
+  .section-{{ section.id }} .hsn-header__drawer button {
     min-width: 44px;
     min-height: 44px;
     display: grid;
@@ -167,22 +167,22 @@
     border: 0;
     cursor: pointer;
   }
-  .section-{{ section.id }} .fx-header__burger {
+  .section-{{ section.id }} .hsn-header__burger {
     display: none;
     justify-self: start;
   }
-  .section-{{ section.id }} .fx-header__search {
+  .section-{{ section.id }} .hsn-header__search {
     position: relative;
   }
-  .section-{{ section.id }} .fx-header__search summary {
+  .section-{{ section.id }} .hsn-header__search summary {
     list-style: none;
     display: grid;
     place-items: center;
   }
-  .section-{{ section.id }} .fx-header__search summary::-webkit-details-marker {
+  .section-{{ section.id }} .hsn-header__search summary::-webkit-details-marker {
     display: none;
   }
-  .section-{{ section.id }} .fx-header__search form {
+  .section-{{ section.id }} .hsn-header__search form {
     position: absolute;
     right: 0;
     top: calc(100% + 12px);
@@ -193,7 +193,7 @@
     z-index: 60;
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25);
   }
-  .section-{{ section.id }} .fx-header__search input[type='search'] {
+  .section-{{ section.id }} .hsn-header__search input[type='search'] {
     border: 0;
     padding: 12px 14px;
     font: inherit;
@@ -201,7 +201,7 @@
     color: #17171a;
     min-width: 200px;
   }
-  .section-{{ section.id }} .fx-header__search button {
+  .section-{{ section.id }} .hsn-header__search button {
     background: #7eb8d4;
     color: #000;
     padding: 0 14px;
@@ -210,12 +210,12 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
-  .section-{{ section.id }} .fx-header__cart {
+  .section-{{ section.id }} .hsn-header__cart {
     position: relative;
     display: grid;
     place-items: center;
   }
-  .section-{{ section.id }} .fx-header__cart-count {
+  .section-{{ section.id }} .hsn-header__cart-count {
     position: absolute;
     top: -7px;
     right: -10px;
@@ -231,13 +231,13 @@
     font-weight: 700;
     font-variant-numeric: tabular-nums;
   }
-  .section-{{ section.id }} .fx-header__overlay {
+  .section-{{ section.id }} .hsn-header__overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.55);
     z-index: 90;
   }
-  .section-{{ section.id }} .fx-header__drawer {
+  .section-{{ section.id }} .hsn-header__drawer {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -251,22 +251,22 @@
     padding: 14px 26px 34px;
     box-sizing: border-box;
   }
-  .section-{{ section.id }} .fx-header__drawer-top {
+  .section-{{ section.id }} .hsn-header__drawer-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
   }
-  .section-{{ section.id }} .fx-header__drawer-brand {
+  .section-{{ section.id }} .hsn-header__drawer-brand {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: 15px;
   }
-  .section-{{ section.id }} .fx-header__drawer nav {
+  .section-{{ section.id }} .hsn-header__drawer nav {
     display: flex;
     flex-direction: column;
   }
-  .section-{{ section.id }} .fx-header__drawer nav a {
+  .section-{{ section.id }} .hsn-header__drawer nav a {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 400;
     font-size: 16px;
@@ -276,18 +276,18 @@
     padding: 14px 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
-  .section-{{ section.id }} .fx-header__drawer nav a:hover {
+  .section-{{ section.id }} .hsn-header__drawer nav a:hover {
     color: var(--hd-accent);
   }
-  .section-{{ section.id }} .fx-header__drawer-foot {
+  .section-{{ section.id }} .hsn-header__drawer-foot {
     margin-top: auto;
     font-size: 12px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.5);
   }
-  .section-{{ section.id }} .fx-header__drawer[hidden],
-  .section-{{ section.id }} .fx-header__overlay[hidden] {
+  .section-{{ section.id }} .hsn-header__drawer[hidden],
+  .section-{{ section.id }} .hsn-header__overlay[hidden] {
     display: none;
   }
   .section-{{ section.id }} :is(a, button, summary):focus-visible {
@@ -295,25 +295,25 @@
     outline-offset: 2px;
   }
   @media (max-width: 1000px) {
-    .section-{{ section.id }} .fx-header__nav {
+    .section-{{ section.id }} .hsn-header__nav {
       display: none;
     }
-    .section-{{ section.id }} .fx-header__burger {
+    .section-{{ section.id }} .hsn-header__burger {
       display: grid;
     }
-    .section-{{ section.id }} .fx-header__logo {
+    .section-{{ section.id }} .hsn-header__logo {
       justify-self: center;
     }
   }
 {% endstyle %}
 
-<script src="data:text/javascript,(function(){var H=document.currentScript.previousElementSibling;if(!H)return;var d=H.querySelector('.fx-header__drawer'),o=H.querySelector('.fx-header__overlay');function open(){d.hidden=false;o.hidden=false;H.querySelector('[data-fx-drawer-open]').setAttribute('aria-expanded','true');}function close(){d.hidden=true;o.hidden=true;H.querySelector('[data-fx-drawer-open]').setAttribute('aria-expanded','false');}H.addEventListener('click',function(e){if(e.target.closest('[data-fx-drawer-open]'))open();if(e.target.closest('[data-fx-drawer-close]'))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!d.hidden)close();});H.addEventListener('shopify:block:select',open);H.addEventListener('shopify:block:deselect',close);})();"></script>
+<script src="data:text/javascript,(function(){var H=document.currentScript.previousElementSibling;if(!H)return;var d=H.querySelector('.hsn-header__drawer'),o=H.querySelector('.hsn-header__overlay');function open(){d.hidden=false;o.hidden=false;H.querySelector('[data-hsn-drawer-open]').setAttribute('aria-expanded','true');}function close(){d.hidden=true;o.hidden=true;H.querySelector('[data-hsn-drawer-open]').setAttribute('aria-expanded','false');}H.addEventListener('click',function(e){if(e.target.closest('[data-hsn-drawer-open]'))open();if(e.target.closest('[data-hsn-drawer-close]'))close();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!d.hidden)close();});H.addEventListener('shopify:block:select',open);H.addEventListener('shopify:block:deselect',close);})();"></script>
 
 {% schema %}
 {
-  "name": "FX Header",
+  "name": "HSN Header",
   "tag": "div",
-  "class": "fx-header-section",
+  "class": "hsn-header-section",
   "settings": [
     { "type": "header", "content": "Content" },
     { "type": "image_picker", "id": "logo", "label": "Logo", "info": "Wordmark image, around 360px wide. Falls back to the text below." },

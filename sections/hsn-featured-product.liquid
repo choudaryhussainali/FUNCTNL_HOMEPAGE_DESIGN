@@ -1,5 +1,5 @@
 {% comment %}
-  FX Featured Product — single product spotlight with stat and chip blocks.
+  HSN Featured Product — single product spotlight with stat and chip blocks.
   Settings groups: Content, Layout, Colors, Spacing. Blocks: stat, chip.
 {% endcomment %}
 
@@ -17,28 +17,28 @@
 
 <div
   id="{{ section.id }}"
-  class="fx-fprod section-{{ section.id }}"
+  class="hsn-fprod section-{{ section.id }}"
   style="--fp-pt: {{ section.settings.padding_top }}px; --fp-pb: {{ section.settings.padding_bottom }}px; --fp-accent: {{ section.settings.accent }};"
   {{ section.shopify_attributes }}
 >
-  <div class="fx-fprod__grid">
-    <div class="fx-fprod__body">
+  <div class="hsn-fprod__grid">
+    <div class="hsn-fprod__body">
       {%- if section.settings.eyebrow != blank -%}
-        <span class="fx-fprod__eyebrow">{{ section.settings.eyebrow | escape }}</span>
+        <span class="hsn-fprod__eyebrow">{{ section.settings.eyebrow | escape }}</span>
       {%- endif -%}
-      <h2 class="fx-fprod__heading">{{ heading | escape }}</h2>
+      <h2 class="hsn-fprod__heading">{{ heading | escape }}</h2>
       {%- if section.settings.subheading != blank -%}
-        <p class="fx-fprod__subheading">{{ section.settings.subheading | escape }}</p>
+        <p class="hsn-fprod__subheading">{{ section.settings.subheading | escape }}</p>
       {%- endif -%}
       {%- if body_text != blank -%}
-        <p class="fx-fprod__text">{{ body_text }}</p>
+        <p class="hsn-fprod__text">{{ body_text }}</p>
       {%- endif -%}
 
       {%- if section.blocks.size > 0 -%}
-        <div class="fx-fprod__stats">
+        <div class="hsn-fprod__stats">
           {%- for block in section.blocks -%}
             {%- if block.type == 'stat' -%}
-              <div class="fx-fprod__stat" {{ block.shopify_attributes }}>
+              <div class="hsn-fprod__stat" {{ block.shopify_attributes }}>
                 <b>{{ block.settings.value | escape }}</b>
                 <span>{{ block.settings.label | escape }}</span>
               </div>
@@ -48,11 +48,11 @@
       {%- endif -%}
 
       {%- if product != blank -%}
-        {%- form 'product', product, class: 'fx-fprod__form' -%}
+        {%- form 'product', product, class: 'hsn-fprod__form' -%}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
           <button
             type="submit"
-            class="fx-fprod__cta"
+            class="hsn-fprod__cta"
             {% if product.available == false %}disabled{% endif %}
           >
             {%- if product.available == false -%}
@@ -63,26 +63,26 @@
           </button>
         {%- endform -%}
       {%- elsif section.settings.cta_label != blank -%}
-        <a class="fx-fprod__cta" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_label | escape }}</a>
+        <a class="hsn-fprod__cta" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">{{ section.settings.cta_label | escape }}</a>
       {%- endif -%}
     </div>
 
-    <div class="fx-fprod__media">
+    <div class="hsn-fprod__media">
       {%- for block in section.blocks -%}
         {%- if block.type == 'chip' -%}
-          <div class="fx-fprod__chip fx-fprod__chip--{{ block.settings.position }}" {{ block.shopify_attributes }}>
+          <div class="hsn-fprod__chip hsn-fprod__chip--{{ block.settings.position }}" {{ block.shopify_attributes }}>
             <span>{{ block.settings.label | escape }}</span>
             <b>{{ block.settings.value | escape }}</b>
           </div>
         {%- endif -%}
       {%- endfor -%}
-      <div class="fx-fprod__ph">
+      <div class="hsn-fprod__ph">
         {%- if section.settings.image != blank -%}
           {{ section.settings.image | image_url: width: 1100 | image_tag: widths: '450, 600, 900, 1100', sizes: '(min-width: 901px) 46vw, 100vw', alt: section.settings.image.alt | default: heading | strip_html | escape, loading: 'lazy', decoding: 'async' }}
         {%- elsif product != blank and product.featured_image -%}
           {{ product.featured_image | image_url: width: 1100 | image_tag: widths: '450, 600, 900, 1100', sizes: '(min-width: 901px) 46vw, 100vw', alt: product.title | escape, loading: 'lazy', decoding: 'async' }}
         {%- else -%}
-          {{ 'product-1' | placeholder_svg_tag: 'fx-fprod__placeholder' }}
+          {{ 'product-1' | placeholder_svg_tag: 'hsn-fprod__placeholder' }}
         {%- endif -%}
       </div>
     </div>
@@ -90,12 +90,12 @@
 </div>
 
 {% style %}
-  .section-{{ section.id }} .fx-fprod {
+  .section-{{ section.id }} .hsn-fprod {
     background: #fff;
     padding-block: var(--fp-pt) var(--fp-pb);
     overflow: hidden;
   }
-  .section-{{ section.id }} .fx-fprod__grid {
+  .section-{{ section.id }} .hsn-fprod__grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
     gap: clamp(36px, 5vw, 84px);
@@ -105,7 +105,7 @@
     padding-inline: clamp(16px, 4.4vw, 72px);
     box-sizing: border-box;
   }
-  .section-{{ section.id }} .fx-fprod__eyebrow {
+  .section-{{ section.id }} .hsn-fprod__eyebrow {
     display: block;
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 12px;
@@ -115,7 +115,7 @@
     color: var(--fp-accent);
     margin-bottom: 18px;
   }
-  .section-{{ section.id }} .fx-fprod__heading {
+  .section-{{ section.id }} .hsn-fprod__heading {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: clamp(30px, 3.7vw, 52px);
@@ -123,14 +123,14 @@
     color: #000;
     margin: 0 0 6px;
   }
-  .section-{{ section.id }} .fx-fprod__subheading {
+  .section-{{ section.id }} .hsn-fprod__subheading {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 400;
     font-size: clamp(17px, 1.9vw, 26px);
     color: #7eb8d4;
     margin: 0 0 26px;
   }
-  .section-{{ section.id }} .fx-fprod__text {
+  .section-{{ section.id }} .hsn-fprod__text {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 15.5px;
     line-height: 1.65;
@@ -139,17 +139,17 @@
     margin: 0 0 34px;
     overflow-wrap: break-word;
   }
-  .section-{{ section.id }} .fx-fprod__stats {
+  .section-{{ section.id }} .hsn-fprod__stats {
     display: flex;
     gap: clamp(22px, 3vw, 44px);
     flex-wrap: wrap;
     margin-bottom: 38px;
   }
-  .section-{{ section.id }} .fx-fprod__stat {
+  .section-{{ section.id }} .hsn-fprod__stat {
     border-left: 2px solid #7eb8d4;
     padding-inline-start: 16px;
   }
-  .section-{{ section.id }} .fx-fprod__stat b {
+  .section-{{ section.id }} .hsn-fprod__stat b {
     display: block;
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
@@ -158,17 +158,17 @@
     color: #3e7ea0;
     margin-bottom: 7px;
   }
-  .section-{{ section.id }} .fx-fprod__stat span {
+  .section-{{ section.id }} .hsn-fprod__stat span {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 12px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #555;
   }
-  .section-{{ section.id }} .fx-fprod__form {
+  .section-{{ section.id }} .hsn-fprod__form {
     margin: 0;
   }
-  .section-{{ section.id }} .fx-fprod__cta {
+  .section-{{ section.id }} .hsn-fprod__cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -188,35 +188,35 @@
     text-decoration: none;
     transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .section-{{ section.id }} .fx-fprod__cta:hover:not([disabled]),
-  .section-{{ section.id }} .fx-fprod__cta:focus-visible {
+  .section-{{ section.id }} .hsn-fprod__cta:hover:not([disabled]),
+  .section-{{ section.id }} .hsn-fprod__cta:focus-visible {
     background: #7eb8d4;
     color: #000;
   }
-  .section-{{ section.id }} .fx-fprod__cta[disabled] {
+  .section-{{ section.id }} .hsn-fprod__cta[disabled] {
     opacity: 0.45;
     cursor: not-allowed;
   }
-  .section-{{ section.id }} .fx-fprod__media {
+  .section-{{ section.id }} .hsn-fprod__media {
     position: relative;
   }
-  .section-{{ section.id }} .fx-fprod__ph {
+  .section-{{ section.id }} .hsn-fprod__ph {
     border-radius: 10px;
     overflow: hidden;
     aspect-ratio: 4 / 4.4;
     background: #f1f1ef;
   }
-  .section-{{ section.id }} .fx-fprod__ph img,
-  .section-{{ section.id }} .fx-fprod__ph .fx-fprod__placeholder {
+  .section-{{ section.id }} .hsn-fprod__ph img,
+  .section-{{ section.id }} .hsn-fprod__ph .hsn-fprod__placeholder {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  .section-{{ section.id }} .fx-fprod__ph .fx-fprod__placeholder {
+  .section-{{ section.id }} .hsn-fprod__ph .hsn-fprod__placeholder {
     opacity: 0.4;
   }
-  .section-{{ section.id }} .fx-fprod__chip {
+  .section-{{ section.id }} .hsn-fprod__chip {
     position: absolute;
     z-index: 3;
     border-radius: 8px;
@@ -224,9 +224,9 @@
     background: #000;
     color: #fff;
     box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
-    animation: fx-fprod-float-{{ section.id }} 5.5s ease-in-out infinite;
+    animation: hsn-fprod-float-{{ section.id }} 5.5s ease-in-out infinite;
   }
-  .section-{{ section.id }} .fx-fprod__chip span {
+  .section-{{ section.id }} .hsn-fprod__chip span {
     display: block;
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 9.5px;
@@ -235,35 +235,35 @@
     color: rgba(126, 184, 212, 0.9);
     margin-bottom: 5px;
   }
-  .section-{{ section.id }} .fx-fprod__chip b {
+  .section-{{ section.id }} .hsn-fprod__chip b {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: 15px;
     line-height: 1;
   }
-  .section-{{ section.id }} .fx-fprod__chip--a { top: 7%; right: 6%; }
-  .section-{{ section.id }} .fx-fprod__chip--b { bottom: 24%; left: -4%; background: #7eb8d4; color: #000; animation-delay: 1.2s; }
-  .section-{{ section.id }} .fx-fprod__chip--b span { color: rgba(0, 0, 0, 0.6); }
-  .section-{{ section.id }} .fx-fprod__chip--c { bottom: 6%; right: 8%; animation-delay: 2.2s; }
-  @keyframes fx-fprod-float-{{ section.id }} {
+  .section-{{ section.id }} .hsn-fprod__chip--a { top: 7%; right: 6%; }
+  .section-{{ section.id }} .hsn-fprod__chip--b { bottom: 24%; left: -4%; background: #7eb8d4; color: #000; animation-delay: 1.2s; }
+  .section-{{ section.id }} .hsn-fprod__chip--b span { color: rgba(0, 0, 0, 0.6); }
+  .section-{{ section.id }} .hsn-fprod__chip--c { bottom: 6%; right: 8%; animation-delay: 2.2s; }
+  @keyframes hsn-fprod-float-{{ section.id }} {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-9px); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .section-{{ section.id }} .fx-fprod__chip { animation: none; }
+    .section-{{ section.id }} .hsn-fprod__chip { animation: none; }
   }
   @media (max-width: 900px) {
-    .section-{{ section.id }} .fx-fprod__grid { grid-template-columns: 1fr; }
-    .section-{{ section.id }} .fx-fprod__media { order: -1; }
-    .section-{{ section.id }} .fx-fprod__chip--b { left: 2%; }
+    .section-{{ section.id }} .hsn-fprod__grid { grid-template-columns: 1fr; }
+    .section-{{ section.id }} .hsn-fprod__media { order: -1; }
+    .section-{{ section.id }} .hsn-fprod__chip--b { left: 2%; }
   }
 {% endstyle %}
 
 {% schema %}
 {
-  "name": "FX Featured Product",
+  "name": "HSN Featured Product",
   "tag": "section",
-  "class": "fx-fprod-section",
+  "class": "hsn-fprod-section",
   "settings": [
     { "type": "header", "content": "Content" },
     { "type": "product", "id": "product", "label": "Product", "info": "Optional. Adds price and a working add-to-cart." },
@@ -306,7 +306,7 @@
   "max_blocks": 8,
   "presets": [
     {
-      "name": "FX Featured Product",
+      "name": "HSN Featured Product",
       "blocks": [
         { "type": "stat", "settings": { "value": "5g", "label": "Creatine Mono" } },
         { "type": "stat", "settings": { "value": "654mg", "label": "Electrolytes" } },

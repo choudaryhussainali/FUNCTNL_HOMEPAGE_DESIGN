@@ -1,23 +1,23 @@
 {% comment %}
-  FX Stats — black band with animated count-up figures.
+  HSN Stats — black band with animated count-up figures.
   Settings groups: Content, Colors, Spacing, Animation. Blocks: stat.
 {% endcomment %}
 
 <div
   id="{{ section.id }}"
-  class="fx-stats section-{{ section.id }}"
+  class="hsn-stats section-{{ section.id }}"
   style="--st-bg: {{ section.settings.bg }}; --st-color: {{ section.settings.text_color }}; --st-accent: {{ section.settings.accent }}; --st-pt: {{ section.settings.padding_top }}px; --st-pb: {{ section.settings.padding_bottom }}px;"
   {{ section.shopify_attributes }}
 >
-  <div class="fx-stats__wrap">
+  <div class="hsn-stats__wrap">
     {%- if section.settings.eyebrow != blank -%}
-      <p class="fx-stats__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      <p class="hsn-stats__eyebrow">{{ section.settings.eyebrow | escape }}</p>
     {%- endif -%}
-    <div class="fx-stats__grid">
+    <div class="hsn-stats__grid">
       {%- for block in section.blocks -%}
-        <div class="fx-stats__item" {{ block.shopify_attributes }}>
-          <b class="fx-stats__num" data-fx-count="{{ block.settings.number | escape }}">{{ block.settings.number | escape }}</b>
-          <p class="fx-stats__label">{{ block.settings.label | escape }}</p>
+        <div class="hsn-stats__item" {{ block.shopify_attributes }}>
+          <b class="hsn-stats__num" data-hsn-count="{{ block.settings.number | escape }}">{{ block.settings.number | escape }}</b>
+          <p class="hsn-stats__label">{{ block.settings.label | escape }}</p>
         </div>
       {%- endfor -%}
     </div>
@@ -25,17 +25,17 @@
 </div>
 
 {% style %}
-  .section-{{ section.id }} .fx-stats {
+  .section-{{ section.id }} .hsn-stats {
     background: var(--st-bg);
     color: var(--st-color);
     padding-block: var(--st-pt) var(--st-pb);
   }
-  .section-{{ section.id }} .fx-stats__wrap {
+  .section-{{ section.id }} .hsn-stats__wrap {
     max-width: 1400px;
     margin-inline: auto;
     padding-inline: clamp(16px, 4.4vw, 72px);
   }
-  .section-{{ section.id }} .fx-stats__eyebrow {
+  .section-{{ section.id }} .hsn-stats__eyebrow {
     text-align: center;
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: clamp(14px, 1.4vw, 19px);
@@ -45,16 +45,16 @@
     color: var(--st-accent);
     margin: 0 0 clamp(28px, 3.5vw, 48px);
   }
-  .section-{{ section.id }} .fx-stats__grid {
+  .section-{{ section.id }} .hsn-stats__grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: clamp(20px, 2.4vw, 32px);
   }
-  .section-{{ section.id }} .fx-stats__item {
+  .section-{{ section.id }} .hsn-stats__item {
     border-top: 1px solid rgba(255, 255, 255, 0.28);
     padding-top: 26px;
   }
-  .section-{{ section.id }} .fx-stats__num {
+  .section-{{ section.id }} .hsn-stats__num {
     display: block;
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
@@ -65,7 +65,7 @@
     margin-bottom: 14px;
     font-variant-numeric: tabular-nums;
   }
-  .section-{{ section.id }} .fx-stats__label {
+  .section-{{ section.id }} .hsn-stats__label {
     margin: 0;
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 14.5px;
@@ -74,19 +74,19 @@
     max-width: 32ch;
   }
   @media (max-width: 900px) {
-    .section-{{ section.id }} .fx-stats__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 28px; }
+    .section-{{ section.id }} .hsn-stats__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 28px; }
   }
   @media (max-width: 520px) {
-    .section-{{ section.id }} .fx-stats__grid { grid-template-columns: 1fr; }
+    .section-{{ section.id }} .hsn-stats__grid { grid-template-columns: 1fr; }
   }
 {% endstyle %}
 
 <script>
   (function () {
     var root = document.getElementById('{{ section.id }}');
-    if (!root || root.dataset.fxInit === 'true') return;
-    root.dataset.fxInit = 'true';
-    var nums = root.querySelectorAll('[data-fx-count]');
+    if (!root || root.dataset.hsnInit === 'true') return;
+    root.dataset.hsnInit = 'true';
+    var nums = root.querySelectorAll('[data-hsn-count]');
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!nums.length || reduce || !('IntersectionObserver' in window)) return;
     var io = new IntersectionObserver(function (entries) {
@@ -113,9 +113,9 @@
 
 {% schema %}
 {
-  "name": "FX Stats",
+  "name": "HSN Stats",
   "tag": "section",
-  "class": "fx-stats-section",
+  "class": "hsn-stats-section",
   "settings": [
     { "type": "header", "content": "Content" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Built Through Experience" },
@@ -140,7 +140,7 @@
   "max_blocks": 4,
   "presets": [
     {
-      "name": "FX Stats",
+      "name": "HSN Stats",
       "blocks": [
         { "type": "stat", "settings": { "number": "7X", "label": "Gut-first performance supplements, clean and functional" } },
         { "type": "stat", "settings": { "number": "4X", "label": "Up to 4x higher bioavailability with liposomal delivery" } },

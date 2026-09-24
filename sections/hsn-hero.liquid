@@ -1,22 +1,22 @@
 {% comment %}
-  FX Hero — two-slide fade slider with dots and autoplay.
+  HSN Hero — two-slide fade slider with dots and autoplay.
   Settings groups: Content, Layout, Colors, Animation. Blocks: slide.
   First visible slide image is the LCP image: eager + fetchpriority high.
 {% endcomment %}
 
 <div
   id="{{ section.id }}"
-  class="fx-hero section-{{ section.id }}"
-  style="--fx-pt: {{ section.settings.padding_top }}px; --fx-pb: {{ section.settings.padding_bottom }}px; --fx-min: {{ section.settings.min_height }}px; --fx-accent-text: {{ section.settings.accent_text }};"
+  class="hsn-hero section-{{ section.id }}"
+  style="--hsn-pt: {{ section.settings.padding_top }}px; --hsn-pb: {{ section.settings.padding_bottom }}px; --hsn-min: {{ section.settings.min_height }}px; --hsn-accent-text: {{ section.settings.accent_text }};"
   {{ section.shopify_attributes }}
 >
-  <div class="fx-hero__viewport" data-fx-hero-role="slider" data-fx-autoplay="{{ section.settings.autoplay }}" data-fx-speed="{{ section.settings.autoplay_speed | times: 1000 }}">
+  <div class="hsn-hero__viewport" data-hsn-hero-role="slider" data-hsn-autoplay="{{ section.settings.autoplay }}" data-hsn-speed="{{ section.settings.autoplay_speed | times: 1000 }}">
     {%- for block in section.blocks -%}
       <div
-        class="fx-hero__slide{% if forloop.first %} is-active{% endif %}"
-        data-fx-slide="{{ forloop.index0 }}"
-        data-fx-position="{{ block.settings.image_position }}"
-        data-fx-position-mobile="{{ block.settings.image_position_mobile }}"
+        class="hsn-hero__slide{% if forloop.first %} is-active{% endif %}"
+        data-hsn-slide="{{ forloop.index0 }}"
+        data-hsn-position="{{ block.settings.image_position }}"
+        data-hsn-position-mobile="{{ block.settings.image_position_mobile }}"
         {{ block.shopify_attributes }}
       >
         {%- liquid
@@ -27,43 +27,43 @@
             assign img_priority = 'high'
           endif
         -%}
-        <div class="fx-hero__media">
+        <div class="hsn-hero__media">
           {%- if block.settings.image != blank -%}
             {{ block.settings.image | image_url: width: 2200 | image_tag: widths: '750, 1100, 1500, 1900, 2200', sizes: '100vw', alt: block.settings.image.alt | default: block.settings.heading | escape, loading: img_loading, fetchpriority: img_priority, decoding: 'async' }}
           {%- else -%}
-            {{ 'lifestyle-1' | placeholder_svg_tag: 'fx-hero__placeholder' }}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'hsn-hero__placeholder' }}
           {%- endif -%}
         </div>
-        <div class="fx-hero__scrim" aria-hidden="true"></div>
-        <div class="fx-hero__inner">
-          <div class="fx-hero__content">
+        <div class="hsn-hero__scrim" aria-hidden="true"></div>
+        <div class="hsn-hero__inner">
+          <div class="hsn-hero__content">
             {%- if block.settings.eyebrow != blank -%}
-              <p class="fx-hero__eyebrow">{{ block.settings.eyebrow | escape }}</p>
+              <p class="hsn-hero__eyebrow">{{ block.settings.eyebrow | escape }}</p>
             {%- endif -%}
-            <{{ block.settings.heading_tag }} class="fx-hero__heading">{{ block.settings.heading | escape | newline_to_br }}</{{ block.settings.heading_tag }}>
+            <{{ block.settings.heading_tag }} class="hsn-hero__heading">{{ block.settings.heading | escape | newline_to_br }}</{{ block.settings.heading_tag }}>
             {%- if block.settings.text != blank -%}
-              <p class="fx-hero__text">{{ block.settings.text | escape }}</p>
+              <p class="hsn-hero__text">{{ block.settings.text | escape }}</p>
             {%- endif -%}
             {%- if block.settings.cta_label != blank -%}
-              <a class="fx-hero__cta" href="{{ block.settings.cta_link | default: routes.all_products_collection_url }}">
+              <a class="hsn-hero__cta" href="{{ block.settings.cta_link | default: routes.all_products_collection_url }}">
                 {{- block.settings.cta_label | escape -}}
-                <span class="fx-hero__cta-arrow" aria-hidden="true">&rarr;</span>
+                <span class="hsn-hero__cta-arrow" aria-hidden="true">&rarr;</span>
               </a>
             {%- endif -%}
             {%- if block.settings.note != blank -%}
-              <p class="fx-hero__note">{{ block.settings.note | escape }}</p>
+              <p class="hsn-hero__note">{{ block.settings.note | escape }}</p>
             {%- endif -%}
           </div>
         </div>
       </div>
     {%- endfor -%}
 
-    <div class="fx-hero__dots" data-fx-hero-role="dots">
+    <div class="hsn-hero__dots" data-hsn-hero-role="dots">
       {%- for block in section.blocks -%}
         <button
           type="button"
-          class="fx-hero__dot{% if forloop.first %} is-active{% endif %}"
-          data-fx-goto="{{ forloop.index0 }}"
+          class="hsn-hero__dot{% if forloop.first %} is-active{% endif %}"
+          data-hsn-goto="{{ forloop.index0 }}"
           aria-label="Go to slide {{ forloop.index }}"
         ></button>
       {%- endfor -%}
@@ -72,36 +72,36 @@
 </div>
 
 {% style %}
-  .section-{{ section.id }} .fx-hero__viewport {
+  .section-{{ section.id }} .hsn-hero__viewport {
     position: relative;
     overflow: hidden;
-    min-height: clamp({{ section.settings.min_height | times: 0.72 }}px, 85vh, var(--fx-min));
+    min-height: clamp({{ section.settings.min_height | times: 0.72 }}px, 85vh, var(--hsn-min));
     display: flex;
     align-items: center;
     background: #fff;
-    padding-block: var(--fx-pt) var(--fx-pb);
+    padding-block: var(--hsn-pt) var(--hsn-pb);
   }
-  .section-{{ section.id }} .fx-hero__slide {
+  .section-{{ section.id }} .hsn-hero__slide {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.9s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1)), visibility 0s linear 0.9s;
+    transition: opacity 0.9s var(--hsn-eq, cubic-bezier(0.4, 0, 0.2, 1)), visibility 0s linear 0.9s;
   }
-  .section-{{ section.id }} .fx-hero__slide.is-active {
+  .section-{{ section.id }} .hsn-hero__slide.is-active {
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.9s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1));
+    transition: opacity 0.9s var(--hsn-eq, cubic-bezier(0.4, 0, 0.2, 1));
     z-index: 1;
   }
-  .section-{{ section.id }} .fx-hero__media {
+  .section-{{ section.id }} .hsn-hero__media {
     position: absolute;
     inset: 0;
   }
-  .section-{{ section.id }} .fx-hero__media img,
-  .section-{{ section.id }} .fx-hero__placeholder {
+  .section-{{ section.id }} .hsn-hero__media img,
+  .section-{{ section.id }} .hsn-hero__placeholder {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -109,25 +109,25 @@
     object-fit: cover;
     object-position: center right;
   }
-  .section-{{ section.id }} .fx-hero__placeholder {
+  .section-{{ section.id }} .hsn-hero__placeholder {
     background: #f1f1ef;
   }
-  .section-{{ section.id }} .fx-hero__scrim {
+  .section-{{ section.id }} .hsn-hero__scrim {
     position: absolute;
     inset: 0;
     pointer-events: none;
     background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 22%, rgba(255, 255, 255, 0.85) 36%, rgba(255, 255, 255, 0) 55%);
   }
-  .section-{{ section.id }} .fx-hero__inner {
+  .section-{{ section.id }} .hsn-hero__inner {
     position: relative;
     z-index: 2;
     width: 100%;
     padding-inline: clamp(20px, 9.1vw, 130px);
   }
-  .section-{{ section.id }} .fx-hero__content {
+  .section-{{ section.id }} .hsn-hero__content {
     max-width: 560px;
   }
-  .section-{{ section.id }} .fx-hero__eyebrow {
+  .section-{{ section.id }} .hsn-hero__eyebrow {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 13px;
     font-weight: 750;
@@ -137,7 +137,7 @@
     margin: 0 0 20px;
     line-height: 1;
   }
-  .section-{{ section.id }} .fx-hero__heading {
+  .section-{{ section.id }} .hsn-hero__heading {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: clamp(2.4rem, 5.54vw, 5.4rem);
@@ -147,7 +147,7 @@
     color: #000;
     margin: 0 0 24px;
   }
-  .section-{{ section.id }} .fx-hero__text {
+  .section-{{ section.id }} .hsn-hero__text {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 17px;
     line-height: 1.42;
@@ -156,7 +156,7 @@
     max-width: 420px;
     overflow-wrap: break-word;
   }
-  .section-{{ section.id }} .fx-hero__cta {
+  .section-{{ section.id }} .hsn-hero__cta {
     display: inline-flex;
     align-items: center;
     gap: 17px;
@@ -170,25 +170,25 @@
     line-height: 1;
     padding: 19px 40px;
     margin-bottom: 30px;
-    transition: background 0.15s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1)), color 0.15s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1));
+    transition: background 0.15s var(--hsn-eq, cubic-bezier(0.4, 0, 0.2, 1)), color 0.15s var(--hsn-eq, cubic-bezier(0.4, 0, 0.2, 1));
   }
-  .section-{{ section.id }} .fx-hero__cta:hover,
-  .section-{{ section.id }} .fx-hero__cta:focus-visible {
+  .section-{{ section.id }} .hsn-hero__cta:hover,
+  .section-{{ section.id }} .hsn-hero__cta:focus-visible {
     background: #000;
     color: #fff;
   }
-  .section-{{ section.id }} .fx-hero__cta-arrow {
+  .section-{{ section.id }} .hsn-hero__cta-arrow {
     font-family: Arial, sans-serif;
     font-weight: 400;
   }
-  .section-{{ section.id }} .fx-hero__note {
+  .section-{{ section.id }} .hsn-hero__note {
     font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
     font-size: 15px;
     color: #4d4d4d;
     margin: 0;
     line-height: 1.2;
   }
-  .section-{{ section.id }} .fx-hero__dots {
+  .section-{{ section.id }} .hsn-hero__dots {
     position: absolute;
     left: clamp(20px, 9.1vw, 130px);
     bottom: 26px;
@@ -196,7 +196,7 @@
     display: flex;
     gap: 10px;
   }
-  .section-{{ section.id }} .fx-hero__dot {
+  .section-{{ section.id }} .hsn-hero__dot {
     width: 26px;
     height: 22px;
     padding: 9px 0;
@@ -205,38 +205,38 @@
     cursor: pointer;
     box-sizing: border-box;
   }
-  .section-{{ section.id }} .fx-hero__dot::before {
+  .section-{{ section.id }} .hsn-hero__dot::before {
     content: '';
     display: block;
     height: 4px;
     border-radius: 2px;
     background: rgba(0, 0, 0, 0.22);
-    transition: background 0.2s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1));
+    transition: background 0.2s var(--hsn-eq, cubic-bezier(0.4, 0, 0.2, 1));
   }
-  .section-{{ section.id }} .fx-hero__dot.is-active::before {
+  .section-{{ section.id }} .hsn-hero__dot.is-active::before {
     background: #000;
   }
   .section-{{ section.id }} :is(a, button):focus-visible {
-    outline: 2px solid var(--fx-accent-text, #3e7ea0);
+    outline: 2px solid var(--hsn-accent-text, #3e7ea0);
     outline-offset: 3px;
   }
   @media (max-width: 768px) {
-    .section-{{ section.id }} .fx-hero__viewport {
+    .section-{{ section.id }} .hsn-hero__viewport {
       min-height: clamp(500px, 88vh, 720px);
     }
-    .section-{{ section.id }} .fx-hero__media img {
-      object-position: var(--fx-pos-m, 65% center);
+    .section-{{ section.id }} .hsn-hero__media img {
+      object-position: var(--hsn-pos-m, 65% center);
     }
-    .section-{{ section.id }} .fx-hero__scrim {
+    .section-{{ section.id }} .hsn-hero__scrim {
       background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 55%, rgba(255, 255, 255, 0) 100%);
     }
-    .section-{{ section.id }} .fx-hero__inner {
+    .section-{{ section.id }} .hsn-hero__inner {
       padding-inline: 20px;
     }
-    .section-{{ section.id }} .fx-hero__heading {
+    .section-{{ section.id }} .hsn-hero__heading {
       font-size: clamp(2.2rem, 11.5vw, 4rem);
     }
-    .section-{{ section.id }} .fx-hero__dots {
+    .section-{{ section.id }} .hsn-hero__dots {
       left: 20px;
       bottom: 18px;
     }
@@ -246,11 +246,11 @@
 <script>
   (function () {
     var root = document.getElementById('{{ section.id }}');
-    if (!root || root.dataset.fxInit === 'true') return;
-    root.dataset.fxInit = 'true';
-    var slides = Array.prototype.slice.call(root.querySelectorAll('[data-fx-slide]'));
-    var dots = Array.prototype.slice.call(root.querySelectorAll('[data-fx-goto]'));
-    var viewport = root.querySelector('[data-fx-hero-role="slider"]');
+    if (!root || root.dataset.hsnInit === 'true') return;
+    root.dataset.hsnInit = 'true';
+    var slides = Array.prototype.slice.call(root.querySelectorAll('[data-hsn-slide]'));
+    var dots = Array.prototype.slice.call(root.querySelectorAll('[data-hsn-goto]'));
+    var viewport = root.querySelector('[data-hsn-hero-role="slider"]');
     if (!slides.length) return;
     var i = 0, timer = null;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -279,14 +279,14 @@
     viewport.addEventListener('mouseenter', stop);
     viewport.addEventListener('mouseleave', play);
     document.addEventListener('shopify:block:select', function (e) {
-      var slide = e.target.closest('[data-fx-slide]');
+      var slide = e.target.closest('[data-hsn-slide]');
       if (slide && root.contains(slide)) { go(parseInt(slide.dataset.fxSlide, 10)); stop(); }
     });
     slides.forEach(function (s) {
       var pos = s.dataset.fxPosition || 'center right';
       var posM = s.dataset.fxPositionMobile || '65% center';
-      var img = s.querySelector('.fx-hero__media img');
-      if (img) { img.style.setProperty('--fx-pos-m', posM); img.style.objectPosition = window.matchMedia('(max-width: 768px)').matches ? posM : pos; }
+      var img = s.querySelector('.hsn-hero__media img');
+      if (img) { img.style.setProperty('--hsn-pos-m', posM); img.style.objectPosition = window.matchMedia('(max-width: 768px)').matches ? posM : pos; }
     });
     play();
   })();
@@ -294,9 +294,9 @@
 
 {% schema %}
 {
-  "name": "FX Hero",
+  "name": "HSN Hero",
   "tag": "section",
-  "class": "fx-hero-section",
+  "class": "hsn-hero-section",
   "settings": [
     { "type": "header", "content": "Layout" },
     { "type": "range", "id": "min_height", "label": "Desktop min height", "min": 400, "max": 1000, "step": 20, "unit": "px", "default": 850 },
@@ -340,7 +340,7 @@
   "max_blocks": 4,
   "presets": [
     {
-      "name": "FX Hero",
+      "name": "HSN Hero",
       "blocks": [
         {
           "type": "slide",

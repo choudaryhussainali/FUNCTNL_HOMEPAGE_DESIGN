@@ -1,30 +1,30 @@
 {% comment %}
-  FX Social Grid — community image wall. Groups: Content, Layout, Colors, Spacing. Blocks: tile.
+  HSN Social Grid — community image wall. Groups: Content, Layout, Colors, Spacing. Blocks: tile.
 {% endcomment %}
 
 <div
   id="{{ section.id }}"
-  class="fx-social section-{{ section.id }}"
+  class="hsn-social section-{{ section.id }}"
   style="--so-pt: {{ section.settings.padding_top }}px; --so-pb: {{ section.settings.padding_bottom }}px; --so-accent: {{ section.settings.accent }};"
   {{ section.shopify_attributes }}
 >
-  <div class="fx-social__in">
+  <div class="hsn-social__in">
     {%- if section.settings.pill != blank -%}
-      <span class="fx-social__pill">{{ section.settings.pill | escape }}</span>
+      <span class="hsn-social__pill">{{ section.settings.pill | escape }}</span>
     {%- endif -%}
-    <h2 class="fx-social__heading">
+    <h2 class="hsn-social__heading">
       {{ section.settings.heading | escape }}
       {%- if section.settings.handle_link != blank and section.settings.handle_text != blank -%}
         <a href="{{ section.settings.handle_link }}">{{ section.settings.handle_text | escape }}</a>
       {%- endif -%}
     </h2>
-    <div class="fx-social__grid">
+    <div class="hsn-social__grid">
       {%- for block in section.blocks -%}
-        <div class="fx-social__tile" {{ block.shopify_attributes }}>
+        <div class="hsn-social__tile" {{ block.shopify_attributes }}>
           {%- if block.settings.image != blank -%}
             {{ block.settings.image | image_url: width: 600 | image_tag: widths: '200, 300, 450, 600', sizes: '(min-width: 861px) 18vw, 45vw', alt: block.settings.alt | escape, loading: 'lazy', decoding: 'async' }}
           {%- else -%}
-            {{ 'image' | placeholder_svg_tag: 'fx-social__placeholder' }}
+            {{ 'image' | placeholder_svg_tag: 'hsn-social__placeholder' }}
           {%- endif -%}
         </div>
       {%- endfor -%}
@@ -33,12 +33,12 @@
 </div>
 
 {% style %}
-  .section-{{ section.id }} .fx-social {
+  .section-{{ section.id }} .hsn-social {
     background: #fff;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-block: var(--so-pt) var(--so-pb);
   }
-  .section-{{ section.id }} .fx-social__in {
+  .section-{{ section.id }} .hsn-social__in {
     max-width: 1400px;
     margin-inline: auto;
     padding-inline: clamp(16px, 4.4vw, 72px);
@@ -47,7 +47,7 @@
     align-items: center;
     box-sizing: border-box;
   }
-  .section-{{ section.id }} .fx-social__pill {
+  .section-{{ section.id }} .hsn-social__pill {
     display: inline-block;
     border: 1px solid rgba(0, 0, 0, 0.22);
     border-radius: 999px;
@@ -59,7 +59,7 @@
     padding: 9px 18px;
     margin-bottom: 20px;
   }
-  .section-{{ section.id }} .fx-social__heading {
+  .section-{{ section.id }} .hsn-social__heading {
     font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
     font-weight: 700;
     font-size: clamp(20px, 2.8vw, 34px);
@@ -67,44 +67,44 @@
     text-align: center;
     margin: 0 0 clamp(28px, 4vw, 46px);
   }
-  .section-{{ section.id }} .fx-social__heading a {
+  .section-{{ section.id }} .hsn-social__heading a {
     color: var(--so-accent);
     border-bottom: 2px solid var(--so-accent);
     padding-bottom: 2px;
   }
-  .section-{{ section.id }} .fx-social__grid {
+  .section-{{ section.id }} .hsn-social__grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: clamp(8px, 1.2vw, 18px);
     width: 100%;
   }
-  .section-{{ section.id }} .fx-social__tile {
+  .section-{{ section.id }} .hsn-social__tile {
     border-radius: 8px;
     overflow: hidden;
     aspect-ratio: 1 / 1.06;
     background: #f1f1ef;
   }
-  .section-{{ section.id }} .fx-social__tile img,
-  .section-{{ section.id }} .fx-social__tile .fx-social__placeholder {
+  .section-{{ section.id }} .hsn-social__tile img,
+  .section-{{ section.id }} .hsn-social__tile .hsn-social__placeholder {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  .section-{{ section.id }} .fx-social__tile .fx-social__placeholder {
+  .section-{{ section.id }} .hsn-social__tile .hsn-social__placeholder {
     opacity: 0.4;
   }
   @media (max-width: 860px) {
-    .section-{{ section.id }} .fx-social__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .section-{{ section.id }} .fx-social__tile:nth-child(5) { display: none; }
+    .section-{{ section.id }} .hsn-social__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .section-{{ section.id }} .hsn-social__tile:nth-child(5) { display: none; }
   }
 {% endstyle %}
 
 {% schema %}
 {
-  "name": "FX Social Grid",
+  "name": "HSN Social Grid",
   "tag": "section",
-  "class": "fx-social-section",
+  "class": "hsn-social-section",
   "settings": [
     { "type": "header", "content": "Content" },
     { "type": "text", "id": "pill", "label": "Pill text", "default": "40k+ Community" },
@@ -130,7 +130,7 @@
   "max_blocks": 5,
   "presets": [
     {
-      "name": "FX Social Grid",
+      "name": "HSN Social Grid",
       "blocks": [
         { "type": "tile" },
         { "type": "tile" },
