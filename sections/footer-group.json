@@ -1,0 +1,51 @@
+{
+  "type": "footer",
+  "name": "Footer group",
+  "sections": {
+    "footer": {
+      "type": "fx-footer",
+      "blocks": {
+        "c1": {
+          "type": "link_column",
+          "settings": {
+            "title": "Shop",
+            "menu": "footer"
+          }
+        },
+        "c2": {
+          "type": "link_column",
+          "settings": {
+            "title": "Learn More",
+            "menu": "footer"
+          }
+        },
+        "c3": {
+          "type": "link_column",
+          "settings": {
+            "title": "Support",
+            "menu": "footer"
+          }
+        },
+        "nl": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Subscribe",
+            "text": "Join the system. Get product drops, science updates, and exclusive offers."
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "nl"
+      ],
+      "settings": {
+        "copyright": "(c) 2026 FUNCTNL. All rights reserved."
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

@@ -1,0 +1,161 @@
+{% comment %}
+  FX Bundle — image beside a promotional message.
+  Settings groups: Content, Colors, Spacing.
+{% endcomment %}
+
+<div
+  id="{{ section.id }}"
+  class="fx-bundle section-{{ section.id }}"
+  style="--bn-pt: {{ section.settings.padding_top }}px; --bn-pb: {{ section.settings.padding_bottom }}px; --bn-accent: {{ section.settings.accent }};"
+  {{ section.shopify_attributes }}
+>
+  <div class="fx-bundle__grid">
+    <div class="fx-bundle__media">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1600 | image_tag: widths: '600, 900, 1200, 1600', sizes: '(min-width: 901px) 52vw, 100vw', alt: section.settings.image.alt | default: section.settings.heading | strip_html | escape, loading: 'lazy', decoding: 'async' }}
+      {%- else -%}
+        {{ 'lifestyle-2' | placeholder_svg_tag: 'fx-bundle__placeholder' }}
+      {%- endif -%}
+    </div>
+    <div class="fx-bundle__body">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="fx-bundle__eyebrow">{{ section.settings.eyebrow | escape }}</span>
+      {%- endif -%}
+      <h2 class="fx-bundle__heading">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}
+        <p class="fx-bundle__text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.cta_label != blank -%}
+        <a class="fx-bundle__cta" href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}">
+          {{ section.settings.cta_label | escape }}
+          <svg width="15" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13M9.6 1.4 14.2 6l-4.6 4.6"/></svg>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }} .fx-bundle__grid {
+    display: grid;
+    grid-template-columns: 52% 1fr;
+    align-items: stretch;
+    position: relative;
+    background: #fff;
+    padding-block: var(--bn-pt) var(--bn-pb);
+  }
+  .section-{{ section.id }} .fx-bundle__grid::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: var(--bn-accent);
+    z-index: 2;
+  }
+  .section-{{ section.id }} .fx-bundle__media {
+    position: relative;
+    min-height: clamp(300px, 42vw, 600px);
+    overflow: hidden;
+  }
+  .section-{{ section.id }} .fx-bundle__media img,
+  .section-{{ section.id }} .fx-bundle__media .fx-bundle__placeholder,
+  .section-{{ section.id }} .fx-bundle__placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .section-{{ section.id }} .fx-bundle__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: clamp(44px, 6vw, 96px) clamp(28px, 6vw, 110px);
+    box-sizing: border-box;
+  }
+  .section-{{ section.id }} .fx-bundle__eyebrow {
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--bn-accent);
+    margin-bottom: 18px;
+  }
+  .section-{{ section.id }} .fx-bundle__heading {
+    font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 3.8vw, 54px);
+    line-height: 1.06;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0 0 22px;
+  }
+  .section-{{ section.id }} .fx-bundle__heading :is(em, i) {
+    font-style: normal;
+    color: #7eb8d4;
+  }
+  .section-{{ section.id }} .fx-bundle__text {
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4d4d4d;
+    max-width: 400px;
+    margin: 0 0 34px;
+    overflow-wrap: break-word;
+  }
+  .section-{{ section.id }} .fx-bundle__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: #000;
+    color: #fff;
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 18px 34px;
+    border-radius: 3px;
+    transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .section-{{ section.id }} .fx-bundle__cta:hover,
+  .section-{{ section.id }} .fx-bundle__cta:focus-visible {
+    background: #7eb8d4;
+    color: #000;
+  }
+  @media (max-width: 900px) {
+    .section-{{ section.id }} .fx-bundle__grid { grid-template-columns: 1fr; }
+    .section-{{ section.id }} .fx-bundle__media { min-height: 300px; order: -1; }
+    .section-{{ section.id }} .fx-bundle__body { padding: clamp(36px, 8vw, 56px) 20px; }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "FX Bundle",
+  "tag": "section",
+  "class": "fx-bundle-section",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Limited Time" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "Bundle &amp; Save<br>up to <em>25% off.</em>" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Mix and match across the range: the more of the system you build, the more you save. Free UK shipping on every bundle." },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Build Your Bundle" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#7EB8D4" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    { "name": "FX Bundle" }
+  ]
+}
+{% endschema %}

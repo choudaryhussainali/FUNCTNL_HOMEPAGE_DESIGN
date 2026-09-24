@@ -1,0 +1,343 @@
+{
+  "sections": {
+    "hero": {
+      "type": "fx-hero",
+      "blocks": {
+        "s1": {
+          "type": "slide",
+          "settings": {
+            "heading_tag": "h1",
+            "eyebrow": "Gut Led Performance Nutrition",
+            "heading": "OWN\nYOUR\nCORE",
+            "text": "Functional Supplements designed to work with your body. We look at how the body works as a system. #SAYNOTOBLOATING.",
+            "cta_label": "Start the system",
+            "note": "No stimulants. No sugar crashes. Just what works."
+          }
+        },
+        "s2": {
+          "type": "slide",
+          "settings": {
+            "heading_tag": "h2",
+            "eyebrow": "Women's Gut Led Performance",
+            "heading": "OWN\nYOUR\nBALANCE",
+            "text": "Female Balance supports hormones, energy and recovery through every phase. Built for her system. #OWNYOURCYCLE.",
+            "cta_label": "Shop Female Balance",
+            "note": "Hormone smart. Zero stimulants. Clinically dosed."
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2"
+      ],
+      "settings": {}
+    },
+    "marquee": {
+      "type": "fx-marquee",
+      "blocks": {
+        "w1": {
+          "type": "word",
+          "settings": {
+            "word": "Gut Health"
+          }
+        },
+        "w2": {
+          "type": "word",
+          "settings": {
+            "word": "Performance"
+          }
+        },
+        "w3": {
+          "type": "word",
+          "settings": {
+            "word": "Sleep"
+          }
+        },
+        "w4": {
+          "type": "word",
+          "settings": {
+            "word": "Recovery"
+          }
+        },
+        "w5": {
+          "type": "word",
+          "settings": {
+            "word": "Energy"
+          }
+        },
+        "w6": {
+          "type": "word",
+          "settings": {
+            "word": "Clean"
+          }
+        }
+      },
+      "block_order": [
+        "w1",
+        "w2",
+        "w3",
+        "w4",
+        "w5",
+        "w6"
+      ],
+      "settings": {}
+    },
+    "bestsellers": {
+      "type": "fx-featured-collection",
+      "settings": {
+        "heading": "",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "cta_label": "Shop All",
+        "padding_top": 100,
+        "padding_bottom": 80
+      }
+    },
+    "stats": {
+      "type": "fx-stats",
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "number": "7X",
+            "label": "Gut-first performance supplements, clean and functional"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "number": "4X",
+            "label": "Up to 4x higher bioavailability with liposomal delivery"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "number": "380%",
+            "label": "Up to 380% greater cellular uptake and absorption"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "number": "510K+",
+            "label": "Units sold across 8 countries worldwide"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "settings": {
+        "eyebrow": "Built Through Experience"
+      }
+    },
+    "reviews": {
+      "type": "fx-video-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "alt": "Customer video review"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "alt": "Customer video review"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "alt": "Customer video review"
+          }
+        },
+        "r4": {
+          "type": "review",
+          "settings": {
+            "alt": "Customer video review"
+          }
+        },
+        "r5": {
+          "type": "review",
+          "settings": {
+            "alt": "Customer video review"
+          }
+        },
+        "r6": {
+          "type": "review",
+          "settings": {
+            "alt": "Customer video review"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6"
+      ],
+      "settings": {
+        "heading": "Fueling athletes from the core",
+        "rating_value": "4.9",
+        "rating_text": "out of 5, sold world-wide"
+      }
+    },
+    "bundle": {
+      "type": "fx-bundle",
+      "settings": {
+        "eyebrow": "Limited Time",
+        "heading": "Bundle &amp; Save<br>up to <em>25% off.</em>",
+        "text": "Mix and match across the range: the more of the system you build, the more you save. Free UK shipping on every bundle.",
+        "cta_label": "Build Your Bundle"
+      }
+    },
+    "featured": {
+      "type": "fx-featured-product",
+      "blocks": {
+        "st1": {
+          "type": "stat",
+          "settings": {
+            "value": "5g",
+            "label": "Creatine Mono"
+          }
+        },
+        "st2": {
+          "type": "stat",
+          "settings": {
+            "value": "654mg",
+            "label": "Electrolytes"
+          }
+        },
+        "st3": {
+          "type": "stat",
+          "settings": {
+            "value": "0g",
+            "label": "Sugar"
+          }
+        },
+        "ch1": {
+          "type": "chip",
+          "settings": {
+            "position": "a",
+            "label": "Delivery",
+            "value": "Liposomal"
+          }
+        },
+        "ch2": {
+          "type": "chip",
+          "settings": {
+            "position": "b",
+            "label": "Electrolytes",
+            "value": "654mg"
+          }
+        },
+        "ch3": {
+          "type": "chip",
+          "settings": {
+            "position": "c",
+            "label": "Caffeine",
+            "value": "Zero"
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3",
+        "ch1",
+        "ch2",
+        "ch3"
+      ],
+      "settings": {
+        "eyebrow": "Featured Product",
+        "heading": "The Performer",
+        "subheading": "Creatine + Beetroot + Electrolytes",
+        "cta_label": "Shop The Performer"
+      }
+    },
+    "story": {
+      "type": "fx-story",
+      "settings": {
+        "eyebrow": "Why I Built FUNCTNL",
+        "heading": "I was tired of buying ten products to do the job of <em>one system.</em>",
+        "text": "Every product in the FUNCTNL range exists because it solves a real problem in a connected system. From gut health to recovery to daily output. No filler. No hype. Just what works.",
+        "cta_label": "Start The System",
+        "padding_bottom": 124
+      }
+    },
+    "journal": {
+      "type": "fx-journal",
+      "settings": {
+        "eyebrow": "The Journal",
+        "heading": "Science, systems, substance.",
+        "posts_to_show": 4
+      }
+    },
+    "social": {
+      "type": "fx-social-grid",
+      "blocks": {
+        "t1": {
+          "type": "tile",
+          "settings": {
+            "alt": "Community post"
+          }
+        },
+        "t2": {
+          "type": "tile",
+          "settings": {
+            "alt": "Community post"
+          }
+        },
+        "t3": {
+          "type": "tile",
+          "settings": {
+            "alt": "Community post"
+          }
+        },
+        "t4": {
+          "type": "tile",
+          "settings": {
+            "alt": "Community post"
+          }
+        },
+        "t5": {
+          "type": "tile",
+          "settings": {
+            "alt": "Community post"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4",
+        "t5"
+      ],
+      "settings": {
+        "pill": "40k+ Community",
+        "heading": "Follow us",
+        "handle_text": "@functnl"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "bestsellers",
+    "stats",
+    "reviews",
+    "bundle",
+    "featured",
+    "story",
+    "journal",
+    "social"
+  ]
+}

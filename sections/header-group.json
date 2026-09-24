@@ -1,0 +1,53 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "announcement": {
+      "type": "fx-announcement",
+      "blocks": {
+        "m1": {
+          "type": "message",
+          "settings": {
+            "text": "Subscribe & Save"
+          }
+        },
+        "m2": {
+          "type": "message",
+          "settings": {
+            "text": "30-Day Money-Back"
+          }
+        },
+        "m3": {
+          "type": "message",
+          "settings": {
+            "text": "Athlete Recommended"
+          }
+        },
+        "m4": {
+          "type": "message",
+          "settings": {
+            "text": "#NoBloating"
+          }
+        }
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ],
+      "settings": {}
+    },
+    "header": {
+      "type": "fx-header",
+      "settings": {
+        "menu": "main-menu",
+        "logo_text": "FUNCTNL."
+      }
+    }
+  },
+  "order": [
+    "announcement",
+    "header"
+  ]
+}

@@ -1,0 +1,368 @@
+{% comment %}
+  FX Hero — two-slide fade slider with dots and autoplay.
+  Settings groups: Content, Layout, Colors, Animation. Blocks: slide.
+  First visible slide image is the LCP image: eager + fetchpriority high.
+{% endcomment %}
+
+<div
+  id="{{ section.id }}"
+  class="fx-hero section-{{ section.id }}"
+  style="--fx-pt: {{ section.settings.padding_top }}px; --fx-pb: {{ section.settings.padding_bottom }}px; --fx-min: {{ section.settings.min_height }}px; --fx-accent-text: {{ section.settings.accent_text }};"
+  {{ section.shopify_attributes }}
+>
+  <div class="fx-hero__viewport" data-fx-hero-role="slider" data-fx-autoplay="{{ section.settings.autoplay }}" data-fx-speed="{{ section.settings.autoplay_speed | times: 1000 }}">
+    {%- for block in section.blocks -%}
+      <div
+        class="fx-hero__slide{% if forloop.first %} is-active{% endif %}"
+        data-fx-slide="{{ forloop.index0 }}"
+        data-fx-position="{{ block.settings.image_position }}"
+        data-fx-position-mobile="{{ block.settings.image_position_mobile }}"
+        {{ block.shopify_attributes }}
+      >
+        {%- liquid
+          assign img_loading = 'lazy'
+          assign img_priority = 'auto'
+          if forloop.first
+            assign img_loading = 'eager'
+            assign img_priority = 'high'
+          endif
+        -%}
+        <div class="fx-hero__media">
+          {%- if block.settings.image != blank -%}
+            {{ block.settings.image | image_url: width: 2200 | image_tag: widths: '750, 1100, 1500, 1900, 2200', sizes: '100vw', alt: block.settings.image.alt | default: block.settings.heading | escape, loading: img_loading, fetchpriority: img_priority, decoding: 'async' }}
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'fx-hero__placeholder' }}
+          {%- endif -%}
+        </div>
+        <div class="fx-hero__scrim" aria-hidden="true"></div>
+        <div class="fx-hero__inner">
+          <div class="fx-hero__content">
+            {%- if block.settings.eyebrow != blank -%}
+              <p class="fx-hero__eyebrow">{{ block.settings.eyebrow | escape }}</p>
+            {%- endif -%}
+            <{{ block.settings.heading_tag }} class="fx-hero__heading">{{ block.settings.heading | escape | newline_to_br }}</{{ block.settings.heading_tag }}>
+            {%- if block.settings.text != blank -%}
+              <p class="fx-hero__text">{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.cta_label != blank -%}
+              <a class="fx-hero__cta" href="{{ block.settings.cta_link | default: routes.all_products_collection_url }}">
+                {{- block.settings.cta_label | escape -}}
+                <span class="fx-hero__cta-arrow" aria-hidden="true">&rarr;</span>
+              </a>
+            {%- endif -%}
+            {%- if block.settings.note != blank -%}
+              <p class="fx-hero__note">{{ block.settings.note | escape }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+
+    <div class="fx-hero__dots" data-fx-hero-role="dots">
+      {%- for block in section.blocks -%}
+        <button
+          type="button"
+          class="fx-hero__dot{% if forloop.first %} is-active{% endif %}"
+          data-fx-goto="{{ forloop.index0 }}"
+          aria-label="Go to slide {{ forloop.index }}"
+        ></button>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }} .fx-hero__viewport {
+    position: relative;
+    overflow: hidden;
+    min-height: clamp({{ section.settings.min_height | times: 0.72 }}px, 85vh, var(--fx-min));
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding-block: var(--fx-pt) var(--fx-pb);
+  }
+  .section-{{ section.id }} .fx-hero__slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.9s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1)), visibility 0s linear 0.9s;
+  }
+  .section-{{ section.id }} .fx-hero__slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.9s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1));
+    z-index: 1;
+  }
+  .section-{{ section.id }} .fx-hero__media {
+    position: absolute;
+    inset: 0;
+  }
+  .section-{{ section.id }} .fx-hero__media img,
+  .section-{{ section.id }} .fx-hero__placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center right;
+  }
+  .section-{{ section.id }} .fx-hero__placeholder {
+    background: #f1f1ef;
+  }
+  .section-{{ section.id }} .fx-hero__scrim {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 22%, rgba(255, 255, 255, 0.85) 36%, rgba(255, 255, 255, 0) 55%);
+  }
+  .section-{{ section.id }} .fx-hero__inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-inline: clamp(20px, 9.1vw, 130px);
+  }
+  .section-{{ section.id }} .fx-hero__content {
+    max-width: 560px;
+  }
+  .section-{{ section.id }} .fx-hero__eyebrow {
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 750;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0 0 20px;
+    line-height: 1;
+  }
+  .section-{{ section.id }} .fx-hero__heading {
+    font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5.54vw, 5.4rem);
+    line-height: 0.98;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0 0 24px;
+  }
+  .section-{{ section.id }} .fx-hero__text {
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.42;
+    color: #262626;
+    margin: 0 0 30px;
+    max-width: 420px;
+    overflow-wrap: break-word;
+  }
+  .section-{{ section.id }} .fx-hero__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 17px;
+    background: #7eb8d4;
+    color: #000;
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1;
+    padding: 19px 40px;
+    margin-bottom: 30px;
+    transition: background 0.15s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1)), color 0.15s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1));
+  }
+  .section-{{ section.id }} .fx-hero__cta:hover,
+  .section-{{ section.id }} .fx-hero__cta:focus-visible {
+    background: #000;
+    color: #fff;
+  }
+  .section-{{ section.id }} .fx-hero__cta-arrow {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+  }
+  .section-{{ section.id }} .fx-hero__note {
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 15px;
+    color: #4d4d4d;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .section-{{ section.id }} .fx-hero__dots {
+    position: absolute;
+    left: clamp(20px, 9.1vw, 130px);
+    bottom: 26px;
+    z-index: 3;
+    display: flex;
+    gap: 10px;
+  }
+  .section-{{ section.id }} .fx-hero__dot {
+    width: 26px;
+    height: 22px;
+    padding: 9px 0;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  .section-{{ section.id }} .fx-hero__dot::before {
+    content: '';
+    display: block;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(0, 0, 0, 0.22);
+    transition: background 0.2s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1));
+  }
+  .section-{{ section.id }} .fx-hero__dot.is-active::before {
+    background: #000;
+  }
+  .section-{{ section.id }} :is(a, button):focus-visible {
+    outline: 2px solid var(--fx-accent-text, #3e7ea0);
+    outline-offset: 3px;
+  }
+  @media (max-width: 768px) {
+    .section-{{ section.id }} .fx-hero__viewport {
+      min-height: clamp(500px, 88vh, 720px);
+    }
+    .section-{{ section.id }} .fx-hero__media img {
+      object-position: var(--fx-pos-m, 65% center);
+    }
+    .section-{{ section.id }} .fx-hero__scrim {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 55%, rgba(255, 255, 255, 0) 100%);
+    }
+    .section-{{ section.id }} .fx-hero__inner {
+      padding-inline: 20px;
+    }
+    .section-{{ section.id }} .fx-hero__heading {
+      font-size: clamp(2.2rem, 11.5vw, 4rem);
+    }
+    .section-{{ section.id }} .fx-hero__dots {
+      left: 20px;
+      bottom: 18px;
+    }
+  }
+{% endstyle %}
+
+<script>
+  (function () {
+    var root = document.getElementById('{{ section.id }}');
+    if (!root || root.dataset.fxInit === 'true') return;
+    root.dataset.fxInit = 'true';
+    var slides = Array.prototype.slice.call(root.querySelectorAll('[data-fx-slide]'));
+    var dots = Array.prototype.slice.call(root.querySelectorAll('[data-fx-goto]'));
+    var viewport = root.querySelector('[data-fx-hero-role="slider"]');
+    if (!slides.length) return;
+    var i = 0, timer = null;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-active', k === i); });
+    }
+    function play() {
+      stop();
+      if (viewport.dataset.fxAutoplay !== 'true' || reduce || slides.length < 2) return;
+      timer = setInterval(function () { go(i + 1); }, parseInt(viewport.dataset.fxSpeed, 10) || 6500);
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () { go(parseInt(d.dataset.fxGoto, 10)); play(); });
+    });
+    var x0 = null;
+    viewport.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; stop(); }, { passive: true });
+    viewport.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 45) go(i + (dx < 0 ? 1 : -1));
+      x0 = null; play();
+    }, { passive: true });
+    viewport.addEventListener('mouseenter', stop);
+    viewport.addEventListener('mouseleave', play);
+    document.addEventListener('shopify:block:select', function (e) {
+      var slide = e.target.closest('[data-fx-slide]');
+      if (slide && root.contains(slide)) { go(parseInt(slide.dataset.fxSlide, 10)); stop(); }
+    });
+    slides.forEach(function (s) {
+      var pos = s.dataset.fxPosition || 'center right';
+      var posM = s.dataset.fxPositionMobile || '65% center';
+      var img = s.querySelector('.fx-hero__media img');
+      if (img) { img.style.setProperty('--fx-pos-m', posM); img.style.objectPosition = window.matchMedia('(max-width: 768px)').matches ? posM : pos; }
+    });
+    play();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "FX Hero",
+  "tag": "section",
+  "class": "fx-hero-section",
+  "settings": [
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "min_height", "label": "Desktop min height", "min": 400, "max": 1000, "step": 20, "unit": "px", "default": 850 },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 0 },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "accent_text", "label": "Focus accent", "default": "#3E7EA0" },
+    { "type": "header", "content": "Animation" },
+    { "type": "checkbox", "id": "autoplay", "label": "Autoplay slides", "default": true },
+    { "type": "range", "id": "autoplay_speed", "label": "Seconds per slide", "min": 4, "max": 12, "step": 1, "unit": "s", "default": 7 }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Background image", "info": "Around 2200px wide, black and white works best." },
+        { "type": "select", "id": "image_position", "label": "Image position (desktop)", "options": [
+            { "value": "center right", "label": "Center right" },
+            { "value": "center center", "label": "Center" },
+            { "value": "center left", "label": "Center left" }
+          ], "default": "center right" },
+        { "type": "select", "id": "image_position_mobile", "label": "Image position (mobile)", "options": [
+            { "value": "65% center", "label": "Right of center" },
+            { "value": "center center", "label": "Center" },
+            { "value": "50% 20%", "label": "Top center" }
+          ], "default": "65% center" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Gut Led Performance Nutrition" },
+        { "type": "select", "id": "heading_tag", "label": "Heading tag", "options": [
+            { "value": "h1", "label": "H1" },
+            { "value": "h2", "label": "H2" }
+          ], "default": "h2", "info": "Use H1 on the first visible slide only." },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "OWN\nYOUR\nCORE" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Functional Supplements designed to work with your body. We look at how the body works as a system. #SAYNOTOBLOATING." },
+        { "type": "text", "id": "cta_label", "label": "Button label", "default": "Start the system" },
+        { "type": "url", "id": "cta_link", "label": "Button link" },
+        { "type": "text", "id": "note", "label": "Small note", "default": "No stimulants. No sugar crashes. Just what works." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "FX Hero",
+      "blocks": [
+        {
+          "type": "slide",
+          "settings": {
+            "heading_tag": "h1",
+            "heading": "OWN\nYOUR\nCORE",
+            "cta_label": "Start the system"
+          }
+        },
+        {
+          "type": "slide",
+          "settings": {
+            "heading_tag": "h2",
+            "eyebrow": "Women's Gut Led Performance",
+            "heading": "OWN\nYOUR\nBALANCE",
+            "text": "Female Balance supports hormones, energy and recovery through every phase. Built for her system. #OWNYOURCYCLE.",
+            "cta_label": "Shop Female Balance",
+            "note": "Hormone smart. Zero stimulants. Clinically dosed."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,132 @@
+{% comment %}
+  FX Marquee — infinite strikethrough word band (CSS transform, pause on hover).
+  Settings groups: Content, Colors, Spacing, Animation. Blocks: word.
+{% endcomment %}
+
+<div
+  id="{{ section.id }}"
+  class="fx-marquee section-{{ section.id }}"
+  style="--mq-bg: {{ section.settings.bg }}; --mq-color: {{ section.settings.text_color }}; --mq-size: {{ section.settings.font_size }}px; --mq-gap: {{ section.settings.gap }}px; --mq-speed: {{ section.settings.speed }}s; --mq-pt: {{ section.settings.padding_top }}px; --mq-pb: {{ section.settings.padding_bottom }}px;"
+  role="marquee"
+  aria-label="{{ section.settings.accessibility_label | default: 'Product values ticker' | escape }}"
+  {{ section.shopify_attributes }}
+>
+  <div class="fx-marquee__track" data-fx-marquee-role="track">
+    <div class="fx-marquee__set">
+      {%- for block in section.blocks -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.word | escape }}</span>
+      {%- endfor -%}
+    </div>
+    <div class="fx-marquee__set" aria-hidden="true">
+      {%- for block in section.blocks -%}
+        <span>{{ block.settings.word | escape }}</span>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }} .fx-marquee__track {
+    background: var(--mq-bg);
+    display: flex;
+    width: max-content;
+    animation: fx-marquee-{{ section.id }} var(--mq-speed) linear infinite;
+    will-change: transform;
+  }
+  .section-{{ section.id }}:hover .fx-marquee__track {
+    animation-play-state: paused;
+  }
+  .section-{{ section.id }} .fx-marquee__set {
+    display: flex;
+    flex: none;
+    padding-block: var(--mq-pt) var(--mq-pb);
+  }
+  .section-{{ section.id }} .fx-marquee__set span {
+    display: flex;
+    align-items: center;
+    flex: none;
+    margin-right: calc(var(--mq-gap) / 2);
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: var(--mq-size);
+    line-height: 1;
+    font-weight: 750;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--mq-color);
+    white-space: nowrap;
+  }
+  .section-{{ section.id }} .fx-marquee__set span::after {
+    content: '';
+    flex: none;
+    width: 0.35em;
+    height: 0.35em;
+    border-radius: 50%;
+    background: var(--mq-color);
+    margin-left: calc(var(--mq-gap) / 2);
+  }
+  .section-{{ section.id }} .fx-marquee__set span:last-child::after {
+    display: none;
+  }
+  @keyframes fx-marquee-{{ section.id }} {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (max-width: 768px) {
+    .section-{{ section.id }} .fx-marquee__set span {
+      font-size: calc(var(--mq-size) * 0.72);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .section-{{ section.id }} .fx-marquee__track {
+      animation: none;
+      width: 100%;
+      overflow-x: auto;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "FX Marquee",
+  "tag": "section",
+  "class": "fx-marquee-section",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "accessibility_label", "label": "Accessible label", "default": "Product values ticker" },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "bg", "label": "Background", "default": "#7EB8D4" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#000000" },
+    { "type": "header", "content": "Typography" },
+    { "type": "range", "id": "font_size", "label": "Font size", "min": 14, "max": 32, "step": 1, "unit": "px", "default": 21 },
+    { "type": "header", "content": "Layout" },
+    { "type": "range", "id": "gap", "label": "Gap between words", "min": 20, "max": 120, "step": 2, "unit": "px", "default": 68 },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 4, "max": 40, "step": 2, "unit": "px", "default": 14 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 4, "max": 40, "step": 2, "unit": "px", "default": 14 },
+    { "type": "header", "content": "Animation" },
+    { "type": "range", "id": "speed", "label": "Loop duration", "min": 8, "max": 60, "step": 2, "unit": "s", "default": 32 }
+  ],
+  "blocks": [
+    {
+      "type": "word",
+      "name": "Word",
+      "settings": [
+        { "type": "text", "id": "word", "label": "Word", "default": "Gut Health" }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "FX Marquee",
+      "blocks": [
+        { "type": "word", "settings": { "word": "Gut Health" } },
+        { "type": "word", "settings": { "word": "Performance" } },
+        { "type": "word", "settings": { "word": "Sleep" } },
+        { "type": "word", "settings": { "word": "Recovery" } },
+        { "type": "word", "settings": { "word": "Energy" } },
+        { "type": "word", "settings": { "word": "Clean" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
