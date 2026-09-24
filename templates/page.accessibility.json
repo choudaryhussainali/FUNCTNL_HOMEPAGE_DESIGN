@@ -1,0 +1,67 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hsn-policy-hero",
+      "settings": {
+        "title": "Accessibility",
+        "lede": "An inclusive experience for every athlete: what we\u2019ve built, what we\u2019re still improving, and how to tell us when we get it wrong."
+      }
+    },
+    "content": {
+      "type": "hsn-policy-content",
+      "blocks": {
+        "s01": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Our Commitment",
+            "content": "<p>FUNCTNL is for every body. We want functnl.co.uk to be usable by as many people as possible, regardless of ability or technology. We are committed to making our site accessible in line with the <strong>Web Content Accessibility Guidelines (WCAG) 2.2, Level AA</strong>.</p>"
+          }
+        },
+        "s02": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Built-In Features",
+            "content": "<p>This site is designed and built with accessibility in mind:</p><ul><li>Semantic HTML with logical heading structure and landmarks</li><li>Full keyboard navigation, with visible focus states</li><li>High-contrast black text on light backgrounds</li><li>Descriptive alt text on meaningful images</li><li>Text that scales with your browser settings without breaking layouts</li><li>Reduced-motion support: animations are disabled if your device requests it</li><li>Forms with clear labels and plain-language error messages</li></ul>"
+          }
+        },
+        "s03": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Known Limitations",
+            "content": "<p>We\u2019re honest, like our labels. Despite our best efforts, some content may not yet be fully accessible: for example, some older product photography may lack detailed text alternatives, and some third-party embedded tools (such as our checkout, provided by Shopify) are outside our direct control. We note these here and are working on them.</p>"
+          }
+        },
+        "s04": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Feedback",
+            "content": "<p>If you run into any barrier on this site, tell us. Email <a href=\"mailto:sales@acti.health\">sales@acti.health</a> with the page, what happened, and the assistive technology you use. We take accessibility reports seriously and aim to respond within <strong>five working days</strong>.</p>"
+          }
+        },
+        "s05": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Technical Information",
+            "content": "<p>This website is powered by Shopify. Its accessibility is continuously assessed as we update the theme and content. This statement was last reviewed on <strong>24 September 2026</strong>.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05"
+      ],
+      "settings": {
+        "show_short": true,
+        "short_heading": "The Short Version",
+        "short_body": "<p>We aim to meet WCAG 2.2 Level AA across the site. If anything blocks you from shopping with us, email <a href=\"mailto:sales@acti.health\">sales@acti.health</a> and we\u2019ll fix it and respond within five working days.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "content"
+  ]
+}

@@ -1,0 +1,318 @@
+{% comment %}
+  HSN Policy Content — auto-numbered policy sections with sticky table of contents.
+  Settings groups: Content, Colors, Spacing. Blocks: section (title + richtext).
+  TOC links are generated from block ids, so they always resolve.
+{% endcomment %}
+
+<div
+  id="{{ section.id }}"
+  class="hsn-policy section-{{ section.id }}"
+  style="--pc-pt: {{ section.settings.padding_top }}px; --pc-pb: {{ section.settings.padding_bottom }}px; --pc-accent: {{ section.settings.accent }}; --pc-text: {{ section.settings.text_color }};"
+  {{ section.shopify_attributes }}
+>
+  <div class="hsn-policy__grid">
+    {%- if section.settings.show_toc and section.blocks.size > 1 -%}
+      <aside class="hsn-policy__toc" aria-label="On this page" data-hsn-policy-toc>
+        <span class="hsn-policy__toc-h">On this page</span>
+        {%- for block in section.blocks -%}
+          <a href="#pc-{{ block.id }}"{% if forloop.first %} class="is-active"{% endif %} data-hsn-toc-link="pc-{{ block.id }}">
+            <span class="hsn-policy__toc-num">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span>
+            <span class="hsn-policy__toc-lbl">{{ block.settings.title | escape }}</span>
+          </a>
+        {%- endfor -%}
+      </aside>
+    {%- endif -%}
+
+    <article class="hsn-policy__body">
+      {%- if section.settings.show_short -%}
+        <div class="hsn-policy__short">
+          <h3>{{ section.settings.short_heading | escape }}</h3>
+          <div class="hsn-policy__short-body rte">{{ section.settings.short_body }}</div>
+        </div>
+      {%- endif -%}
+
+      {%- for block in section.blocks -%}
+        <section class="hsn-policy__sec" id="pc-{{ block.id }}" data-hsn-policy-sec {{ block.shopify_attributes }}>
+          <span class="hsn-policy__num">{{ forloop.index | prepend: '00' | slice: -2, 2 }}</span>
+          <h2 class="hsn-policy__h2">{{ block.settings.title | escape }}</h2>
+          <div class="hsn-policy__rte rte">{{ block.settings.content }}</div>
+        </section>
+      {%- endfor -%}
+    </article>
+  </div>
+
+  <div class="hsn-policy__top">
+    <a href="#top" class="hsn-policy__back">Back to top
+      <svg width="12" height="15" viewBox="0 0 12 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14V1M1.4 5.6 6 1l4.6 4.6"/></svg>
+    </a>
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }} .hsn-policy {
+    background: #fff;
+    padding-block: var(--pc-pt) var(--pc-pb);
+  }
+  .section-{{ section.id }} .hsn-policy__grid {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: clamp(32px, 5vw, 84px);
+    align-items: start;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4.4vw, 72px);
+    box-sizing: border-box;
+  }
+  .section-{{ section.id }} .hsn-policy__toc {
+    position: sticky;
+    top: 26px;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .section-{{ section.id }} .hsn-policy__toc-h {
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8a8a8a;
+    padding: 0 0 12px 16px;
+  }
+  .section-{{ section.id }} .hsn-policy__toc a {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 7px 0 7px 16px;
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.4;
+    color: var(--pc-text);
+    border-left: 2px solid transparent;
+    margin-left: -1px;
+    text-decoration: none;
+    transition: color 0.15s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1)), border-color 0.15s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1));
+  }
+  .section-{{ section.id }} .hsn-policy__toc a .hsn-policy__toc-num {
+    flex: none;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: #9a9a9a;
+    font-variant-numeric: tabular-nums;
+  }
+  .section-{{ section.id }} .hsn-policy__toc a .hsn-policy__toc-lbl {
+    flex: 1;
+    min-width: 0;
+  }
+  .section-{{ section.id }} .hsn-policy__toc a:hover {
+    color: #000;
+  }
+  .section-{{ section.id }} .hsn-policy__toc a.is-active {
+    color: #000;
+    border-left-color: #7eb8d4;
+  }
+  .section-{{ section.id }} .hsn-policy__toc a.is-active .hsn-policy__toc-num {
+    color: #7eb8d4;
+  }
+  .section-{{ section.id }} .hsn-policy__short {
+    background: #f4f4f2;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-left: 3px solid #7eb8d4;
+    border-radius: 10px;
+    padding: 24px 26px;
+    margin-bottom: 36px;
+  }
+  .section-{{ section.id }} .hsn-policy__short h3 {
+    font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0 0 12px;
+  }
+  .section-{{ section.id }} .hsn-policy__sec {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 26px 0 30px;
+    scroll-margin-top: 24px;
+  }
+  .section-{{ section.id }} .hsn-policy__sec:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+  .section-{{ section.id }} .hsn-policy__num {
+    display: block;
+    font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    color: #7eb8d4;
+    margin-bottom: 12px;
+  }
+  .section-{{ section.id }} .hsn-policy__h2 {
+    font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(17px, 1.7vw, 22px);
+    line-height: 1.3;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0 0 14px;
+  }
+  .section-{{ section.id }} .hsn-policy__rte {
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--pc-text);
+  }
+  .section-{{ section.id }} .hsn-policy__rte p {
+    margin: 0 0 14px;
+  }
+  .section-{{ section.id }} .hsn-policy__rte p:last-child {
+    margin-bottom: 0;
+  }
+  .section-{{ section.id }} .hsn-policy__rte ul {
+    list-style: none;
+    margin: 0 0 6px;
+    padding: 0;
+  }
+  .section-{{ section.id }} .hsn-policy__rte li {
+    position: relative;
+    padding-left: 22px;
+    margin-bottom: 9px;
+  }
+  .section-{{ section.id }} .hsn-policy__rte li::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.66em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #7eb8d4;
+  }
+  .section-{{ section.id }} .hsn-policy__rte b,
+  .section-{{ section.id }} .hsn-policy__rte strong {
+    color: #000;
+    font-weight: 600;
+  }
+  .section-{{ section.id }} .hsn-policy__rte a {
+    color: var(--pc-accent);
+    border-bottom: 1px solid rgba(126, 184, 212, 0.45);
+    text-decoration: none;
+  }
+  .section-{{ section.id }} .hsn-policy__rte a:hover {
+    border-bottom-color: var(--pc-accent);
+  }
+  .section-{{ section.id }} .hsn-policy__short .hsn-policy__short-body a {
+    color: var(--pc-accent);
+  }
+  .section-{{ section.id }} .hsn-policy__top {
+    display: flex;
+    justify-content: center;
+    padding-bottom: var(--pc-pb);
+  }
+  .section-{{ section.id }} .hsn-policy__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #000;
+    color: #fff;
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 17px 30px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .section-{{ section.id }} .hsn-policy__back:hover,
+  .section-{{ section.id }} .hsn-policy__back:focus-visible {
+    background: #7eb8d4;
+    color: #000;
+  }
+  .section-{{ section.id }} :is(a, button):focus-visible {
+    outline: 2px solid var(--pc-accent);
+    outline-offset: 2px;
+  }
+  @media (max-width: 900px) {
+    .section-{{ section.id }} .hsn-policy__grid { grid-template-columns: 1fr; gap: 22px; }
+    .section-{{ section.id }} .hsn-policy__toc {
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      column-gap: 16px;
+      border-left: 0;
+      padding-bottom: 4px;
+    }
+    .section-{{ section.id }} .hsn-policy__toc-h { display: none; }
+    .section-{{ section.id }} .hsn-policy__toc a { border-left: 0; margin-left: 0; padding: 4px 0; gap: 6px; }
+    .section-{{ section.id }} .hsn-policy__toc a.is-active { color: var(--pc-accent); }
+  }
+{% endstyle %}
+
+<script>
+  (function () {
+    var root = document.getElementById('{{ section.id }}');
+    if (!root || root.dataset.hsnInit === 'true') return;
+    root.dataset.hsnInit = 'true';
+    var secs = Array.prototype.slice.call(root.querySelectorAll('[data-hsn-policy-sec]'));
+    var links = Array.prototype.slice.call(root.querySelectorAll('[data-hsn-toc-link]'));
+    if (!secs.length || !links.length) return;
+    function onScroll() {
+      var pos = window.scrollY + 150;
+      var cur = secs[0];
+      secs.forEach(function (s) { if (s.offsetTop <= pos) cur = s; });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40) cur = secs[secs.length - 1];
+      links.forEach(function (l) {
+        l.classList.toggle('is-active', l.getAttribute('data-hsn-toc-link') === cur.id);
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "HSN Policy Content",
+  "tag": "div",
+  "class": "hsn-policy-content-section",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "checkbox", "id": "show_short", "label": "Show summary callout", "default": true },
+    { "type": "text", "id": "short_heading", "label": "Summary heading", "default": "The Short Version" },
+    { "type": "richtext", "id": "short_body", "label": "Summary text", "default": "<p>We collect only what we need to run the store and reach you. We never sell your data. You can unsubscribe or ask us to delete your data at any time.</p>" },
+    { "type": "checkbox", "id": "show_toc", "label": "Show table of contents", "default": true },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "accent", "label": "Links accent", "default": "#3E7EA0" },
+    { "type": "color", "id": "text_color", "label": "Body text", "default": "#4D4D4D" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 10, "max": 100, "step": 2, "unit": "px", "default": 34 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 20, "max": 140, "step": 4, "unit": "px", "default": 56 }
+  ],
+  "blocks": [
+    {
+      "type": "policy_section",
+      "name": "Policy section",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Heading", "default": "Section heading" },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Policy text goes here.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 40,
+  "presets": [
+    {
+      "name": "HSN Policy Content",
+      "blocks": [
+        { "type": "policy_section", "settings": { "title": "Overview", "content": "<p>Policy text goes here.</p>" } },
+        { "type": "policy_section", "settings": { "title": "Contact", "content": "<p>Reach us any time.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

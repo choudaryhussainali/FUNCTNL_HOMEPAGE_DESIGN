@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hsn-policy-hero",
+      "settings": {
+        "title": "Returns & Refunds",
+        "lede": "We want FUNCTNL to earn its place in your routine. If it\u2019s not the right fit, here\u2019s exactly how we\u2019ll put things right."
+      }
+    },
+    "content": {
+      "type": "hsn-policy-content",
+      "blocks": {
+        "s01": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Can I Return My Order?",
+            "content": "<p>Yes. We accept returns on unopened products within 30 days of delivery. To qualify, your sachets or pouches must be sealed, unused, and in their original packaging.</p><p>Because our products are consumables, we can\u2019t accept returns on anything that has been opened, for hygiene and safety reasons.</p><p>Change-of-mind returns are available on UK orders only. International orders can\u2019t be returned unless they arrive damaged or faulty. See our Shipping Policy for details.</p>"
+          }
+        },
+        "s02": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Opened or Partly Used Products",
+            "content": "<p>Once a pouch or sachet has been opened, we\u2019re unable to offer a refund, even if only a small amount has been used. This is in line with UK hygiene standards for consumable goods.</p>"
+          }
+        },
+        "s03": {
+          "type": "policy_section",
+          "settings": {
+            "title": "How Do I Request a Return?",
+            "content": "<p>Email us at <a href=\"mailto:sales@acti.health\">sales@acti.health</a> within 30 days of receiving your order, including your order number. We\u2019ll reply with return instructions. Return shipping costs are the customer\u2019s responsibility unless the item arrived damaged or faulty.</p>"
+          }
+        },
+        "s04": {
+          "type": "policy_section",
+          "settings": {
+            "title": "When Will I Get My Refund?",
+            "content": "<p>Once we\u2019ve received and checked your return, we\u2019ll process your refund to your original payment method within 14 days.</p>"
+          }
+        },
+        "s05": {
+          "type": "policy_section",
+          "settings": {
+            "title": "My Order Arrived Damaged or Faulty",
+            "content": "<p>We\u2019re sorry about that. Email <a href=\"mailto:sales@acti.health\">sales@acti.health</a> with your order number and a photo of the issue, and we\u2019ll get it sorted quickly, with a replacement or full refund at no cost to you. This applies to both UK and international orders.</p>"
+          }
+        },
+        "s06": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Questions",
+            "content": "<p>Get in touch at <a href=\"mailto:sales@acti.health\">sales@acti.health</a> and we\u2019ll be happy to help.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05",
+        "s06"
+      ],
+      "settings": {
+        "show_short": true,
+        "short_heading": "The Short Version",
+        "short_body": "<p>Unopened products can be returned within 30 days of delivery on UK orders. Opened products can\u2019t be returned for hygiene reasons, but damaged or faulty items are made right everywhere we ship. Email <a href=\"mailto:sales@acti.health\">sales@acti.health</a> to start a return.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "content"
+  ]
+}

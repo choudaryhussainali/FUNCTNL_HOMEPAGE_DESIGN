@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hsn-policy-hero",
+      "settings": {
+        "title": "Shipping Policy",
+        "lede": "Every UK order ships with Royal Mail, fully tracked from our door to yours. Subscribers never pay for delivery, and one-time orders over \u00a340 ship free."
+      }
+    },
+    "content": {
+      "type": "hsn-policy-content",
+      "blocks": {
+        "s01": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Overview",
+            "content": "<p>Every UK order is sent with Royal Mail, fully tracked from our door to yours. Subscribers never pay for delivery, and one-time orders over \u00a340 ship free.</p>"
+          }
+        },
+        "s02": {
+          "type": "policy_section",
+          "settings": {
+            "title": "UK Delivery Options",
+            "content": "<ul><li><strong>Subscriptions</strong> \u2014 Free for life: free tracked delivery on every subscription order, for as long as you stay subscribed.</li><li><strong>Orders over \u00a340</strong> \u2014 Free (2\u20134 working days): one-time orders over \u00a340 ship free with Royal Mail tracked delivery.</li><li><strong>Tracked</strong> \u2014 \u00a33.49 (2\u20134 working days): Royal Mail tracked delivery on one-time orders of \u00a340 or under.</li><li><strong>Next day</strong> \u2014 \u00a34.99 (order before 4pm): Royal Mail next-day tracked delivery when you order before 4pm on a working day.</li></ul>"
+          }
+        },
+        "s03": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Dispatch Times",
+            "content": "<p>Every order is fully tracked, so you can follow it all the way to your door.</p><ul><li><strong>Before 4pm</strong>: orders placed before 4pm on a working day are processed the same day.</li><li><strong>After 4pm</strong>: orders placed after 4pm are processed on the next working day.</li><li><strong>Weekends and bank holidays</strong>: orders placed on a Saturday, Sunday or bank holiday are processed on the next working day.</li></ul><p>Delivery times start from dispatch and are Royal Mail estimates, not guarantees.</p>"
+          }
+        },
+        "s04": {
+          "type": "policy_section",
+          "settings": {
+            "title": "International Orders",
+            "content": "<p>International shipping is calculated at checkout.</p>"
+          }
+        },
+        "s05": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Duties and Taxes",
+            "content": "<p>Your country may charge import duties or taxes when your order arrives. Whether you\u2019re charged depends on your order value and your country\u2019s tax-free allowance, if it has one. Any duties and taxes are paid by the recipient, usually at the point of delivery. Your local customs office can tell you more.</p>"
+          }
+        },
+        "s06": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Refused at Customs",
+            "content": "<p>If customs in your country refuses your parcel and it comes back to us fully intact, we\u2019ll refund the full product cost. The original shipping charge isn\u2019t refundable. We can\u2019t offer a refund if the parcel doesn\u2019t reach us, or arrives back opened or damaged.</p>"
+          }
+        },
+        "s07": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Returns",
+            "content": "<p>We don\u2019t accept change-of-mind returns on international orders. If your order arrives damaged or faulty, email <a href=\"mailto:sales@acti.health\">sales@acti.health</a> with your order number and a photo, and we\u2019ll put it right. For returns on UK orders, see our Returns &amp; Refunds Policy.</p>"
+          }
+        },
+        "s08": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Order Not Arrived?",
+            "content": "<p>Check your tracking first. If it\u2019s running late, looks stuck, or arrived damaged, email <a href=\"mailto:sales@acti.health\">sales@acti.health</a> with your order number and we\u2019ll sort it.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05",
+        "s06",
+        "s07",
+        "s08"
+      ],
+      "settings": {
+        "show_short": true,
+        "short_heading": "The Short Version",
+        "short_body": "<p>Every UK order is fully tracked. Subscribers always ship free, one-time orders over \u00a340 ship free, and orders placed before 4pm on a working day go out the same day. Questions? <a href=\"mailto:sales@acti.health\">sales@acti.health</a>.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "content"
+  ]
+}

@@ -1,0 +1,122 @@
+{% comment %}
+  HSN Policy Hero — centered title, updated pill and lede for policy pages.
+  Settings groups: Content, Colors, Spacing.
+{% endcomment %}
+
+{%- liquid
+  assign page_title = section.settings.title
+  if page_title == blank
+    assign page_title = page.title
+  endif
+  assign updated = section.settings.updated_text
+  if updated == blank
+    assign updated = 'Last updated: ' | append: page.updated_at | date: '%d %B %Y'
+  endif
+-%}
+
+<div
+  id="{{ section.id }}"
+  class="hsn-policy-hero section-{{ section.id }}"
+  style="--ph-pt: {{ section.settings.padding_top }}px; --ph-accent: {{ section.settings.accent }};"
+  {{ section.shopify_attributes }}
+>
+  <div class="hsn-policy-hero__inner">
+    <span class="hsn-policy-hero__eyebrow">{{ section.settings.eyebrow | escape }}</span>
+    <h1 class="hsn-policy-hero__title">{{ page_title | escape }}<em>.</em></h1>
+    {%- if section.settings.show_updated -%}
+      <span class="hsn-policy-hero__pill"><i aria-hidden="true"></i>{{ updated | escape }}</span>
+    {%- endif -%}
+    {%- if section.settings.lede != blank -%}
+      <p class="hsn-policy-hero__lede">{{ section.settings.lede | escape }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% style %}
+  .section-{{ section.id }} .hsn-policy-hero {
+    background: #fff;
+    text-align: center;
+    padding: var(--ph-pt) 16px clamp(4px, 1vw, 10px);
+  }
+  .section-{{ section.id }} .hsn-policy-hero__inner {
+    max-width: 1400px;
+    margin-inline: auto;
+  }
+  .section-{{ section.id }} .hsn-policy-hero__eyebrow {
+    display: block;
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 11.5px;
+    font-weight: 750;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ph-accent);
+    margin-bottom: 14px;
+  }
+  .section-{{ section.id }} .hsn-policy-hero__title {
+    font-family: 'PP Monument Extended', 'Archivo', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: clamp(28px, 4.6vw, 58px);
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: #000;
+    margin: 0 0 16px;
+    overflow-wrap: break-word;
+  }
+  .section-{{ section.id }} .hsn-policy-hero__title em {
+    font-style: normal;
+    color: #7eb8d4;
+  }
+  .section-{{ section.id }} .hsn-policy-hero__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(126, 184, 212, 0.14);
+    border: 1px solid rgba(126, 184, 212, 0.45);
+    color: #000;
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 650;
+    padding: 8px 16px;
+    border-radius: 999px;
+  }
+  .section-{{ section.id }} .hsn-policy-hero__pill i {
+    font-style: normal;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #7eb8d4;
+  }
+  .section-{{ section.id }} .hsn-policy-hero__lede {
+    max-width: 560px;
+    margin: 16px auto 0;
+    font-family: 'Outfit', 'Archivo', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    color: #4d4d4d;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "HSN Policy Hero",
+  "tag": "section",
+  "class": "hsn-policy-hero-section",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "title", "label": "Title", "info": "Leave empty to use the page title.", "default": "Privacy Policy" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Functnl Legal" },
+    { "type": "checkbox", "id": "show_updated", "label": "Show updated pill", "default": true },
+    { "type": "text", "id": "updated_text", "label": "Updated text", "info": "Leave empty to use the page's last updated date.", "default": "Last updated: 24 September 2026" },
+    { "type": "textarea", "id": "lede", "label": "Intro line", "default": "How we collect, use and protect your data: written in plain English, because trust is part of the system." },
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "accent", "label": "Accent", "default": "#3E7EA0" },
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 8, "max": 80, "step": 2, "unit": "px", "default": 34 }
+  ],
+  "presets": [
+    { "name": "HSN Policy Hero" }
+  ]
+}
+{% endschema %}

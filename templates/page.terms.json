@@ -1,0 +1,171 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hsn-policy-hero",
+      "settings": {
+        "title": "Terms of Service",
+        "lede": "The agreement between you and Actihealth Ltd when you use functnl.co.uk, written to be clear, fair and readable."
+      }
+    },
+    "content": {
+      "type": "hsn-policy-content",
+      "blocks": {
+        "s01": {
+          "type": "policy_section",
+          "settings": {
+            "title": "About Us",
+            "content": "<p>This website, <a href=\"https://functnl.co.uk\">www.functnl.co.uk</a>, is operated by <strong>Actihealth Ltd</strong>, trading as FUNCTNL, a company registered in England and Wales under company number 12334483. Our registered office is One Stonegrove, 5 Hayling Way, Edgware, HA8 8BN, United Kingdom. Our VAT number is GB338995439. In these terms, \u201cwe\u201d, \u201cus\u201d and \u201cour\u201d mean Actihealth Ltd. You can contact us at <a href=\"mailto:sales@acti.health\">sales@acti.health</a>.</p><p>By using this website or placing an order, you agree to these terms. Please read them carefully. If you don\u2019t agree, please don\u2019t use the site. These terms don\u2019t affect your legal rights as a consumer under UK law.</p><p>We may update these terms from time to time. The version on this page when you place an order is the one that applies to that order.</p>"
+          }
+        },
+        "s02": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Using Our Website",
+            "content": "<p>You must be 18 or over to place an order or create an account with us.</p><p>You agree not to use our website for any unlawful purpose, to interfere with its security or operation, to upload malicious code, or to scrape, copy or resell any part of it without our written permission. We may suspend or restrict access to the site if these terms are broken.</p><p>Our store runs on Shopify, which provides the platform we use to sell our products and take payments.</p>"
+          }
+        },
+        "s03": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Our Products",
+            "content": "<p>FUNCTNL products are food supplements. They are not intended to diagnose, treat, cure or prevent any disease, and they should not be used as a substitute for a varied, balanced diet and a healthy lifestyle.</p><p>Please follow the directions on the label and don\u2019t exceed the recommended daily intake. Keep out of reach of young children. If you are pregnant, breastfeeding, taking medication, under medical supervision or have a health condition, speak to a healthcare professional before using any supplement. Always check the label for ingredients and allergen information before use.</p><p>Information on our website, social channels and in our content is for general information only and is not medical advice.</p><p>We make every effort to show our products accurately, but colours and packaging may vary slightly from the images on screen. We may update product formulations, packaging or descriptions over time, and we may discontinue products at any time.</p>"
+          }
+        },
+        "s04": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Orders",
+            "content": "<p>When you place an order, you\u2019ll receive an email confirming we\u2019ve received it. Your order is only accepted once we confirm it has been dispatched.</p><p>We may refuse or cancel an order, or limit quantities, for example if a product is out of stock, if there\u2019s a pricing or description error, if we suspect fraud, or if an order appears to be placed for resale. If we cancel an order after you\u2019ve paid, we\u2019ll refund you in full.</p><p>Please make sure the details you give us, including your email, delivery address and payment information, are accurate and up to date.</p>"
+          }
+        },
+        "s05": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Prices and Payment",
+            "content": "<p>All prices are shown in pounds sterling and include VAT where applicable. Delivery charges are shown at checkout and in our Shipping Policy.</p><p>Prices may change, but changes won\u2019t affect orders we\u2019ve already confirmed. If we\u2019ve made an obvious pricing error, we\u2019ll contact you before dispatch and you can choose to go ahead at the correct price or cancel for a full refund.</p><p>Payment is taken when you place your order. Card details are encrypted and processed securely by our payment providers. We don\u2019t store your full card details.</p>"
+          }
+        },
+        "s06": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Subscriptions",
+            "content": "<p>Some products are available on subscription. When you subscribe, you authorise us to charge your chosen payment method automatically at the frequency you selected, until you cancel.</p><p>UK delivery is free on every subscription order for as long as your subscription stays active. You can pause, change or cancel your subscription at any time through your account or by emailing <a href=\"mailto:sales@acti.health\">sales@acti.health</a>. To stop your next order, cancel before its billing date. Orders already processed can\u2019t be stopped, but they\u2019re covered by our Returns &amp; Refunds Policy.</p><p>If the price of your subscription changes, we\u2019ll give you reasonable advance notice by email before the new price applies, so you can cancel if you wish. If a payment fails, we may retry it or pause your subscription.</p>"
+          }
+        },
+        "s07": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Discount Codes and Promotions",
+            "content": "<p>Discount codes, including creator and affiliate codes, are subject to their own conditions, such as expiry dates and minimum spends. Unless stated otherwise, only one code can be used per order, codes can\u2019t be exchanged for cash, and we may withdraw or change a promotion at any time. We may cancel orders where codes have been misused.</p>"
+          }
+        },
+        "s08": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Delivery",
+            "content": "<p>We send UK orders with Royal Mail, fully tracked. Delivery options, charges and dispatch times are set out in our Shipping Policy.</p><p>Delivery times are estimates from dispatch, not guarantees. The products become your responsibility once they are delivered to the address you gave us.</p><p>For international orders, shipping is calculated at checkout. Your country may charge import duties or taxes, and these are the recipient\u2019s responsibility, usually payable on delivery. If customs refuses your parcel and it is returned to us fully intact, we\u2019ll refund the product cost, but not the original shipping charge. We can\u2019t offer a refund if the parcel doesn\u2019t reach us, or arrives back opened or damaged.</p><p>If your order hasn\u2019t arrived or arrives damaged, contact us at <a href=\"mailto:sales@acti.health\">sales@acti.health</a> and we\u2019ll help.</p>"
+          }
+        },
+        "s09": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Returns and Refunds",
+            "content": "<p>You can return unopened products from UK orders within 30 days of delivery. We don\u2019t accept change-of-mind returns on international orders, but damaged or faulty items are covered wherever you are. For full details, please see our Returns &amp; Refunds Policy.</p><p>This is in addition to your statutory rights. If a product is faulty, not as described or not fit for purpose, you are entitled to a repair, replacement or refund under the Consumer Rights Act 2015.</p>"
+          }
+        },
+        "s10": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Intellectual Property",
+            "content": "<p>All content on this website, including the FUNCTNL name and logo, product names, text, images, graphics and video, belongs to Actihealth Ltd or our licensors. You may not copy, reproduce, distribute or use any of it for commercial purposes without our written permission.</p>"
+          }
+        },
+        "s11": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Reviews, Comments and Submissions",
+            "content": "<p>If you post a review, comment, photo or other content on our site or tag us on social media, you give us permission to use, edit and share it across our channels without payment. You confirm that your content is your own, is accurate and honest, and doesn\u2019t break any law or infringe anyone else\u2019s rights. We may remove any content we consider inappropriate.</p>"
+          }
+        },
+        "s12": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Third-Party Links and Tools",
+            "content": "<p>Our website may link to or use third-party websites and tools. We don\u2019t control them and aren\u2019t responsible for their content, products or policies. Please review their terms before using them.</p>"
+          }
+        },
+        "s13": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Your Privacy",
+            "content": "<p>We handle your personal data in line with UK data protection law. Please see our Privacy Policy for details.</p>"
+          }
+        },
+        "s14": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Our Liability",
+            "content": "<p>We are responsible for loss or damage you suffer that is a foreseeable result of us breaking these terms or failing to use reasonable care and skill. We are not responsible for loss or damage that was not foreseeable, or for any business losses, as our products are for personal use only.</p><p>Our total liability to you for any order is limited to the price you paid for that order.</p><p>Nothing in these terms limits or excludes our liability for death or personal injury caused by our negligence, for fraud or fraudulent misrepresentation, or for anything else that cannot be limited or excluded by law, including your rights under the Consumer Rights Act 2015.</p><p>We\u2019re not liable for delays or failures caused by events outside our reasonable control.</p>"
+          }
+        },
+        "s15": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Website Availability",
+            "content": "<p>We do our best to keep the site accurate and running smoothly, but we can\u2019t guarantee it will always be available, error-free or up to date. We may correct errors and update or suspend any part of the site at any time.</p>"
+          }
+        },
+        "s16": {
+          "type": "policy_section",
+          "settings": {
+            "title": "General",
+            "content": "<p>If any part of these terms is found to be unenforceable, the rest will still apply. If we don\u2019t enforce a right straight away, we can still enforce it later. You may not transfer your rights under these terms without our consent. These terms, together with our Shipping Policy, Returns &amp; Refunds Policy and Privacy Policy, form the entire agreement between you and us.</p>"
+          }
+        },
+        "s17": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Governing Law and Disputes",
+            "content": "<p>These terms are governed by the laws of England and Wales. You can bring legal proceedings in the courts of England and Wales. If you live in Scotland or Northern Ireland, you can also bring proceedings in your local courts.</p><p>If you have a complaint, please contact us first at <a href=\"mailto:sales@acti.health\">sales@acti.health</a> and we\u2019ll do our best to resolve it.</p>"
+          }
+        },
+        "s18": {
+          "type": "policy_section",
+          "settings": {
+            "title": "Contact Us",
+            "content": "<p><strong>Actihealth Ltd</strong>, trading as FUNCTNL<br/>One Stonegrove, 5 Hayling Way, Edgware, HA8 8BN, United Kingdom<br/>Registered in England and Wales, company no. 12334483<br/>VAT no. GB338995439</p><p>Email: <a href=\"mailto:sales@acti.health\">sales@acti.health</a><br/>Website: <a href=\"https://functnl.co.uk\">www.functnl.co.uk</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05",
+        "s06",
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18"
+      ],
+      "settings": {
+        "show_short": true,
+        "short_heading": "The Short Version",
+        "short_body": "<p>Be 18 or over, order for personal use, and give us accurate details. We deliver with Royal Mail, protect your data, and honour your UK consumer rights. Questions? <a href=\"mailto:sales@acti.health\">sales@acti.health</a>.</p>"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "content"
+  ]
+}

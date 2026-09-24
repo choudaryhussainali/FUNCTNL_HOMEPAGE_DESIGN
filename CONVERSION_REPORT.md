@@ -40,6 +40,13 @@ Deliverables: 13 self-contained sections in `sections/`, `templates/index.json`,
 - **Home page**: assign `templates/index.json` (already the default for index if uploaded with the template).
 - **Groups**: add `sections/header-group.json` and `sections/footer-group.json` to the theme; they mount the announcement/header and footer.
 
+## Policy / legal page kit
+
+- `hsn-policy-hero.liquid` — centered title (falls back to the page title), "last updated" pill (falls back to the page's updated date), eyebrow and lede.
+- `hsn-policy-content.liquid` — sticky, scrollspy table of contents auto-built from blocks; each "Policy section" block is a numbered heading + richtext body; optional "The Short Version" callout; back-to-top button.
+- **Page templates** pre-filled with the exact legal copy: `page.privacy.json` (13 sections), `page.shipping.json` (8), `page.refund.json` (6), `page.terms.json` (18), `page.accessibility.json` (5).
+- **Usage**: create five Shopify Pages, then assign each the matching template suffix (privacy, shipping, refund, terms, accessibility). Edit content via the section blocks in the theme editor; add or remove sections and the numbering plus TOC update automatically.
+
 ## Design notes / closest solutions
 
 - The static page's JS-driven transform video slider was rebuilt as native **scroll-snap + arrows + autoplay** (per performance rules), keeping the center-tile scale effect via IntersectionObserver.
