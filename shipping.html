@@ -485,6 +485,8 @@ body{overflow-x:visible}
   color:var(--g4);border-left:2px solid transparent;margin-left:-1px;
   transition:color .15s var(--eq),border-color .15s var(--eq)}
 .toc a .num{font-size:10px;letter-spacing:.1em;color:#9a9a9a;font-variant-numeric:tabular-nums}
+.toc a .num{flex:none;margin-right:2px}
+.toc a .lbl{flex:1;min-width:0}
 .toc a:hover{color:var(--black)}
 .toc a.is-active{color:var(--black);border-left-color:var(--blue)}
 .toc a.is-active .num{color:var(--blue)}
@@ -612,14 +614,14 @@ body{overflow-x:visible}
   <div class="wrap legal-g">
     <aside class="toc" aria-label="On this page">
       <span class="toc-h">On this page</span>
-        <a href="#ship-intro" class="is-active"><span class="num">01</span>Overview</a>
-        <a href="#ship-opts><span class="num">02</span>UK delivery options</a>
-        <a href="#ship-dispatch><span class="num">03</span>Dispatch times</a>
-        <a href="#ship-intl><span class="num">04</span>International orders</a>
-        <a href="#ship-duties><span class="num">05</span>Duties and taxes</a>
-        <a href="#ship-refused><span class="num">06</span>Refused at customs</a>
-        <a href="#ship-returns><span class="num">07</span>Returns</a>
-        <a href="#ship-lost><span class="num">08</span>Order not arrived?</a>
+        <a href="#ship-intro" class="is-active"><span class="num">01</span><span class="lbl">Overview</span></a>
+        <a href="#ship-opts><span class="num">02</span><span class="lbl">UK delivery options</span></a>
+        <a href="#ship-dispatch><span class="num">03</span><span class="lbl">Dispatch times</span></a>
+        <a href="#ship-intl><span class="num">04</span><span class="lbl">International orders</span></a>
+        <a href="#ship-duties><span class="num">05</span><span class="lbl">Duties and taxes</span></a>
+        <a href="#ship-refused><span class="num">06</span><span class="lbl">Refused at customs</span></a>
+        <a href="#ship-returns><span class="num">07</span><span class="lbl">Returns</span></a>
+        <a href="#ship-lost><span class="num">08</span><span class="lbl">Order not arrived?</span></a>
     </aside>
 
     <article>
@@ -813,20 +815,21 @@ body{overflow-x:visible}
 
 <script>
 (function(){
-  var secs = document.querySelectorAll('.legal-sec');
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.legal-sec'));
   var links = document.querySelectorAll('.toc a');
-  if ('IntersectionObserver' in window && secs.length) {
-    var spy = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (en.isIntersecting) {
-          links.forEach(function(l){
-            l.classList.toggle('is-active', l.getAttribute('href') === '#' + en.target.id);
-          });
-        }
-      });
-    }, {rootMargin: '-10% 0px -60% 0px'});
-    secs.forEach(function(x){ spy.observe(x); });
+  if (!secs.length) return;
+  function onScroll(){
+    var pos = window.scrollY + 150;
+    var cur = secs[0];
+    secs.forEach(function(s){ if (s.offsetTop <= pos) cur = s; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40) cur = secs[secs.length - 1];
+    links.forEach(function(l){
+      l.classList.toggle('is-active', l.getAttribute('href') === '#' + cur.id);
+    });
   }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
 })();
 </script>
 </body>

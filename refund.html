@@ -485,6 +485,8 @@ body{overflow-x:visible}
   color:var(--g4);border-left:2px solid transparent;margin-left:-1px;
   transition:color .15s var(--eq),border-color .15s var(--eq)}
 .toc a .num{font-size:10px;letter-spacing:.1em;color:#9a9a9a;font-variant-numeric:tabular-nums}
+.toc a .num{flex:none;margin-right:2px}
+.toc a .lbl{flex:1;min-width:0}
 .toc a:hover{color:var(--black)}
 .toc a.is-active{color:var(--black);border-left-color:var(--blue)}
 .toc a.is-active .num{color:var(--blue)}
@@ -612,12 +614,12 @@ body{overflow-x:visible}
   <div class="wrap legal-g">
     <aside class="toc" aria-label="On this page">
       <span class="toc-h">On this page</span>
-        <a href="#rf-1" class="is-active"><span class="num">01</span>Can I return my order?</a>
-        <a href="#rf-2><span class="num">02</span>Opened or partly used products</a>
-        <a href="#rf-3><span class="num">03</span>How do I request a return?</a>
-        <a href="#rf-4><span class="num">04</span>When will I get my refund?</a>
-        <a href="#rf-5><span class="num">05</span>Damaged or faulty orders</a>
-        <a href="#rf-6><span class="num">06</span>Questions</a>
+        <a href="#rf-1" class="is-active"><span class="num">01</span><span class="lbl">Can I return my order?</span></a>
+        <a href="#rf-2><span class="num">02</span><span class="lbl">Opened or partly used products</span></a>
+        <a href="#rf-3><span class="num">03</span><span class="lbl">How do I request a return?</span></a>
+        <a href="#rf-4><span class="num">04</span><span class="lbl">When will I get my refund?</span></a>
+        <a href="#rf-5><span class="num">05</span><span class="lbl">Damaged or faulty orders</span></a>
+        <a href="#rf-6><span class="num">06</span><span class="lbl">Questions</span></a>
     </aside>
 
     <article>
@@ -625,7 +627,7 @@ body{overflow-x:visible}
         <h3>At a glance</h3>
         <p>Unopened products can be returned within 30 days of delivery on UK orders. Opened products can’t be returned for hygiene reasons, but damaged or faulty items are made right everywhere we ship. Email <a href="mailto:sales@acti.health">sales@acti.health</a> to start a return.</p>
       </div>
-      <section class="legal-sec" id="rf-1">
+      <section class="legal-sec" id="rf-01">
         <span class="legal-num">01</span>
         <h2 class="legal-h2">Can I Return My Order?</h2>
 
@@ -634,31 +636,31 @@ body{overflow-x:visible}
 <p>Change-of-mind returns are available on UK orders only. International orders can’t be returned unless they arrive damaged or faulty. See our <a href="shipping.html">Shipping Policy</a> for details.</p>
       </section>
 
-      <section class="legal-sec" id="rf-2">
+      <section class="legal-sec" id="rf-02">
         <span class="legal-num">02</span>
         <h2 class="legal-h2">Opened or Partly Used Products</h2>
 <p>Once a pouch or sachet has been opened, we’re unable to offer a refund, even if only a small amount has been used. This is in line with UK hygiene standards for consumable goods.</p>
       </section>
 
-      <section class="legal-sec" id="rf-3">
+      <section class="legal-sec" id="rf-03">
         <span class="legal-num">03</span>
         <h2 class="legal-h2">How Do I Request a Return?</h2>
 <p>Email us at <a href="mailto:sales@acti.health">sales@acti.health</a> within 30 days of receiving your order, including your order number. We’ll reply with return instructions. Return shipping costs are the customer’s responsibility unless the item arrived damaged or faulty.</p>
       </section>
 
-      <section class="legal-sec" id="rf-4">
+      <section class="legal-sec" id="rf-04">
         <span class="legal-num">04</span>
         <h2 class="legal-h2">When Will I Get My Refund?</h2>
 <p>Once we’ve received and checked your return, we’ll process your refund to your original payment method within 14 days.</p>
       </section>
 
-      <section class="legal-sec" id="rf-5">
+      <section class="legal-sec" id="rf-05">
         <span class="legal-num">05</span>
         <h2 class="legal-h2">My Order Arrived Damaged or Faulty</h2>
 <p>We’re sorry about that. Email <a href="mailto:sales@acti.health">sales@acti.health</a> with your order number and a photo of the issue, and we’ll get it sorted quickly, with a replacement or full refund at no cost to you. This applies to both UK and international orders.</p>
       </section>
 
-      <section class="legal-sec" id="rf-6">
+      <section class="legal-sec" id="rf-06">
         <span class="legal-num">06</span>
         <h2 class="legal-h2">Questions</h2>
 <p>Get in touch at <a href="mailto:sales@acti.health">sales@acti.health</a> and we’ll be happy to help.</p>
@@ -792,20 +794,21 @@ body{overflow-x:visible}
 
 <script>
 (function(){
-  var secs = document.querySelectorAll('.legal-sec');
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.legal-sec'));
   var links = document.querySelectorAll('.toc a');
-  if ('IntersectionObserver' in window && secs.length) {
-    var spy = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (en.isIntersecting) {
-          links.forEach(function(l){
-            l.classList.toggle('is-active', l.getAttribute('href') === '#' + en.target.id);
-          });
-        }
-      });
-    }, {rootMargin: '-10% 0px -60% 0px'});
-    secs.forEach(function(x){ spy.observe(x); });
+  if (!secs.length) return;
+  function onScroll(){
+    var pos = window.scrollY + 150;
+    var cur = secs[0];
+    secs.forEach(function(s){ if (s.offsetTop <= pos) cur = s; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40) cur = secs[secs.length - 1];
+    links.forEach(function(l){
+      l.classList.toggle('is-active', l.getAttribute('href') === '#' + cur.id);
+    });
   }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
 })();
 </script>
 </body>

@@ -485,6 +485,8 @@ body{overflow-x:visible}
   color:var(--g4);border-left:2px solid transparent;margin-left:-1px;
   transition:color .15s var(--eq),border-color .15s var(--eq)}
 .toc a .num{font-size:10px;letter-spacing:.1em;color:#9a9a9a;font-variant-numeric:tabular-nums}
+.toc a .num{flex:none;margin-right:2px}
+.toc a .lbl{flex:1;min-width:0}
 .toc a:hover{color:var(--black)}
 .toc a.is-active{color:var(--black);border-left-color:var(--blue)}
 .toc a.is-active .num{color:var(--blue)}
@@ -612,11 +614,11 @@ body{overflow-x:visible}
   <div class="wrap legal-g">
     <aside class="toc" aria-label="On this page">
       <span class="toc-h">On this page</span>
-        <a href="#a-1" class="is-active"><span class="num">01</span>Our commitment</a>
-        <a href="#a-2><span class="num">02</span>Built-in features</a>
-        <a href="#a-3><span class="num">03</span>Known limitations</a>
-        <a href="#a-4><span class="num">04</span>Feedback</a>
-        <a href="#a-5><span class="num">05</span>Technical information</a>
+        <a href="#a-1" class="is-active"><span class="num">01</span><span class="lbl">Our commitment</span></a>
+        <a href="#a-2><span class="num">02</span><span class="lbl">Built-in features</span></a>
+        <a href="#a-3><span class="num">03</span><span class="lbl">Known limitations</span></a>
+        <a href="#a-4><span class="num">04</span><span class="lbl">Feedback</span></a>
+        <a href="#a-5><span class="num">05</span><span class="lbl">Technical information</span></a>
     </aside>
 
     <article>
@@ -624,14 +626,14 @@ body{overflow-x:visible}
         <h3>Our commitment</h3>
         <p>We aim to meet WCAG 2.2 Level AA across the site. If anything blocks you from shopping with us, email <a href="mailto:sales@acti.health">sales@acti.health</a> and we’ll fix it and respond within five working days.</p>
       </div>
-      <section class="legal-sec" id="a-1">
+      <section class="legal-sec" id="a-01">
         <span class="legal-num">01</span>
         <h2 class="legal-h2">Our Commitment</h2>
 
 <p>FUNCTNL is for every body. We want functnl.co.uk to be usable by as many people as possible, regardless of ability or technology. We are committed to making our site accessible in line with the <b>Web Content Accessibility Guidelines (WCAG) 2.2, Level AA</b>.</p>
       </section>
 
-      <section class="legal-sec" id="a-2">
+      <section class="legal-sec" id="a-02">
         <span class="legal-num">02</span>
         <h2 class="legal-h2">Built-In Features</h2>
 
@@ -647,21 +649,21 @@ body{overflow-x:visible}
 </ul>
       </section>
 
-      <section class="legal-sec" id="a-3">
+      <section class="legal-sec" id="a-03">
         <span class="legal-num">03</span>
         <h2 class="legal-h2">Known Limitations</h2>
 
 <p>We’re honest, like our labels. Despite our best efforts, some content may not yet be fully accessible: for example, some older product photography may lack detailed text alternatives, and some third-party embedded tools (such as our checkout, provided by Shopify) are outside our direct control. We note these here and are working on them.</p>
       </section>
 
-      <section class="legal-sec" id="a-4">
+      <section class="legal-sec" id="a-04">
         <span class="legal-num">04</span>
         <h2 class="legal-h2">Feedback</h2>
 
 <p>If you run into any barrier on this site, tell us. Email <a href="mailto:sales@acti.health">sales@acti.health</a> with the page, what happened, and the assistive technology you use. We take accessibility reports seriously and aim to respond within <b>five working days</b>.</p>
       </section>
 
-      <section class="legal-sec" id="a-5">
+      <section class="legal-sec" id="a-05">
         <span class="legal-num">05</span>
         <h2 class="legal-h2">Technical Information</h2>
 
@@ -796,20 +798,21 @@ body{overflow-x:visible}
 
 <script>
 (function(){
-  var secs = document.querySelectorAll('.legal-sec');
+  var secs = Array.prototype.slice.call(document.querySelectorAll('.legal-sec'));
   var links = document.querySelectorAll('.toc a');
-  if ('IntersectionObserver' in window && secs.length) {
-    var spy = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (en.isIntersecting) {
-          links.forEach(function(l){
-            l.classList.toggle('is-active', l.getAttribute('href') === '#' + en.target.id);
-          });
-        }
-      });
-    }, {rootMargin: '-10% 0px -60% 0px'});
-    secs.forEach(function(x){ spy.observe(x); });
+  if (!secs.length) return;
+  function onScroll(){
+    var pos = window.scrollY + 150;
+    var cur = secs[0];
+    secs.forEach(function(s){ if (s.offsetTop <= pos) cur = s; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 40) cur = secs[secs.length - 1];
+    links.forEach(function(l){
+      l.classList.toggle('is-active', l.getAttribute('href') === '#' + cur.id);
+    });
   }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
 })();
 </script>
 </body>
