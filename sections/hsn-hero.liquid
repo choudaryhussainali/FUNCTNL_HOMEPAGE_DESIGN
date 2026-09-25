@@ -43,7 +43,12 @@
             {%- if block.settings.eyebrow != blank -%}
               <p class="hsn-hero__eyebrow">{{ block.settings.eyebrow | escape }}</p>
             {%- endif -%}
-            <{{ block.settings.heading_tag }} class="hsn-hero__heading">{{ block.settings.heading | escape | newline_to_br }}</{{ block.settings.heading_tag }}>
+            {%- case block.settings.heading_tag -%}
+              {%- when 'h1' -%}
+                <h1 class="hsn-hero__heading">{{ block.settings.heading | escape | newline_to_br }}</h1>
+              {%- else -%}
+                <h2 class="hsn-hero__heading">{{ block.settings.heading | escape | newline_to_br }}</h2>
+            {%- endcase -%}
             {%- if block.settings.text != blank -%}
               <p class="hsn-hero__text">{{ block.settings.text | escape }}</p>
             {%- endif -%}
