@@ -1,3 +1,6 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap">
 {% comment %}
   HSN Policy Content — auto-numbered policy sections with sticky table of contents.
   Settings groups: Content, Colors, Spacing. Blocks: section (title + richtext).
@@ -27,7 +30,7 @@
       {%- if section.settings.show_short -%}
         <div class="hsn-policy__short">
           <h3>{{ section.settings.short_heading | escape }}</h3>
-          <div class="hsn-policy__short-body rte">{{ section.settings.short_body }}</div>
+          <div class="hsn-policy__short-body">{{ section.settings.short_body }}</div>
         </div>
       {%- endif -%}
 
@@ -49,6 +52,8 @@
 </div>
 
 {% style %}
+  @font-face{font-family:'PP Monument Extended';src:url('https://cdn.shopify.com/s/files/1/0910/7564/1730/files/PPMonumentExtended-Bold.woff?v=1767889659') format('woff');font-weight:700;font-style:normal;font-display:swap}
+  @font-face{font-family:'PP Monument Extended';src:url('https://cdn.shopify.com/s/files/1/0910/7564/1730/files/PPMonumentExtended-Regular.woff?v=1767889658') format('woff');font-weight:400;font-style:normal;font-display:swap}
   .section-{{ section.id }} .hsn-policy {
     background: #fff;
     padding-block: var(--pc-pt) var(--pc-pb);
@@ -91,7 +96,7 @@
     border-left: 2px solid transparent;
     margin-left: -1px;
     text-decoration: none;
-    transition: color 0.15s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1)), border-color 0.15s var(--fx-eq, cubic-bezier(0.4, 0, 0.2, 1));
+    transition: color 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .section-{{ section.id }} .hsn-policy__toc a .hsn-policy__toc-num {
     flex: none;
