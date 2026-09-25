@@ -32,6 +32,7 @@
               assign on_sale = true
             endif
             assign second_image = product.images[1]
+            assign card_alt = product.featured_image.alt | default: product.title
           -%}
           <article class="hsn-card" data-hsn-product-card>
             <a class="hsn-card__media" href="{{ product.url }}" aria-label="{{ product.title | escape }}">
@@ -45,7 +46,7 @@
                 {%- endif -%}
               {%- endif -%}
               {%- if product.featured_image -%}
-                {{ product.featured_image | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 1100px) 23vw, (min-width: 800px) 45vw, 70vw', alt: product.featured_image.alt | default: product.title, loading: 'lazy', decoding: 'async' }}
+                {{ product.featured_image | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 1100px) 23vw, (min-width: 800px) 45vw, 70vw', alt: card_alt, loading: 'lazy', decoding: 'async' }}
                 {%- if section.settings.hover_image and second_image -%}
                   {{ second_image | image_url: width: 900 | image_tag: widths: '300, 450, 600, 900', sizes: '(min-width: 1100px) 23vw, (min-width: 800px) 45vw, 70vw', alt: '', loading: 'lazy', decoding: 'async', class: 'hsn-card__img-alt' }}
                 {%- endif -%}

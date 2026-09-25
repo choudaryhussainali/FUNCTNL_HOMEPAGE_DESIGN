@@ -70,6 +70,10 @@
       {%- endif -%}
     </div>
 
+    {%- liquid
+      assign img_alt = section.settings.image.alt | default: heading | strip_html | escape
+      assign prod_alt = product.title | escape
+    -%}
     <div class="hsn-fprod__media">
       {%- for block in section.blocks -%}
         {%- if block.type == 'chip' -%}
@@ -81,9 +85,9 @@
       {%- endfor -%}
       <div class="hsn-fprod__ph">
         {%- if section.settings.image != blank -%}
-          {{ section.settings.image | image_url: width: 1100 | image_tag: widths: '450, 600, 900, 1100', sizes: '(min-width: 901px) 46vw, 100vw', alt: section.settings.image.alt | default: heading | strip_html | escape, loading: 'lazy', decoding: 'async' }}
+          {{ section.settings.image | image_url: width: 1100 | image_tag: widths: '450, 600, 900, 1100', sizes: '(min-width: 901px) 46vw, 100vw', alt: img_alt, loading: 'lazy', decoding: 'async' }}
         {%- elsif product != blank and product.featured_image -%}
-          {{ product.featured_image | image_url: width: 1100 | image_tag: widths: '450, 600, 900, 1100', sizes: '(min-width: 901px) 46vw, 100vw', alt: product.title | escape, loading: 'lazy', decoding: 'async' }}
+          {{ product.featured_image | image_url: width: 1100 | image_tag: widths: '450, 600, 900, 1100', sizes: '(min-width: 901px) 46vw, 100vw', alt: prod_alt, loading: 'lazy', decoding: 'async' }}
         {%- else -%}
           {{ 'product-1' | placeholder_svg_tag: 'hsn-fprod__placeholder' }}
         {%- endif -%}

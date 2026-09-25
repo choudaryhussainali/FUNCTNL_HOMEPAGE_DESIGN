@@ -12,10 +12,13 @@
   style="--sy-pt: {{ section.settings.padding_top }}px; --sy-pb: {{ section.settings.padding_bottom }}px; --sy-accent: {{ section.settings.accent }};"
   {{ section.shopify_attributes }}
 >
+  {%- liquid
+    assign alt_text = section.settings.image.alt | default: section.settings.heading | strip_html | escape
+  -%}
   <div class="hsn-story__grid">
     <div class="hsn-story__media">
       {%- if section.settings.image != blank -%}
-        {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '450, 600, 900, 1200', sizes: '(min-width: 901px) 46vw, 100vw', alt: section.settings.image.alt | default: section.settings.heading | strip_html | escape, loading: 'lazy', decoding: 'async' }}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: widths: '450, 600, 900, 1200', sizes: '(min-width: 901px) 46vw, 100vw', alt: alt_text, loading: 'lazy', decoding: 'async' }}
       {%- else -%}
         {{ 'lifestyle-1' | placeholder_svg_tag: 'hsn-story__placeholder' }}
       {%- endif -%}
