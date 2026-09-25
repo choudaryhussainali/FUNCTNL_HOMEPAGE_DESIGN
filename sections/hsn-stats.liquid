@@ -99,7 +99,7 @@
         if (!en.isIntersecting) return;
         io.unobserve(en.target);
         var el = en.target;
-        var m = el.dataset.fxCount.match(/^(\d+)(.*)$/);
+        var m = el.dataset.hsnCount.match(/^(\d+)(.*)$/);
         if (!m) return;
         var end = parseInt(m[1], 10), suffix = m[2], start = null, DUR = 1400;
         el.textContent = '0' + suffix;

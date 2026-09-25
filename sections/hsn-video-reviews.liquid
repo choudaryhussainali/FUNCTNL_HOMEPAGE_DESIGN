@@ -219,11 +219,11 @@
       }, { root: track, threshold: 0.6 });
       tiles.forEach(function (t) { io.observe(t); });
     }
-    var timer = null, autoplay = root.dataset.fxAutoplay === 'true';
+    var timer = null, autoplay = root.dataset.hsnAutoplay === 'true';
     function start() {
       stop();
       if (!autoplay || reduce) return;
-      timer = setInterval(next, parseInt(root.dataset.fxSpeed, 10) || 5000);
+      timer = setInterval(next, parseInt(root.dataset.hsnSpeed, 10) || 5000);
     }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
     function restart() { start(); }

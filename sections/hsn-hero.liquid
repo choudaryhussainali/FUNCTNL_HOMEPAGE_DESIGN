@@ -267,12 +267,12 @@
     }
     function play() {
       stop();
-      if (viewport.dataset.fxAutoplay !== 'true' || reduce || slides.length < 2) return;
-      timer = setInterval(function () { go(i + 1); }, parseInt(viewport.dataset.fxSpeed, 10) || 6500);
+      if (viewport.dataset.hsnAutoplay !== 'true' || reduce || slides.length < 2) return;
+      timer = setInterval(function () { go(i + 1); }, parseInt(viewport.dataset.hsnSpeed, 10) || 6500);
     }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
     dots.forEach(function (d) {
-      d.addEventListener('click', function () { go(parseInt(d.dataset.fxGoto, 10)); play(); });
+      d.addEventListener('click', function () { go(parseInt(d.dataset.hsnGoto, 10)); play(); });
     });
     var x0 = null;
     viewport.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; stop(); }, { passive: true });
@@ -286,11 +286,11 @@
     viewport.addEventListener('mouseleave', play);
     document.addEventListener('shopify:block:select', function (e) {
       var slide = e.target.closest('[data-hsn-slide]');
-      if (slide && root.contains(slide)) { go(parseInt(slide.dataset.fxSlide, 10)); stop(); }
+      if (slide && root.contains(slide)) { go(parseInt(slide.dataset.hsnSlide, 10)); stop(); }
     });
     slides.forEach(function (s) {
-      var pos = s.dataset.fxPosition || 'center right';
-      var posM = s.dataset.fxPositionMobile || '65% center';
+      var pos = s.dataset.hsnPosition || 'center right';
+      var posM = s.dataset.hsnPositionMobile || '65% center';
       var img = s.querySelector('.hsn-hero__media img');
       if (img) { img.style.setProperty('--hsn-pos-m', posM); img.style.objectPosition = window.matchMedia('(max-width: 768px)').matches ? posM : pos; }
     });
