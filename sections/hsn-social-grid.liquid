@@ -23,9 +23,12 @@
     </h2>
     <div class="hsn-social__grid">
       {%- for block in section.blocks -%}
+        {%- liquid
+          assign tile_alt = block.settings.alt | default: 'Community post' | escape
+        -%}
         <div class="hsn-social__tile" {{ block.shopify_attributes }}>
           {%- if block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 600 | image_tag: widths: '200, 300, 450, 600', sizes: '(min-width: 861px) 18vw, 45vw', alt: block.settings.alt | escape, loading: 'lazy', decoding: 'async' }}
+            {{ block.settings.image | image_url: width: 600 | image_tag: widths: '200, 300, 450, 600', sizes: '(min-width: 861px) 18vw, 45vw', alt: tile_alt, loading: 'lazy', decoding: 'async' }}
           {%- else -%}
             {{ 'image' | placeholder_svg_tag: 'hsn-social__placeholder' }}
           {%- endif -%}

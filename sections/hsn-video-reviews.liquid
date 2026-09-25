@@ -24,10 +24,13 @@
 
   <div class="hsn-vsl__scroller" data-hsn-vsl-role="track" tabindex="0" aria-label="{{ section.settings.heading | escape }}">
     {%- for block in section.blocks -%}
+      {%- liquid
+        assign vsl_alt = block.settings.alt | default: 'Customer video' | escape
+      -%}
       <div class="hsn-vsl__tile" data-hsn-tile {{ block.shopify_attributes }}>
         {%- if block.settings.link != blank -%}<a class="hsn-vsl__media" href="{{ block.settings.link }}" aria-label="{{ block.settings.alt | default: 'Customer video' | escape }}">{%- else -%}<div class="hsn-vsl__media">{%- endif -%}
           {%- if block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 700 | image_tag: widths: '240, 380, 500, 700', sizes: '(min-width: 1100px) 17vw, 62vw', alt: block.settings.alt | escape, loading: 'lazy', decoding: 'async' }}
+            {{ block.settings.image | image_url: width: 700 | image_tag: widths: '240, 380, 500, 700', sizes: '(min-width: 1100px) 17vw, 62vw', alt: vsl_alt, loading: 'lazy', decoding: 'async' }}
           {%- else -%}
             {{ 'image' | placeholder_svg_tag: 'hsn-vsl__placeholder' }}
           {%- endif -%}
