@@ -66,8 +66,11 @@
   </div>
 
   {%- if section.settings.wordmark != blank -%}
+  {%- liquid
+    assign wm_alt = shop.name | escape
+  -%}
   <div class="hsn-footer__mark">
-    {{ section.settings.wordmark | image_url: width: 2400 | image_tag: widths: '800, 1400, 2000, 2400', sizes: '100vw', alt: shop.name | escape, loading: 'lazy', decoding: 'async' }}
+    {{ section.settings.wordmark | image_url: width: 2400 | image_tag: widths: '800, 1400, 2000, 2400', sizes: '100vw', alt: wm_alt, loading: 'lazy', decoding: 'async' }}
   </div>
   {%- endif -%}
 
